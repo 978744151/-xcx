@@ -1,0 +1,66 @@
+<template name="codebg">
+	<view class="bg_content">
+		<view class="bg_tk">
+			<view>小店点餐模块正在调试中...</view>
+			<view>即将上线</view>
+		</view>
+		<view class="bg_know" bindtap="reback">知道了</view>
+		<view class="bg_bg"></view>
+	</view>
+</template>
+
+<template name="stopbg">
+	<view class="bg_content">
+		<view class="bg_tk">
+			<view>本店暂停营业</view>
+			<view>如有不便敬请谅解</view>
+		</view>
+		<view class="bg_know" bindtap="reback">知道了</view>
+		<view class="bg_bg"></view>
+	</view>
+</template>
+
+<template name="queuebg">
+	<view class="bg_content">
+		<view class="bg_tk">
+			<view>小店排队取号模块正在调试中...</view>
+			<view>即将上线</view>
+		</view>
+		<view class="bg_know" bindtap="reback">知道了</view>
+		<view class="bg_bg"></view>
+	</view>
+</template>
+
+<template name="nearbg">
+	<view class="bg_content">
+		<view class="bg_tk">
+			<view>小店附近的店模块正在调试中...</view>
+			<view>即将上线</view>
+		</view>
+		<view class="bg_know" bindtap="reback">知道了</view>
+		<view class="bg_bg"></view>
+	</view>
+</template>
+
+<template name="vipbg">
+	<view class="bg_content">
+		<view class="bg_tk">
+			<view>小店会员模块正在调试中...</view>
+			<view>即将上线</view>
+		</view>
+		<view class="bg_know" bindtap="reback">知道了</view>
+		<view class="bg_bg"></view>
+	</view>
+</template>
+
+<template name="intergralbg">
+	<view class="bg_content">
+		<view class="bg_tk">
+			<view>小店积分商城模块正在调试中...</view>
+			<view>即将上线</view>
+		</view>
+		<view class="bg_know" bindtap="reback">知道了</view>
+		<view class="bg_bg"></view>
+	</view>
+</template>
+

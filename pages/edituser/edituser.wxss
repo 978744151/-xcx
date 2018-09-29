@@ -1,0 +1,73 @@
+page {
+    background: #f6f6f6;
+    height: 100%;
+}
+
+.content {
+    padding: 20rpx 0;
+    border-top: 1rpx solid #ebebeb;
+}
+
+.edituser-wapper .tip {
+    font-size: 26rpx;
+    color: #9e9e9e;
+    height: 60rpx;
+    line-height: 60rpx;
+    padding: 0 30rpx;
+}
+
+.edituser-wapper .edit-from {
+    background: #fff;
+    padding: 0 30rpx;
+}
+
+.edituser-wapper .edit-from .title {
+    height: 68rpx;
+    line-height: 68rpx;
+    color: #5e8ae7;
+    font-size: 26rpx;
+}
+
+.edituser-wapper .edit-from .chang-input {
+    height: 80rpx;
+    font-size: 30rpx;
+    color: #5a5a5a;
+}
+
+.edituser-wapper .edit-from .chang-input .dc-wapper {
+    display: flex;
+    align-items: center;
+    margin-top: 10rpx;
+}
+
+.edituser-wapper .edit-from .chang-input .iconfont {
+    font-size: 30rpx;
+    color: #5a5a5a;
+    margin-left: 15rpx;
+}
+
+.right {
+    text-align: right;
+}
+
+.tip-btm {
+    font-size: 26rpx;
+    color: #9e9e9e;
+    margin-top: 20rpx;
+    padding: 0 30rpx;
+}
+
+.form-submit-wapper {
+    padding: 0 30rpx;
+    color: #fff;
+    font-size: 32rpx;
+    text-align: center;
+    margin-top: 82rpx;
+}
+
+.form-submit-wapper .btn {
+    background: #f14949;
+    height: 100rpx;
+    line-height: 100rpx;
+    border-radius: 6rpx;
+}

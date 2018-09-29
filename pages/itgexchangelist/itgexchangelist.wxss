@@ -1,0 +1,132 @@
+page {
+    background-color: #f8f8f8;
+}
+
+.content {
+    position: relative;
+}
+
+.contnetList {
+    position: relative;
+    background-color: #fff;
+    margin-bottom: 10rpx;
+    border-top: 1px #f0f0f0 solid;
+}
+
+.right-detail {
+    width: 17rpx;
+    height: 29rpx;
+    background: url(https://pic.repaiapp.com/pic/cc/8b/47/cc8b4769faea926638bcad1926ec0edfea659809.png);
+    background-size: 100% 100%;
+}
+
+.content .contnetList:last-of-type {
+    margin-bottom: 0;
+}
+
+.order {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px #f0f0f0 solid;
+    padding: 24rpx;
+    font-size: 28rpx;
+    color: #a5a5a5;
+}
+
+.infor {
+    position: relative;
+    border-bottom: 1px #f0f0f0 solid;
+    padding: 12rpx 24rpx;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.left {
+    flex: none;
+    width: 164rpx;
+    height: 164rpx;
+    overflow: hidden;
+    border: 1px #f0f0f0 solid;
+}
+
+.left image {
+    width: 100%;
+    height: 100%;
+}
+
+.right {
+    display: flex;
+    flex: 1;
+    box-sizing: border-box;
+    padding-left: 10px;
+    position: relative;
+    height: 164rpx;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.wuliu {
+    color: #a5a5a5;
+    font-size: 24rpx;
+    vertical-align: middle;
+    margin-bottom: 10rpx;
+}
+
+.wuliu-dan {
+    margin-top: 16rpx;
+    font-size: 24rpx;
+    color: #a5a5a5;
+    margin-bottom: 10rpx;
+}
+
+.mar-l15 {
+    margin-left: 15rpx;
+}
+
+.mar-b10 {
+    margin-bottom: 10rpx;
+}
+
+.right image {
+    width: 20rpx;
+    height: 30rpx;
+    right: 0px;
+    top: 50%;
+    margin-top: -10rpx;
+    position: absolute;
+}
+
+.name {
+    display: flex;
+    align-items: center;
+    color: #6c6c6c;
+    margin-top: 10rpx;
+}
+
+.name .title {
+    font-size: 30rpx;
+    color: #101010;
+    flex: 1;
+}
+
+.sw {
+   display: inline-block;
+   width: 56rpx;
+   height: 32rpx;
+   color: #fff;
+   margin-right: 15rpx;
+  white-space: nowrap;
+}
+
+.xn {
+    background-color: #ff6c73
+}
+
+.unmore {
+    padding: 20rpx 25rpx;
+    font-size: 28rpx;
+    color: #666;
+    text-align: center;
+}

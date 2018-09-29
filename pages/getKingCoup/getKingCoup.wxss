@@ -1,0 +1,153 @@
+page{background: #6069fa;}
+.wraper{padding: 35rpx 25rpx 0;}
+.itemOne{
+  width: 100%;height: 490rpx;margin-bottom: 30rpx;
+  box-shadow: 10rpx 10rpx 20rpx rgba(0,0,0,.3);
+  background: url(https://pic.repaiapp.com/static/png/20180920/10/1537410914095325156.png) no-repeat center center/cover;
+  }
+.itemTwo{
+  width: 100%;height: 550rpx;
+  box-shadow: 10rpx 10rpx 20rpx rgba(0,0,0,.3);
+  background: url(https://pic.repaiapp.com/static/png/20180917/18/1537179197949800100.png) no-repeat center center/cover;
+  
+}
+.itemTwo.itemCard{
+  background-image: url(https://pic.repaiapp.com/static/png/20180917/18/1537178629342479754.png);
+  margin-bottom: 30rpx;
+}
+.itemTop{
+  height: 104rpx;
+  padding-right: 14rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.itemOneT{height: 78rpx;display: flex;flex-direction: row;align-items: center;}
+.itemTop text{
+  display: block;
+  width: 117rpx;
+}
+.itemOneT text{display: block;width: 86rpx;height: 78rpx;}
+.itemTwo.itemCard .itemTop text{
+  display: block;
+  width: 86rpx;
+}
+.itemTop view{
+  font-size: 28rpx;
+  color: #000;
+  line-height: 40rpx;
+}
+.scan{
+  width: 255rpx;
+  height: 255rpx;
+  margin: 50rpx auto 0;
+  background: url(https://pic.repaiapp.com/static/png/20180910/17/1536571555414795297.png) no-repeat center center/cover;
+}
+.desc{
+  font-size: 30rpx;
+  color: #954404;
+  line-height: 52rpx;
+  text-align: center;
+}
+.scanDesc{
+  width: 135rpx;
+  height: 26rpx;
+  background: url(https://pic.repaiapp.com/static/png/20180910/17/1536571776256374997.png) no-repeat center center/cover;
+  margin:38rpx auto 0;
+}
+.course{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;height: 100%;
+  background:rgba(0,0,0,.7) url(https://pic.repaiapp.com/static/png/20180919/19/1537354891709515448.png) no-repeat top center;
+  background-size: 750rpx 876rpx;
+}
+.closeCourse{
+  position: absolute;
+  width: 48rpx;
+  height: 48rpx;
+  background: url(https://pic.repaiapp.com/static/png/20180910/16/1536566814066755102.png) no-repeat center center/cover;
+  left: 50%;
+  bottom: 218rpx;
+  transform: translateX(-50%);
+}
+.closeKing{
+  position: absolute;
+  width: 48rpx;
+  height: 48rpx;
+  background: url(https://pic.repaiapp.com/static/png/20180910/16/1536566814066755102.png) no-repeat center center/cover;
+  top: -62rpx;
+  right: -43rpx;
+  z-index: 60;
+}
+.modalCon{
+  width: 560rpx;
+  height: 477rpx;
+  position: fixed;
+  left: 50%;top: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 60;
+  background: #ffcb1a;
+  border-radius: 10rpx;
+}
+.kingLogo{
+  width: 100%;height: 82rpx;
+  background: url(https://pic.repaiapp.com/static/png/20180910/16/1536567307199585052.png) no-repeat left top;
+  background-size: 252rpx 50rpx;
+}
+
+
+.kingJu{
+  padding: 30rpx 0;
+  text-align: center;
+}
+.kingJu image{width: 175rpx;height: 175rpx;}
+.kingCou{
+  width: 371rpx;
+  height: 122rpx;
+  margin: 70rpx auto 30rpx;
+  box-shadow: 0rpx 0rpx 20rpx rgba(0,0,0,.1);
+  background: url(https://pic.repaiapp.com/pic/92/ad/53/92ad535a717a3c113453bc76343f5a69f2ac27b2.png?x-oss-process=image/resize,h_130,w_130) no-repeat center center/cover;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.kingCou image{height: 44rpx; width: 44rpx;}
+.kingCou1{
+  width: 371rpx;
+  height: 122rpx;
+  margin: 70rpx auto 30rpx;
+  box-shadow: 0rpx 0rpx 20rpx rgba(0,0,0,.1);
+  background: url(https://pic.repaiapp.com/pic/93/73/94/93739464f690f37f30f0a85e5f4d3dd59ad83bb8.png?x-oss-process=image/resize,h_130,w_130) no-repeat center center/cover;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.kingCou1 image{height: 44rpx; width: 44rpx;}
+.couponDesc{
+  text-align: center;
+  line-height: 113rpx;
+  font-size: 32rpx;
+  color: #2b2926;
+}
+.couponDesc.statusBox{
+  text-align: center;
+  line-height: 40rpx;
+  font-size: 32rpx;
+  color: #2b2926;
+}
+.kingLook{
+  width: 416rpx;
+  height: 88rpx;
+  background: #8348f2 ;
+  position: absolute;
+  left: 50%;
+  bottom: -44rpx;
+  transform: translateX(-50%);
+  font-size: 36rpx;
+  line-height: 88rpx;
+  border-radius: 44rpx;
+  color: #fff;
+  text-align: center;
+}

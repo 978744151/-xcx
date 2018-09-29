@@ -1,0 +1,14 @@
+{
+  "extEnable": true,
+  "extAppid": "wxc42e5b91ae172158",
+  "ext": {
+    "shopId": 3243,
+    "weid": 2428,
+    "navTitle": "智慧餐饮开放版",
+    "extURI": false,
+    "version": "1.6.0"
+  },
+  "window": {
+    "navigationBarTitleText": "智慧餐饮开放版"
+  }
+}

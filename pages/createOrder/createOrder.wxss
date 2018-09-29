@@ -1,0 +1,456 @@
+page {
+  background: #f6f6f6;
+}
+
+.order-header {
+  padding: 40rpx 0;
+  text-align: center;
+  color: #000;
+}
+
+.order-header .title {
+  font-size: 32rpx;
+  font-weight: 600;
+  height: 39rpx;
+  line-height: 39rpx;
+  margin-bottom: 25rpx;
+}
+
+.order-header .title .num {
+  margin-left: 34rpx;
+}
+
+.order-header .money {
+  font-size: 51rpx;
+  font-weight: 600;
+  height: 44rpx;
+  line-height: 44rpx;
+  text-indent: -4rpx;
+}
+
+.orderbottom {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 105rpx;
+  line-height: 105rpx;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+  box-shadow: 0 -4rpx 5rpx 0 #ddd;
+  z-index: 9;
+}
+
+.order-left {
+  flex: 0 1 272rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #515151;
+  font-weight: 500;
+}
+
+.order-right {
+  position: relative;
+  flex: 1 0 auto;
+  font-size: 30rpx;
+  text-align: center;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  align-items: flex-start;
+  overflow: hidden;
+  background:#f14949;
+  color:#fff;
+}
+
+ .is_checked {
+  position: relative;
+  flex: 1 0 auto;
+  font-size: 30rpx;
+  text-align: center;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  align-items: flex-start;
+  overflow: hidden;
+  background:#aeaeae;
+  color:#fff;
+  
+}
+
+  .normal {
+  position: relative;
+  flex: 1 0 auto;
+  font-size: 30rpx;
+  text-align: center;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  align-items: flex-start;
+  overflow: hidden;
+  background:#f14949;
+  color:#fff;
+} 
+
+
+.order-right .refresh {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 56rpx;
+  height: 105rpx;
+  padding: 0 30rpx;
+  background: url('https://pic.repaiapp.com/pic/2c/c5/e5/2cc5e5d7fb062ccfc60d2abfa2204d4d8cc7673c.png') center no-repeat;
+  background-size: 49rpx 45rpx;
+  z-index: 2;
+}
+
+.order-right .refrsh-point {
+  position: absolute;
+  right: 20rpx;
+  top: 15rpx;
+  width: 15rpx;
+  height: 15rpx;
+  border-radius: 50%;
+  background: #ffce44;
+}
+
+.order-right .order-submit {
+  width: 100%;
+  /* padding-left: 120rpx;
+  margin-left: -80rpx; */
+}
+
+.order-right .order-submit .right-now {
+  font-size: 30rpx;
+  font-weight: 500;
+  margin-top: 14rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+}
+
+.order-right .order-submit .all-tip {
+  margin: 10rpx 0 26rpx;
+  font-size: 26rpx;
+  height: 26rpx;
+  line-height: 26rpx;
+}
+
+.mask {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.55;
+  z-index: 11;
+}
+
+.peoplediv {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 632rpx;
+  height: 688rpx;
+  margin-left: -316rpx;
+  margin-top: -344rpx;
+  background: #fff;
+  border-radius: 18rpx;
+  z-index: 22;
+}
+
+.people-hint {
+  font-size: 32rpx;
+  color: #000;
+  margin-top: 50rpx;
+  text-align: center;
+}
+
+.people-number {
+  display: block;
+  font-size: 28rpx;
+  margin: 30rpx 0 20rpx;
+  text-align: center;
+}
+
+.numlist {
+  height: 344rpx;
+}
+
+.number, .numbermore {
+  float: left;
+  width: 131rpx;
+  height: 90rpx;
+  margin: 20rpx 0 0 20rpx;
+  border: 1rpx solid #d4d4d4;
+  border-radius: 4rpx;
+  line-height: 90rpx;
+  text-align: center;
+  font-size: 32rpx;
+  color: #424242;
+}
+
+.peoplebutton {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 40rpx;
+}
+
+.peoplefalse {
+  width: 280rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  background: #e9e9e9;
+  border: 1rpx solid #d4d4d4;
+  border-radius: 4rpx;
+  font-size: 28rpx;
+}
+
+.peopletrue {
+  width: 280rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  border: 1rpx solid #d4d4d4;
+  border-radius: 4rpx;
+  font-size: 28rpx;
+}
+
+.num-list {
+  width: 210rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  margin-top: 20rpx;
+  border-radius: 5rpx;
+  overflow: hidden;
+}
+
+.num-jian {
+  float: left;
+  width: 53rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 56rpx;
+}
+
+.num-num {
+  float: left;
+  display: block;
+  width: 104rpx;
+  line-height: 56rpx;
+  text-align: center;
+  font-size: 31rpx;
+  color: #000;
+}
+
+.num-add {
+  float: right;
+  width: 53rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 56rpx;
+}
+
+.choose-hint {
+  height: 82rpx;
+  overflow: hidden;
+}
+
+.order-list {
+  background: #fff;
+  padding-left: 28rpx;
+  margin-bottom: 18rpx;
+}
+
+.order-list .title {
+  height: 86rpx;
+  line-height: 86rpx;
+  border-bottom: 1px solid #f0f0f0;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  color: #939393;
+}
+
+.order-list .order-item {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  padding: 18rpx 28rpx 18rpx 0;
+  align-items: center;
+}
+
+.order-list .userimg {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+
+.order-list .goods-name {
+  margin-left: 28rpx;
+  /* flex: 1 */
+  width: 362rpx;
+  overflow: hidden;
+}
+
+.order-list .goods-name .name {
+  font-size: 28rpx;
+  color: #000;
+}
+
+.order-list .goods-name .attr {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 26rpx;
+  color: #939393;
+  margin-top: 15rpx;
+}
+
+.order-list .goods-name .attr text {
+  height: 32rpx;
+  line-height: 32rpx;
+  padding: 0 10rpx;
+  font-size: 22rpx;
+  color: #939393;
+  margin-right: 20rpx;
+  background: #f0eded;
+}
+
+.order-list .goods-name .attr text {
+  height: 32rpx;
+  line-height: 32rpx;
+  padding: 0 10rpx;
+  font-size: 22rpx;
+  color: #939393;
+  margin-right: 20rpx;
+  background: #f0eded;
+}
+
+.order-list .unit-price {
+  width: 172rpx;
+  font-size: 28rpx;
+  color: #939393;
+  text-align: center;
+}
+
+.rp-computed {
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  width: 160rpx;
+  height: 50rpx;
+  box-sizing: border-box;
+  /* border: 1rpx solid; */
+  border-radius: 5rpx;
+  overflow: hidden;
+}
+
+.rp-computed .add, .rp-computed .dec {
+  display: inline-flex;
+  width: 50rpx;
+  font-size: 24rpx;
+  align-items: center;
+  justify-content: center;
+  height: 50rpx;
+}
+
+.rp-computed .input {
+  flex: 1;
+  font-size: 30rpx;
+  color: #939393;
+  text-align: center;
+}
+
+.rp-computed .dec {
+  border-right: 1rpx solid;
+}
+
+.rp-computed .add {
+  background: #f14949;
+  color: #fff;
+}
+
+.beizhu {
+  height: 100rpx;
+  line-height: 100rpx;
+  background: #fff;
+  padding: 0rpx 24rpx;
+  margin-top: 25rpx;
+}
+
+.beizhu text {
+  display: block;
+  float: left;
+  font-size: 28rpx;
+  color: #515151;
+}
+
+.beizhu-input {
+  float: left;
+  height: 100rpx;
+  line-height: 100rpx;
+  width: 600rpx;
+  font-size: 28rpx;
+  color: #515151;
+}
+
+.set-count {
+  position: fixed;
+  bottom: 105rpx;
+  left: 0;
+  width: 100%;
+  background: #fffcd1;
+  height: 66rpx;
+  box-sizing: border-box;
+  color: #4a4a48;
+  font-size: 26rpx;
+  line-height: 66rpx;
+  text-indent: 28rpx;
+  border-top: 1px solid #f0f0f0;
+  z-index: 8;
+}
+
+.set-count .link {
+  color: #2297e5;
+}
+
+.detail-undata .blank {
+  height: 234rpx;
+}
+
+.detail-undata .icont {
+  height: 192rpx;
+  width: 100%;
+  background: url('https://pic.repaiapp.com/pic/46/aa/d1/46aad19db57512192f4eb89d26e8b4415f1fefab.png') no-repeat center;
+  background-size: auto 192rpx;
+}
+
+.detail-undata .title {
+  margin-top: 50rpx;
+  font-size: 28rpx;
+  color: #565656;
+  text-align: center;
+}
+
+.detail-undata .tip {
+  margin-top: 14rpx;
+  font-size: 28rpx;
+  color: #afb0b2;
+  text-align: center;
+}
+
+@import '../carte/barrage.wxss';

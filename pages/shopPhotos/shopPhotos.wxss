@@ -1,0 +1,4 @@
+/* pages/shopPhotos/shopPhotos.wxss */
+page{background: #fff;}
+.photos{font-size: 0;}
+.photos image{width: 330rpx;height: 330rpx;margin: 30rpx 0rpx 0 30rpx;}

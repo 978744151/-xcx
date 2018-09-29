@@ -1,0 +1,51 @@
+<import src="../templates/loading/loading.wxml" />
+<import src="../templates/foot/foot.wxml" />
+<template is="loading" wx:if="{{isIndexLoad}}"></template>
+<view class="content" wx:if="{{!isIndexLoad}}">
+    <view class="card-panle">
+        <view class="body">
+            <view class="part-one">
+                <view class="rp-flex-item">
+                    <view class="name">{{vipInfo.userInfo.realname}}</view>
+                    <view class="f-s28">{{vipInfo.userInfo.groupname}}</view>
+                </view>
+                <navigator  url="/pages/viprule/viprule" hover-class="none" class="rote f-s28 rp-flex align-items">
+                    <text class="iconfont icon-k-care"></text>
+                    <text class="v-mid">等级规则</text>
+                </navigator>
+            </view>
+            <view class="part-progress">
+                <progress percent="{{progressNum}}" color="#fff" backgroundColor="#cfae47" />
+                <view class="tip" style="left:{{progressNum}}%;">
+                    <view class="wapper">
+                        <text>{{vipInfo.userInfo.credit1}}</text>
+                        <text class="arrow"></text>
+                    </view>
+                </view>
+                <view class="next-level">{{allNum}}</view>
+            </view>
+            <view class="part-two" wx:if="{{!!vipInfo.userInfo.nextLevel}}">
+                <text class="tag">升级</text>
+                <text class="f-s28">{{vipInfo.userInfo.nextTip}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="power-panle">
+        <view class="tip">{{vipInfo.tip}}</view>
+        <view class="title">
+            <text class="strong">-我的特权-</text>
+            <text class="sup">{{vipInfo.userInfo.groupname}}专享</text>
+        </view>
+        <view class="list">
+            <view class="item" wx:for="{{vipInfo.powers}}" wx:key="inde">
+                <view class="circle">
+                    <text class="circle-txt">{{item.title}}</text>
+                </view>
+                <view class="sup">{{item.tip}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="rote-panle">
+        <navigator class="rote-btn" url="/pages/viprule/viprule">查看等级规则></navigator>
+    </view>
+</view>

@@ -1,0 +1,115 @@
+<!--pages/pay/pay.wxml-->
+<import src="../templates/loading/loading.wxml" />
+
+<import src="../templates/message/message.wxml" />
+<template is="loading" wx:if="{{isLoadIndex}}"></template> 
+<template is="message" data="{{showMessage,messageContent}}"></template>
+<view wx:if="{{!isLoadIndex}}">
+    <navigator open-type="redirect" class="banner" url="/pages/vip/vip">
+        <image class="ban" src="https://pic.repaiapp.com/static/png/20180928/09/1538098500373210253.png">
+        </image>
+    </navigator>
+    <view class="title">
+        付款给：
+        <text>{{title}}</text>
+    </view>
+  
+    <view class="content">
+        <view class="orderprice-section">
+            <view class="item">
+                <text class="name">订单金额(元)</text>
+                <input bindblur="inputAllPrice" value="{{allPrice}}" class="rp-flex-item" type="digit" placeholder="请输入订单总额"/>
+            </view>
+            <view class="item">
+                <text class="name">不参与优惠金额(元)</text>
+                <input bindblur="inputUnSalePrice" class="rp-flex-item" value="{{unSalePrice}}" type="digit" placeholder="请询问服务员后输入"/>
+            </view>
+        </view>
+        <view class="remark-add" wx:if="{{!isRemark}}" >
+            <text class="icont-radd" bindtap="tapRemark"></text>
+            <text class="aa" bindtap="tapRemark">添加备注</text>
+        </view>
+        <view class="remark-section" wx:else>
+            <view class="item">
+                <text class="name">备注</text>
+                <input class="rp-flex-item" value="{{remark}}" bindblur="inputRemark"  type="text" placeholder="例如：桌号" focus="focusRemark"/>
+            </view>
+        </view>
+        <view class="sale-section" wx:if="{{data.length>0}}" bindtap="showCoupon">
+            <view class="shop-info">
+                <text>商家优惠</text>
+                <text class="iconfont icon-right-more"></text>
+            </view>
+            <view class="sale-info {{salePrice>0?'active':''}}">
+                <text>{{saletitle}}</text>
+                <view>
+                    <text wx:if="{{salePrice>0}}">-</text>
+                    <text>{{salePrice}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="realpay-section">
+            <view class="tit">实付金额</view> 
+            <view class="money {{realPrice >0 ?'action': '' }}">
+                <text class="untin" wx:if="{{realPrice >=0}}">￥</text>
+                <text class="num">{{realPrice}}</text>
+            </view>
+        </view>
+        <view class="pay-btn {{ realPrice >0 ?'action':''}}" bindtap="tapPayBtn">已和店员确认，立即买单</view>
+    </view>
+    <!--     <view class="moneyInfo">
+        <view class="totle">
+            <text class="totleText">消费总额</text>
+            <view class="totleInput rp-flex-item ">
+                <text>￥</text>
+                <input bindinput="bindInput" data-type="all" class="rp-flex-item" placeholder="询问店员后输入" placeholder-class="placeholderClass" type="digit" />
+            </view>
+        </view>
+        <view class="noDiscount" wx:if="{{!isSaleInput}}" bindtap="showSaleInput">
+            <image src="https://pic.repaiapp.com/pic/23/4c/91/234c91f20f9dc6132b4a7faab6faae2b1b891576.png"></image>
+            <text class="color-73">添加不参与优惠的金额</text>
+        </view>
+        <view class="totle noDisinput" wx:else>
+            <text class="totleText">不参与优惠的金额</text>
+            <view class="totleInput rp-flex-item">
+                <text style="display: block;">￥</text>
+                <input class="rp-flex-item" bindinput="bindInput" data-type="unsale" placeholder="询问店员后输入" placeholder-class="placeholderClass" type="digit" />
+            </view>
+        </view>
+        <view class="discount">
+            <view bindtap="showCoupon" class="discT clearfix">
+                <text>{{initSaleTitle}}</text>
+                <text class="minus" wx:if="{{yyh}}">减{{minus}}元</text>
+                <image src="https://pic.repaiapp.com/pic/27/25/32/2725322942e9b46c2010c084e56d6b627e8c4488.png"></image>
+            </view>
+            <view class="discB" style="color:{{isBgCc ? '#ccc' : '#000'}}">
+                <text class="sign">￥</text>
+                <text class="money">{{payNum}}</text>
+                <text class="yyh" wx:if="{{yyh}}">已优惠 ￥{{minus}}</text>
+            </view>
+        </view>
+        <view bindtap="validatePay" class="btn" style="background:{{isBgCc ? '#ccc' : '#1cad16'}}">
+            确认支付
+        </view>
+    </view> -->
+</view>
+<!--点击显示店铺是否有优惠信息  -->
+<view class="mark {{isPullDialog?'':'fade-into'}}" style="visibility:{{!isPullDialog?'visible':'hidden'}};" catchtap="closeCoupon">
+</view>
+<view class="shopDiscount {{isPullDialog?'silder-down':'sider-up'}}">
+    <text class="sTitle">店铺优惠</text>
+    <scroll-view scroll-y="true" class="discWraps">
+        <radio-group class="radio-group">
+            <label class="radio radioClass clearfix" wx:for="{{data}}" wx:key="index" data-selected="{{index}}" bindtap="radioChange">
+                <radio checked="{{tempSelected == index ? true : false}}" class="rRight"></radio>
+               {{item.describe}}
+            </label>
+            <label class="radio radioClass clearfix"   bindtap="radioChange" data-selected="-1">
+                <radio checked="{{tempSelected == -1 ? true : false}}" class="rRight" ></radio>
+               不使用
+            </label>
+        </radio-group>
+    </scroll-view>
+    <view bindtap="confrimCoupon" class="closeBtn">确认</view>
+</view>
+<!--结束  -->

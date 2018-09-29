@@ -1,0 +1,1291 @@
+page {
+  width: 100%;
+  height: 100%;
+  background: #f6f6f6;
+}
+
+page::after {
+  content: none;
+}
+.mianbanner{
+  width:100%;
+  height:120rpx;
+  overflow: hidden
+}
+.bannerBox{position: relative;height: 120rpx;}
+text.closeBanner{
+  position: absolute;
+  right: 10rpx;
+  top: 12rpx;
+  width: 32rpx;height: 32rpx;background: url(https://pic.repaiapp.com/static/png/20180925/19/1537874656601448100.png) no-repeat center center/cover;}
+.menu {
+  height: 100%;
+}
+
+.menulist {
+  height: 90rpx;
+  white-space: nowrap;
+  width: 750rpx;
+  border-bottom: 1px solid #f1f1f1;
+  box-sizing: border-box;
+}
+
+.menutext {
+  position: relative;
+  display: inline-block;
+  line-height: 88rpx;
+  padding: 0rpx 40rpx;
+  font-size: 32rpx;
+}
+
+.menutext .menu-num {
+  position: absolute;
+  right: 52rpx;
+  top: 15rpx;
+  width: 32rpx;
+  height: 28rpx;
+  line-height: 28rpx;
+  text-align: center;
+  border-radius: 14rpx;
+  font-size: 24rpx;
+}
+
+.ovf {
+  overflow: hidden;
+}
+
+.menutext .menu-item {
+  display: block;
+  padding: 0 10rpx;
+  /* opacity: 0.7; */
+  text-align: center;
+}
+
+.menutext .menu-border {
+  position: relative;
+  left: 0;
+  bottom: 6rpx;
+  width:140rpx;
+  height: 4rpx;
+}
+.menu-line {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+  height: 5rpx;
+  background: #fff;
+}
+
+.scroll-view-item {
+  overflow: hidden;
+  width: 100%;
+  padding-bottom: 25rpx; 
+  background: #fff;
+}
+
+.menuitem-tit {
+  text-align: center;
+  padding-top: 25rpx;
+}
+
+.menuitem-tit .tit {
+  line-height: 30rpx;
+  height: 30rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #393939;
+}
+
+.menuitem-tit .desc {
+  position: relative;
+  height: 40rpx;
+  margin-top: 10rpx;
+  margin-bottom: 18rpx;
+  font-size: 24rpx;
+  color: #7c7c7c;
+}
+
+.menuitem-tit .desc::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -4rpx;
+  width: 90rpx;
+  height: 4rpx;
+  background: #dd3232;
+  margin-left: -45rpx;
+}
+
+.shoplist {
+   display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap; 
+}
+
+.shoplist .shopdiv {
+  width: 232rpx;
+  margin: 14rpx 0rpx 0rpx 14rpx; 
+}
+
+.shopdiv.shop-detail {
+   width: 476rpx; 
+}
+
+.shopdiv.shop-detail image {
+  width: 476rpx;
+  height: 232rpx;
+  background: url('https://pic.repaiapp.com/static/png/20171211/15/1512978903649700102.png') center no-repeat;
+  background-size: cover;
+}
+
+.shopdiv image {
+  width: 232rpx;
+  height: 232rpx;
+  vertical-align: top;
+  background: url('https://pic.repaiapp.com/static/png/20171211/15/1512978751231845051.png') center no-repeat;
+  background-size: cover;
+}
+
+.eatit {
+  font-size: 26rpx;
+  color: #373737;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  margin-top: 14rpx;
+  line-height: 30rpx;
+  height: 30rpx;
+}
+
+.eatprice {
+  display: flex;
+  font-size: 26rpx;
+  color: #666;
+  margin-top: 8rpx;
+  height: 40rpx;
+  align-items: center;
+}
+
+.eatprice .rmb {
+  font-size: 28rpx;
+  color: #000;
+  font-weight: 500;
+}
+
+.eatprice .unit {
+  font-size: 24rpx;
+  color: #000;
+  font-weight: 500;
+}
+
+.eatprice .part {
+  font-size: 24rpx;
+}
+
+.goods-desc {
+  font-size: 22rpx;
+  color: #9d9d9d;
+  height: 70rpx;
+  align-items: center;
+}
+
+.rp-flex.shop-ft {
+   /* height: 66rpx; */
+  height: 52rpx;
+  align-items: flex-end;
+}
+
+.rp-flex.shop-ft .numnone, .rp-flex.shop-ft .num-list {
+  margin: 0;
+}
+
+.rp-flex.shop-ft .num-list {
+  width: 180rpx;
+}
+
+.rp-flex.shop-ft .vip-tag {
+  margin-left: 4rpx;
+  margin-right: 4rpx;
+}
+
+.rp-flex.shop-ft .goods-money {
+  font-size: 24rpx;
+  color: #000;
+}
+
+.rp-flex.shop-ft .goods-money text {
+  font-size: 30rpx;
+  font-weight: 500;
+}
+
+
+.goods-fadd {
+  display: inline-block;
+  width: 48rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 52rpx;
+  height: 52rpx;
+  margin-right: 10rpx;
+  border-radius: 6rpx;
+}
+
+.vip-tag .price {
+  color: #b6974e;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  /* font-size: 30rpx; *//* padding: 0 20rpx; */
+}
+
+.vip-tag .memberprice {
+  font-size: 34rpx;
+}
+
+.numnone {
+  width: 220rpx;
+  height: 52rpx;
+  line-height: 52rpx;
+  border-radius: 8rpx;
+  font-size: 26rpx;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.paybottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 115rpx;
+  z-index: 10;
+  border-top: 1px solid #f0f0f0;
+  box-sizing: border-box;
+}
+
+.paynav {
+  display: -webkit-flex;
+  /* Safari */
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+  align-items: center;
+  /* box-shadow: 0 -8rpx 12rpx 0 #ddd; */
+}
+
+.bot-left {
+  display: flex;
+  flex: 1 0 auto;
+}
+
+.canbg {
+  position: relative;
+  display: block;
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  margin: 0rpx 30rpx 0rpx 25rpx;
+}
+
+.canbg .c-badge {
+  position: absolute;
+  left: 0rpx;
+  top: 0rpx;
+  font-size: 18rpx;
+  background: #fff;
+  padding: 0 5rpx;
+  transform: translateX(-50%);
+  border-radius: 40rpx;
+}
+
+.canbg .r-badge {
+  position: absolute;
+  right: 0rpx;
+  top: 0rpx;
+  font-size: 18rpx;
+  background: #fff;
+  padding: 0 5rpx;
+  transform: translateX(50%);
+  border-radius: 40rpx;
+}
+
+.canbg .c-badge text {
+  display: block;
+  padding: 0 7rpx;
+  background: #66ccd8;
+  height: 26rpx;
+  line-height: 26rpx;
+  border-radius: 20rpx;
+  color: #fff;
+}
+
+.canbg .r-badge text {
+  display: block;
+  padding: 0 7rpx;
+  background: #e5413d;
+  height: 26rpx;
+  line-height: 26rpx;
+  border-radius: 20rpx;
+  color: #fff;
+}
+
+.canimg {
+  width: 80rpx;
+  height: 80rpx;
+  /* background: url(https://pic.repaiapp.com/pic/b9/24/0e/b9240e361335f735be048fada10dcde2fa1a48b6.png);
+  background-size: 100% 100%; */
+  margin: 5rpx;
+}
+
+.cantext {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  text-align: left;
+  justify-content: center;
+}
+
+.canprice {
+  display: block;
+  font-size: 40rpx;
+  color: #fe6305;
+  /* margin-top: 10rpx; */
+  text-indent: -4rpx;
+  font-weight: bold;
+}
+
+.cannum {
+  display: block;
+  font-size: 26rpx;
+  color: #515151;
+}
+
+.bot-right {
+  flex: 0 1 270rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+  text-align: center;
+  line-height: 115rpx;
+}
+
+.mask {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.75;
+  z-index: 11;
+}
+
+.paycar {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  padding-bottom: 115rpx;
+  width: 100%;
+  background: #fff;
+  z-index: 45;
+  /*transform: translate(0,100%);*/
+}
+
+.paycar-tit {
+  height: 67rpx;
+  background: #dbdbdb;
+  line-height: 67rpx;
+}
+
+.carline {
+  float: left;
+  width: 5rpx;
+  height: 28rpx;
+  margin: 19rpx 15rpx 0rpx 22rpx;
+}
+
+.cartitle {
+  float: left;
+  font-size: 28rpx;
+  color: #292929;
+}
+
+.carnull {
+  float: right;
+  font-size: 28rpx;
+  color: #292929;
+  margin-right: 22rpx;
+}
+
+.paycardiv {
+  padding-bottom: 40rpx;
+  max-height: 450rpx;
+}
+
+.paycarlist {
+  margin-top: 35rpx;
+  justify-content: space-between;
+}
+
+.car-name {
+  font-size: 0;
+  padding-left: 22rpx;
+  margin-top: 10rpx;
+}
+
+.one-price {
+  width: 200rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #808080;
+}
+
+.one-list {
+  width: 160rpx;
+  height: 48rpx;
+  border-radius: 5rpx;
+  overflow: hidden;
+  margin: 0 0 0 0;
+}
+
+.one-jian {
+  float: left;
+  width: 50rpx;
+  border-right: 1rpx solid;
+  box-sizing: border-box;
+  /* color: #fff; */
+  text-align: center;
+  line-height: 48rpx;
+  height: 48rpx;
+}
+
+.one-num {
+  float: left;
+  display: block;
+  width: 60rpx;
+  line-height: 48rpx;
+  text-align: center;
+  font-size: 31rpx;
+  color: #000;
+  height: 48rpx;
+}
+
+.one-add {
+  float: right;
+  width: 50rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 48rpx;
+  height: 48rpx;
+}
+
+.padd-b35 {
+  padding-bottom: 30rpx;
+}
+
+.num-list {
+  width: 210rpx;
+  height: 52rpx;
+  line-height: 52rpx;
+  border-radius: 6rpx;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.num-jian {
+  float: left;
+  width: 48rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 52rpx;
+  height: 52rpx;
+}
+
+.num-num {
+  line-height: 56rpx;
+  text-align: center;
+  font-size: 31rpx;
+  color: #000;
+  height: 52rpx;
+}
+
+.num-add {
+  width: 48rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 52rpx;
+  height: 52rpx;
+}
+
+.num-add.type {
+  font-size: 25rpx;
+  width: 83rpx;
+}
+
+.aready-hint {
+  position: fixed;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  bottom: 115rpx;
+  left: 0;
+  height: 114rpx;
+  background: #fffcd1;
+  z-index: 8;
+  border-top: 1rpx solid #ddd;
+}
+
+.aready-left {
+  margin-left: 20rpx;
+}
+
+.aready-tit {
+  font-size: 26rpx;
+  color: #4a4a48;
+}
+
+.aready-left text {
+  font-size: 26rpx;
+  color: #8d8d8d;
+}
+
+.aready-right {
+  height: 114rpx;
+  line-height: 114rpx;
+}
+
+.aready-del {
+  display: inline-block;
+  font-size: 26rpx;
+  color: #2297e5;
+  height: 114rpx;
+  margin-right: 10rpx;
+}
+
+.aready-col {
+  display: inline-block;
+  font-size: 26rpx;
+  color: #8d8d8d;
+  height: 114rpx;
+  padding-right: 20rpx;
+}
+
+.goods-dialog {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: 50;
+}
+
+.goods-dialog .mark {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 11;
+}
+
+.goods-dialog .panle-type, .goods-dialog .panle-goods {
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  /* background: #fff; */
+  z-index: 22;
+}
+
+.goods-dialog .panle-type {
+  /* width: 640rpx;
+  height: 760rpx;
+  margin: -380rpx 0 0 -320rpx; */
+  -webkit-transform: scale(0.5, 0.5);
+  transform: scale(0.5, 0.5);
+  opacity: 1;
+}
+
+.goods-dialog .panle-type>.wapper {
+  width: 640rpx;
+  height: 760rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+
+.goods-dialog .header {
+  position: relative;
+  height: 100rpx;
+  text-align: center;
+  border: 1px solid #f0f0f0;
+  box-sizing: border-box;
+}
+
+.goods-dialog .header .title {
+  display: flex;
+  font-size: 32rpx;
+  /* padding-top: 48rpx; */
+  height: 100rpx;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+}
+
+.goods-dialog .header .title .badge {
+  margin-left: 12rpx;
+}
+
+.goods-dialog .header .icon-close {
+  position: absolute;
+  right: 10rpx;
+  top: 4rpx;
+  padding: 20rpx;
+  font-size: 30rpx;
+  color: #aeaeae;
+}
+
+.goods-dialog .scroll-content {
+   height: 570rpx;  
+  flex: 1;
+  width: 100%;
+}
+
+.goods-dialog .scroll-content .panle {
+  padding: 35rpx 45rpx 0 45rpx;
+}
+
+.goods-dialog .type-list .title {
+  display: block;
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 20rpx;
+}
+
+.goods-dialog .group-type>.item {
+  display: inline-block;
+  font-size: 26rpx;
+  width: 154rpx;
+  height: 68rpx;
+  line-height: 68rpx;
+  border-radius: 4rpx;
+  color: #1b1b1b;
+  text-align: center;
+  margin: 0 30rpx 30rpx 0;
+  border: 1px solid;
+  border-color: transparent;
+  box-sizing: border-box;
+}
+
+.goods-dialog .group-type>.item.on {
+  border-color: #2297e5;
+  color: #2297e5;
+  background: #f5f8fa;
+}
+
+.goods-dialog .footer {
+  background: #f2f2f2;
+  /* padding: 0 10rpx; */
+  height: 98rpx;
+}
+
+.goods-dialog .footer .wapper {
+  /* border-top: 1rpx solid #d0d0d0; */
+  height: 98rpx;
+  line-height: 98rpx;
+}
+
+.goods-dialog .footer .left-span {
+  padding-left: 52rpx;
+  color: #000;
+}
+
+.goods-dialog .footer .rmb {
+  font-size: 28rpx;
+}
+
+.goods-dialog .footer .num {
+  font-size: 38rpx;
+  font-weight: 500;
+}
+
+.goods-dialog .footer .right-span {
+  width: 270rpx;
+  text-align: center;
+  color: #fff;
+  /* border-radius: 4rpx; */
+  font-size: 32rpx;
+}
+
+.goods-dialog .panle-goods {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 22;
+  -webkit-transform: scale(0, 0);
+  transform: scale(0, 0);
+}
+
+.goods-dialog .panle-goods .wapper {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 630rpx;
+  height: 900rpx;
+  margin: 120rpx 0 0 -315rpx;
+  background: #fff;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+
+.goods-dialog .panle-goods .goods-image {
+  width: 630rpx;
+  height: 410rpx;
+  /* border-radius: 2rpx; */
+}
+
+.goods-dialog .panle-goods .goods-image>image {
+  width: 100%;
+  height: 100%;
+  background: #fff url('https://pic.repaiapp.com/pic/1b/fb/ac/1bfbac487e8aca2f513361287609fef25fcf9c19.png') no-repeat;
+  background-size: cover;
+}
+
+.goods-dialog .panle-goods .head {
+  margin-top: 20rpx;
+}
+
+.goods-dialog .panle-goods .title.rp-flex-item {
+  font-size: 32rpx;
+  color: #000;
+}
+
+.goods-dialog .panle-goods .tag {
+  display: inline-block;
+  height: 34rpx;
+  line-height: 34rpx;
+  border-radius: 4rpx;
+  padding: 0 6rpx;
+  color: #fe6305;
+  border: 1rpx solid #fe6305;
+  font-size: 23rpx;
+}
+
+.goods-dialog .sup {
+  margin-top: 14rpx;
+  font-size: 23rpx;
+  color: #939393;
+}
+
+.goods-dialog .nheader {
+  padding: 20rpx 0 0rpx 30rpx;
+}
+
+.goods-dialog .nheader-blank {
+  border-bottom: 1rpx solid #dcdcdc;
+  /* height: 102rpx; */
+}
+
+.goods-dialog .nheader .tit {
+  font-size: 32rpx;
+  color: #3a3a3a;
+  line-height: 32rpx;
+}
+
+.goods-dialog .ndesc {
+  display: flex;
+  align-items: flex-end;
+  height: 40rpx;
+  padding-right: 30rpx;
+  margin: 20rpx 0 24rpx;
+}
+
+.goods-dialog .ndesc .price {
+  color: #000;
+  font-weight: 500;
+}
+
+.goods-dialog .ndesc  .np-v {
+  display: flex;
+  align-items: flex-end;
+  height: 40rpx;
+}
+
+.goods-dialog .ncontent {
+  height: 245rpx;
+}
+
+.goods-dialog .ncontent .ntt {
+  padding: 26rpx 0 18rpx;
+  font-size: 32rpx;
+  color: #3a3a3a;
+  text-indent: 12rpx;
+  line-height: 35rpx;
+}
+
+.goods-dialog .ncontent .nd-desc {
+  color: #9d9d9d;
+  font-size: 26rpx;
+  padding: 0 12rpx;
+}
+
+.goods-dialog .ncontent-blank {
+  padding: 0 20rpx 20rpx 20rpx;
+}
+
+.goods-dialog .ft {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 110rpx;
+  /* padding: 12rpx 18rpx; */
+  width: 100%;
+  border-top: 1px solid #f0f0f0;
+  /* box-shadow: 0 -8rpx 12rpx 0 #ddd; */
+}
+
+.goods-dialog .ft-blank {
+  padding: 12rpx 18rpx;
+}
+
+.goods-dialog .ft .add-btn {
+  height: 86rpx;
+  line-height: 86rpx;
+  background: #f63;
+  font-size: 32rpx;
+  color: #fff;
+  border-radius: 6rpx;
+  text-align: center;
+}
+
+.goods-dialog .foot.rp-flex {
+  margin-top: 15rpx;
+  height: 75rpx;
+  line-height: 75rpx;
+}
+
+.goods-dialog .foot.rp-flex .right-btn {
+  text-align: center;
+  font-size: 26rpx;
+  width: 200rpx;
+  color: #fff;
+  border-radius: 4rpx;
+}
+
+.goods-dialog .panle-blank {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 10rpx;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 640rpx;
+  height: 760rpx;
+  margin: -380rpx 0 0 -320rpx;
+  background: #fff;
+}
+
+.goods-dialog  .dialog-close {
+  position: absolute;
+  bottom: 120rpx;
+  left: 50%;
+  margin-left: -31rpx;
+  background: url('https://pic.repaiapp.com/pic/14/cc/2d/14cc2ddea9bccd8aa52b8d02d360587a250a0244.png') center no-repeat;
+  background-size: cover;
+  width: 62rpx;
+  height: 62rpx;
+}
+
+.panle-goods .dialog-close {
+  bottom: 40rpx;
+}
+
+.pull-cart {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9;
+  -webkit-transform: translate(0, 100%);
+  transform: translate(0, 100%);
+  transition: transform 0.3s ease;
+}
+
+.pull-cart.pull-up {
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+
+.pull-cart .header {
+  position: relative;
+  display: -webkit-flex;
+  display: flex;
+  height: 80rpx;
+  align-items: center;
+  background: #f0f0f0;
+  font-size: 28rpx;
+  color: #292929;
+}
+
+.pull-cart .header .name {
+  text-align: center;
+  width: 100%;
+}
+
+.pull-cart .header .clear {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: inline-block;
+  margin: 0 30rpx;
+  width: 32rpx;
+  background: url('https://pic.repaiapp.com/static/png/20171222/15/1513927747672719854.png') center no-repeat;
+  background-size: 100% auto;
+  height: 80rpx;
+}
+
+.pull-cart .footer {
+  display: -webkit-flex;
+  display: flex;
+  background: #f0f0f0;
+  height: 62rpx;
+  align-items: center;
+  font-size: 26rpx;
+  color: #636363;
+  justify-content: center;
+}
+
+.pull-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 8;
+}
+
+.pull-scroll {
+  height: 710rpx;
+  background: #fff;
+}
+
+.pull-scroll .wapper {
+  padding: 0 30rpx;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.pull-scroll .wapper:last-of-type {
+  border-bottom: none;
+}
+
+.pull-scroll .title {
+  display: -webkit-flex;
+  display: flex;
+  padding: 28rpx 0 32rpx;
+  height: 42rpx;
+  line-height: 42rpx;
+}
+
+.pull-scroll .title .my-icont, .pull-scroll .title .you-icont {
+  display: inline-block;
+  width: 42rpx;
+  height: 42rpx;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 42rpx;
+  color: #404040;
+  margin-right: 12rpx;
+  font-size: 26rpx;
+}
+
+.pull-scroll .title .my-icont {
+  background: #ffe0e0;
+}
+
+.pull-scroll .title .you-icont {
+  background: #f8d373;
+}
+
+.pull-scroll .title .strong {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #000;
+  margin-right: 12rpx;
+}
+
+.pull-scroll .title .all {
+  font-size: 26rpx;
+  color: #808080;
+}
+
+.pull-scroll .info-item {
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30rpx;
+}
+
+.pull-scroll .info-item:first-of-type{
+  margin-top: 30rpx;
+}
+
+.pull-scroll .info-name {
+  font-size: 28rpx;
+  color: #000;
+}
+
+.pull-scroll .info-type {
+  font-size: 26rpx;
+  color: #808080;
+  margin-top: 14rpx;
+}
+
+.pull-scroll .info-type text {
+  display: inline-block;
+  white-space: nowrap;
+  height: 32rpx;
+  line-height: 32rpx;
+  padding: 0 10rpx;
+  font-size: 22rpx;
+  color: #939393;
+  margin-right: 20rpx;
+  background: #f0eded;
+}
+
+.only-num.one-list {
+  text-align: center;
+  font-size: 30rpx;
+  color: #808080;
+  line-height: 48rpx;
+}
+
+.info-spec {
+  color: #fe6305;
+  font-size: 23rpx;
+  height: 34rpx;
+  line-height: 34rpx;
+  padding: 0rpx 6rpx;
+  border-radius: 4rpx;
+  border: #fe6305 1rpx solid;
+  margin-left: 8rpx;
+}
+
+.left-panle {
+  color: #000;
+}
+@import '../carte/barrage.wxss';
+
+.ncontent .table {
+  width: 100%;
+  border: 1px solid #d0d0d0;
+  font-size: 26rpx;
+  color: #666;
+}
+
+.ncontent .table .td {
+  height: 86rpx;
+  vertical-align: middle;
+}
+
+.ncontent .table .tr .td:first-of-type {
+  text-align: center;
+  width: 124rpx;
+  border-right: 1px solid #d0d0d0;
+  border-bottom: 1px solid #d0d0d0;
+}
+
+.ncontent .table .tr .td:last-of-type {
+  padding-left: 30rpx;
+  border-bottom: 1px solid #d0d0d0;
+}
+
+.ncontent .table .tr:last-of-type .td {
+  border-bottom: none;
+}
+
+.table {
+  display: table;
+}
+
+.tr {
+  display: table-row;
+}
+
+/* thead    { display: table-header-group }
+tbody    { display: table-row-group }
+tfoot    { display: table-footer-group }
+col      { display: table-column }
+colgroup { display: table-column-group } */
+
+.td, .th {
+  display: table-cell;
+}
+
+.badge {
+  font-size: 24rpx;
+  color: #fff;
+  padding: 5rpx 10rpx;
+  border-radius: 20rpx;
+  min-width: 20rpx;
+}
+
+/**新版价格样式**/
+
+.of-price {
+  flex: 1;
+  display: inline-flex;
+  justify-content: flex-end;
+  height: 65rpx;
+  flex-direction: column;
+}
+
+.of-price .vip-price {
+  display: flex;
+  align-items: baseline;
+  color: #b7984f;
+  font-size: 0;
+  width: 100%;
+}
+
+.of-goods-desc .vip-price {
+  height: 30rpx;
+  margin-bottom: 8rpx;
+  line-height: 1;
+}
+
+.of-price .vip-price {
+  margin-bottom: 8rpx;
+}
+
+.of-price .money-char, .of-goods-desc .money-char {
+  font-size: 24rpx;
+}
+
+.of-price .money-mid, .of-goods-desc .money-mid {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 36rpx;
+  font-weight: 500;
+}
+
+.of-price .tag-vip, .of-goods-desc .tag-vip {
+  position: relative;
+  display: inline-block;
+  width: 39rpx;
+  height: 18rpx;
+  background: url('https://pic.repaiapp.com/static/png/20171219/14/1513665610893294998.png') no-repeat center;
+  background-size: cover;
+  margin-left: 5rpx;
+  top: -4rpx;
+}
+
+.of-price .market-price, .of-goods-desc .market-price {
+  display: flex;
+  line-height: 1;
+  color: #ababab;
+}
+
+.of-market {
+  flex: 1;
+  display: inline-flex;
+  align-items: baseline;
+  font-size: 0;
+  height: 50rpx;
+  line-height: 1;
+}
+
+.of-market .mid-money, .of-goods-market .mid-money {
+  font-size: 34rpx;
+  font-weight: 500;
+}
+
+.of-goods-desc {
+  display: flex;
+  flex-direction: column;
+  font-size: 0;
+  height: 56rpx;
+  margin-top: 14rpx;
+  line-height: 1;
+}
+
+/*新版价格2**/
+.of-price2{
+  flex: 1;
+  display: inline-flex;
+  justify-content: flex-end;
+  height: 65rpx;
+  flex-direction: column;
+}
+
+/* 大王卡弹窗样式 */
+.kingCon{
+  width: 560rpx;
+  height: 670rpx;
+  border-radius: 10rpx;
+  background: #f8cd4b;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 60;
+}
+.closeKing{
+  position: absolute;
+  width: 48rpx;
+  height: 48rpx;
+  background: url(https://pic.repaiapp.com/static/png/20180910/16/1536566814066755102.png) no-repeat center center/cover;
+  top: -62rpx;
+  right: -43rpx;
+  z-index: 60;
+}
+.kingLogo{
+  width: 100%;height: 82rpx;
+  background: url(https://pic.repaiapp.com/static/png/20180910/16/1536567307199585052.png) no-repeat left top;
+  background-size: 252rpx 50rpx;
+}
+.kingCard{
+  width: 379rpx;
+  height: 232rpx;
+  margin:0 auto 34rpx;
+  background: url(https://pic.repaiapp.com/static/png/20180910/16/1536567469415456101.png) no-repeat center center/cover;
+}
+.kingDesc{
+  text-align: center;
+  font-size: 32rpx;
+  color: #2b2926;
+  font-weight: bold;
+  line-height: 40rpx;
+  padding-bottom: 33rpx;
+}
+.kingCou{
+  width: 371rpx;
+  height: 122rpx;
+  margin: 0 auto;
+  box-shadow: 0rpx 0rpx 20rpx rgba(0,0,0,.1);
+  background: url(https://pic.repaiapp.com/pic/93/73/94/93739464f690f37f30f0a85e5f4d3dd59ad83bb8.png?x-oss-process=image/resize,h_130,w_130) no-repeat center center/cover;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.kingCon image{height: 44rpx; width: 44rpx;}
+.kingLook{
+  width: 416rpx;
+  height: 88rpx;
+  background: url(https://pic.repaiapp.com/static/png/20180910/16/1536568879032985748.png) no-repeat center center/cover;
+  position: absolute;
+  left: 50%;
+  bottom: -44rpx;
+  transform: translateX(-50%);
+}

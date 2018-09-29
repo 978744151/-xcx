@@ -1,0 +1,8 @@
+page{background: #fff;}
+.rule-blank{
+    padding: 32rpx 42rpx;
+    font-size: 30rpx;
+    color: #000;
+    line-height: 52rpx;
+    border-top: 1px solid #f0f0f0;
+}

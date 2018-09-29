@@ -1,0 +1,294 @@
+<import src="../templates/loading/loading.wxml" />
+<import src="../templates/dialog/dialog.wxml" />
+<import src="../templates/message/message.wxml" />
+
+<template is="loading" wx:if="{{isLoading}}"></template>
+<template is="msg-dialog" data="{{dialog}}"></template>
+
+<template is="is_open" data="{{dialog}}"></template>
+<template is="message" data="{{showMessage,messageContent}}"></template>
+<view wx:if="{{!isLoading}}" style="height:{{panelHeight}}">
+  <view class='bannerBox' wx:if="{{showBanner}}">
+    <image src="https://pic.repaiapp.com/static/png/20180828/14/1535437735900810156.png" class="mianbanner"></image>
+    <text class='closeBanner' bindtap='closeBanner'></text>
+  </view>
+  <view class="menu">
+    <scroll-view class="menulist" scroll-x="true" scroll-into-view="t{{tSelected}}" style="background:#fff;" scroll-with-animation="true">
+      <view wx:for="{{category}}" id="t{{item.id}}" wx:key="id" class="menutext">
+        <view class="menu-item {{selected == item.id ? 'active' : ''}}" style="border-color:{{selected == item.id ? pagecolor.bgcolor : '#fff'}};color:{{selected == item.id ? pagecolor.bgcolor : '#a8a8a8'}}" data-current="{{item.id}}" bindtouchstart="touchstart"
+          bindtouchend="touchend">
+          {{item.name}}
+          <text class="menu-num" style="background:{{selected == item.id ? pagecolor.bgcolor : '#d5d5d5'}};color:#fff;" wx:if="{{!!menuCart[item.id]}}">{{menuCart[item.id]}}</text>
+          <view class="menu-border" style="background-color: {{selected == item.id ?  pagecolor.bgcolor : 'transparent'}};"></view>
+        </view>
+      </view>
+    </scroll-view>
+    <view class="section">
+      <scroll-view scroll-y="{{scrollY}}" style="height:{{scrollHeight}}rpx;" bindscroll="scroll" scroll-into-view="s{{sSelected}}" scroll-with-animation="true">
+        <view class="scroll-view-item {{category.length==(idx+1)?'padd-b35':''}}" wx:for="{{category}}" wx:key="id" id="s{{item.id}}" wx:for-index="idx">
+          <view style="height: 18rpx;background: #f6f6f6;"></view>
+          <view class="menuitem-tit">
+            <view class="tit">{{item.name}}</view>
+            <view class="desc">{{!!item.description?item.description:'分类'+item.name}}</view>
+          </view>
+          <view class="shoplist">
+            <view class="shopdiv {{goods.isfirst == 1 ? 'shop-detail' : ''}}" wx:for="{{list[item.id]}}" wx:key="id" wx:for-item="goods" wx:for-index="jidx">
+              <view bindtap="showScale" data-menuid="{{item.id}}" data-goodsid="{{goods.id}}">
+                <image src="{{goods.thumb}}" mode="{{goods.isfirst == 1 ? 'aspectFill' : 'scaleToFill'}}"></image>
+                <text class="eatit">{{goods.title}}</text>
+                <view class="goods-desc " wx:if="{{goods.isfirst == 1}}">
+                  <view class="clamp2">{{goods.description}}</view>
+                </view>
+                <view class="of-goods-desc" wx:else>
+                  <!--  -->
+                  <block wx:if="{{ goods.memberprice >0 &&  goods.memberprice < goods.marketprice}}">
+                    <view class="vip-price">
+                      <text class="money-char ff-arial">￥</text>
+                      <text class="money-mid ff-arial">{{goods.memberprice}}</text>
+                      <text class="tag-vip"></text>
+                    </view>
+                    <view class="market-price">
+                      <text class="f-s22">原价:</text>
+                      <text class="f-s24 ff-arial">￥{{goods.marketprice}}</text>
+                    </view>
+                  </block>
+                  <view class="of-goods-market" wx:else>
+                    <text class="f-s24 ff-arial">￥</text>
+                    <text class="mid-money">{{goods.marketprice}}</text>
+                    <text class="f-s24">/{{goods.unitname}}</text>
+                  </view>
+
+                </view>
+              </view>
+              <view class="rp-flex {{goods.isfirst == 1 ? 'shop-ft' : ''}}">
+                <block wx:if="{{ goods.isfirst == 1 }}">
+                  <view class="of-price" wx:if="{{ goods.memberprice >0 && goods.memberprice < goods.marketprice}}">
+                    <view class="vip-price">
+                      <text class="money-char ff-arial">￥</text>
+                      <text class="money-mid ff-arial">{{goods.memberprice}}</text>
+                      <text class="tag-vip"></text>
+                    </view>
+                    <view class="market-price">
+                      <text class="f-s22">原价:</text>
+                      <text class="f-s24 ff-arial">￥{{goods.marketprice}}</text>
+                    </view>
+                  </view>
+                  <view class="of-market" wx:else>
+                    <text class="f-s24 ff-arial">￥</text>
+                    <text class="mid-money">{{goods.marketprice}}</text>
+                    <text class="f-s24">/{{goods.unitname}}</text>
+                  </view>
+                </block>
+                <view class="goods-fadd" wx:if="{{goods.isfirst == 1 && !myCartSub[goods.id]}}" data-menuid="{{item.id}}" data-goodsid="{{goods.id}}" bindtap="{{(goods.attrt >0 || goods.specst>0) && !myCartSub[goods.id] ? 'showDialogType':'tapadd'}}" style="background:{{pagecolor.linecolor}};">+</view>
+                <view class="num-list rp-flex align-center" style="border: 1rpx solid {{pagecolor.bgcolor}};" wx:if="{{myCartSub[goods.id]}}">
+                  <view class="num-jian" style="color:#fff;border-right: 1rpx solid {{pagecolor.linecolor}};background:{{pagecolor.linecolor}}" data-menuid="{{item.id}}" data-goodsid="{{goods.id}}" bindtap="tapBtnMiu" data-isattr="{{goods.attr.length>0||goods._specs.selected}}">-</view>
+                  <text class="num-num rp-flex-item ff-arial">{{myCartSub[goods.id].total}}</text>
+                  <view class="num-add" wx:if="{{(goods.attrt >0 || goods.specst>0) && myCartSub[goods.id]}}" style="background:{{pagecolor.linecolor}};" data-menuid="{{item.id}}" data-goodsid="{{goods.id}}" bindtap="showDialogType">+</view>
+                  <view class="num-add" wx:else style="background:{{pagecolor.linecolor}};" data-menuid="{{item.id}}" data-goodsid="{{goods.id}}" bindtap="tapadd">+</view>
+                </view>
+                <view class="numnone" wx:if="{{(goods.attrt >0 || goods.specst>0) && !myCartSub[goods.id] && goods.isfirst != 1}}" style="color:#fff;background:{{pagecolor.linecolor}};" data-menuid="{{item.id}}" data-goodsid="{{goods.id}}" bindtap="showDialogType">选规格</view>
+                <view class="numnone" wx:if="{{!myCartSub[goods.id]&&!(goods.attrt >0) && !(goods.specst>0) && goods.isfirst != 1}}" data-menuid="{{item.id}}" data-goodsid="{{goods.id}}" bindtap="tapadd" style="color:#fff;background:{{pagecolor.linecolor}};">
+                  添加
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+    <view class="paybottom">
+      <!--底部导航-->
+      <view class="paynav">
+        <view class="bot-left">
+          <view class="canbg" style="background:url({{ total_dish_count >0 ? 'https://pic.repaiapp.com/pic/9d/58/04/9d58043832668b9d4a6ed3f4d196ae8f5057e70f.png' : 'https://pic.repaiapp.com/pic/c0/6b/6d/c06b6d4615a959cbbb02dfdfd24d761c81bdcab6.png'}}) center no-repeat;background-size:cover;">
+            <view class="canimg" bindtap="showPullCart"></view>
+          </view>
+          <view class="cantext">
+            <text class="canprice" wx:if="{{total_dish_count >0}}">￥{{total_price}}</text>
+            <!-- <text class="cannum">当前桌号:{{table_title}}</text> -->
+          </view>
+        </view>
+        <view class="bot-right" wx:if="{{need_price <= 0 && total_dish_count !=0}}" style="background:{{pagecolor.linecolor}};color:{{pagecolor.textcolor}};" bindtap="goCreateOrder">
+          去结算
+        </view>
+        <view class="bot-right" wx:if="{{need_price > 0 && total_dish_count!=0}}" style="background:#ccc;color:{{pagecolor.textcolor}};" bindtap="createdOrder">
+          还差{{need_price}}元起送
+        </view>
+        <view class="bot-right" wx:if="{{total_dish_count ==0}}" style="background:#ccc;color:{{pagecolor.textcolor}};" bindtap="goCreateOrder" bindtap="createdOrder">
+          ￥{{limitconst}}元起送
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- <view class="bottom-aready" wx:if="{{isTableOrder}}">
+      <view class="aready-hint">
+         <navigator url="{{detailURI}}" class="aready-left" hover-class="none">
+            <view class="aready-tit">有订单尚未买单</view>
+            <text>该订单共{{my_order_count}}个菜，价值{{my_order_price}}元尚未买单！</text>
+         </navigator>
+         <view class="aready-right">
+            <navigator url="{{detailURI}}" class="aready-del" hover-class="none">查看详情 </navigator>
+            <text class="aready-col" bindtap="closediv">| 关闭</text>
+         </view>
+      </view>
+   </view> -->
+
+  <view class="goods-dialog" style="visibility:{{isShowDialog?'visible':'hidden'}};">
+    <view class="mark" bindtap="tapDialogMark"></view>
+    <view class="panle-type" animation="{{animationData}}" style="visibility:{{isShowType?'visible':'hidden'}};">
+      <view class="panle-blank">
+        <view class="header">
+          <view class="title">
+            <text>{{goodsHasAttr.title}}</text>
+            <text class="badge" style="background:{{pagecolor.linecolor}};" wx:if="{{myCartSub[goodsHasAttr.id]}}">{{myCartSub[goodsHasAttr.id].total}}</text>
+          </view>
+
+          <!--<text class="iconfont icon-close" bindtap="closeType"></text>-->
+        </view>
+        <scroll-view scroll-y class="scroll-content">
+          <view class="panle">
+            <view class="type-list" wx:if="{{goodsHasAttr._specs.items}}">
+              <text class="title">{{goodsHasAttr._specs.name}}</text>
+              <view class="group-type">
+                <text class="item" wx:for="{{goodsHasAttr._specs.items}}" wx:for-item="ss" wx:key="index" data-menuid="{{goodsHasAttr.menuId}}" data-goodsid="{{goodsHasAttr.id}}" data-id="{{ss.id}}" data-money="{{ss.marketprice}}" bindtap="changeSpecs" style="border-color:{{ss.id == goodsHasAttr._specs.selected ? 'none' : '#1b1b1b' }};color:{{ss.id == goodsHasAttr._specs.selected ? '#fff' : '#1b1b1b' }};background:{{ss.id == goodsHasAttr._specs.selected ? pagecolor.linecolor : '#fff'}};">{{ss.specs_name}}</text>
+              </view>
+            </view>
+            <view class="type-list" wx:for="{{goodsHasAttr.attr}}" wx:for-item="attrList" wx:key="index" wx:for-index="idx">
+              <text class="title">{{attrList.attr_name}}{{goodsHasAttr._specs[0]}}</text>
+              <view class="group-type">
+                <text class="item" wx:for-index="i" wx:for="{{attrList.attrs}}" wx:for-item="attr" wx:key="index" data-index="{{idx}}" data-sindex="{{i}}" data-value="{{attr}}" data-menuid="{{goodsHasAttr.menuId}}" data-goodsid="{{goodsHasAttr.id}}" bindtap="changeGoodsAttr"
+                  style="border-color:{{attrList.selected == attr ? 'none' : '#1b1b1b' }};color:{{attrList.selected == attr ? '#fff' : '#1b1b1b' }};background:{{attrList.selected == attr ? pagecolor.linecolor : '#fff'}};">{{attr}}</text>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+        <view class="footer">
+          <view class="wapper rp-flex">
+            <view class="left-span rp-flex-item">
+              <text class="rmb">￥</text>
+              <text class="num" wx:if="{{goodsHasAttr.specst > 0}}">{{goodsHasAttr._specs.items[goodsHasAttr._specs.selected].marketprice}}</text>
+              <text class="num" wx:else>{{goodsHasAttr.marketprice}}</text>
+              <text class="rmb">/{{goodsHasAttr.unitname}}</text>
+            </view>
+            <view class="right-span" style="background:{{pagecolor.linecolor}}" data-menuid="{{goodsHasAttr.menuId}}" data-goodsid="{{goodsHasAttr.id}}" bindtap="addTypeCart" data-id="{{goodsHasAttr._specs.selected}}">选好了</view>
+          </view>
+        </view>
+      </view>
+      <view class="dialog-close" bindtap="closeType"></view>
+    </view>
+    <view class="panle-goods" animation="{{animationData}}" style="visibility:{{isShowGoods?'visible':'hidden'}};">
+      <view class="wapper">
+        <view class="goods-image" bindtap="tapDialogMark">
+          <image src="{{goodsHasAttr.bigThumb}}" mode="scaleToFill"></image>
+        </view>
+        <view class="nheader">
+          <view class="nheader-blank">
+            <view class="tit">{{goodsHasAttr.title}}</view>
+            <view class="ndesc">
+              <view class="rp-flex-item np-v">
+                <view class="price">
+                  <text class="f-s28">￥</text>
+                  <text class="f-s36" wx:if="{{goodsHasAttr.specst > 0}}">{{goodsHasAttr._specs.items[goodsHasAttr._specs.selected].marketprice}}</text>
+                  <text class="f-s36" wx:else>{{goodsHasAttr.marketprice}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <scroll-view scroll-y class="ncontent">
+          <view class="ncontent-blank">
+            <view class="ntt">● 菜品介绍</view>
+            <view class="nd-desc">{{!!goodsHasAttr.description?goodsHasAttr.description:'暂无介绍'}}</view>
+            <block wx:if="{{goodsHasAttr.specst > 0}}">
+              <view class="ntt">● 可选规格</view>
+              <div class="table">
+                <view class="tr" wx:if="{{goodsHasAttr._specs.items}}">
+                  <view class="td">{{goodsHasAttr._specs.name}}</view>
+                  <view class="td">
+                    <block wx:for="{{goodsHasAttr._specs.items}}" wx:key="idx" wx:index="idx">
+                      <text>{{item.specs_name}}</text>
+                      <text>,</text>
+                    </block>
+                  </view>
+                </view>
+                <view class="tr" wx:for="{{goodsHasAttr.attr}}" wx:for-item="attrList" wx:key="index">
+                  <view class="td">{{attrList.attr_name}}{{goodsHasAttr._specs[0]}}</view>
+                  <view class="td">
+                    <block wx:for="{{attrList.attrs}}" wx:for-item="attr" wx:key="idx" wx:index="idx">
+                      <text>{{attr}}</text>
+                      <text>,</text>
+                    </block>
+                  </view>
+                </view>
+              </div>
+            </block>
+          </view>
+        </scroll-view>
+        <view class="ft">
+          <view class="ft-blank">
+            <view class="add-btn" style="background:{{pagecolor.linecolor}};" data-isAttr="{{goodsHasAttr.attr.length!=0 || goodsHasAttr._specs.length!=0}}" data-menuid="{{goodsHasAttr.menuId}}" data-goodsid="{{goodsHasAttr.id}}" bindtap="dialogAddCart">
+              <text wx:if="{{goodsHasAttr.specst > 0}}">选规格</text>
+              <view wx:else>加入购物车
+                <text wx:if="{{myCartSub[goodsHasAttr.id]}}"> ({{myCartSub[goodsHasAttr.id].total}})</text>
+              </view>
+            </view>
+          </view>
+
+        </view>
+
+      </view>
+      <view class="dialog-close" bindtap="closeType"></view>
+    </view>
+  </view>
+</view>
+<!--购物车的区域  -->
+<view class="pull-cart {{isPull?'pull-up':'pull-down'}}">
+  <view class="header">
+    <view class="name">已选菜品</view>
+    <view class="clear" bindtap="clearCart"></view>
+  </view>
+  <scroll-view scroll-y="true" class="pull-scroll">
+    <view class="wapper" wx:if="{{myCart.length>0}}">
+      <view class="info-item" wx:for="{{myCart}}" wx:key="id" wx:for-item="cart">
+        <view class="rp-flex-item">
+          <view class="info-name">{{cart.title}}</view>
+          <view class="info-type" wx:if="{{!!cart.specs_name || !!cart.attr_name}}">
+            <text wx:if="{{!!cart.specs_name}}">{{cart.specs_name}}</text>
+            <text wx:for="{{cart.attr}}" wx:key="index" wx:for-item="attr">{{attr.selected}}</text>
+          </view>
+        </view>
+        <view class="one-price">￥{{cart.per_price}}/{{cart.unitname}}</view>
+        <view class="one-list" style="border: 1rpx solid {{pagecolor.bgcolor}};">
+          <view class="one-jian" style="color:#fff;border-color:{{pagecolor.bgcolor}};background:{{pagecolor.linecolor}}" data-tempid="{{cart.tid}}" data-menuid="{{cart.pcate}}" data-goodsid="{{cart.goodsid}}" bindtap="tapBtnMiu">-</view>
+          <text class="one-num">{{cart.total}}</text>
+          <view class="one-add" style="background:{{pagecolor.linecolor}};" data-tempid="{{cart.tid}}" data-menuid="{{cart.pcate}}" data-goodsid="{{cart.goodsid}}" bindtap="tapadd">+</view>
+        </view>
+      </view>
+      <view class="info-item addAlign">
+        <view class="info-name addAlign">餐盒费</view>
+        <view class="one-list addAlign">
+          <text class="one-num">¥{{packvalue}}</text>
+
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <view style="height: 115rpx;"></view>
+</view>
+<view class="barrage">
+  <view class="barrage-item fade-in slow " wx:for="{{barrageData}}" wx:key="index">
+    <image class="photo" src="{{item.headimg}}"></image>
+    <text class="rp-flex-item rp-overflow-ellipsis ">{{item.msg}}</text>
+    <!--  <text wx:if="{{item.specs_name}}">({{item.specs_name}})</text> -->
+    <text class="action-tip" wx:if="{{item.type == 2}}"> +{{item.num}} </text>
+    <text class="action-tip" wx:if="{{item.type == 1}}"> -{{item.num}} </text>
+    <view style="display:block;" wx:if="{{item.type == 3}}">
+      <text>为</text>
+      <text class="f-s30">{{item.num}}</text>
+      <text>份</text>
+    </view>
+  </view>
+</view>
+
+<view class="pull-mask" hidden="{{!isPull}}" bindtap="closePullCart"></view>
+<template is="dialog" data="{{...defaultDialog}}"></template>

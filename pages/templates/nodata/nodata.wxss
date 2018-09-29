@@ -1,0 +1,54 @@
+.rp-undata-default {
+    padding-top: 200rpx;
+    text-align: center;
+}
+
+.rp-undata-default .undata-icon {
+    display: inline-block;
+    width: 190rpx;
+    height: 190rpx;
+    background: url('https://pic.repaiapp.com/pic/7b/9a/cf/7b9acf7086f7850b4d06661e83a7b2c2d6272b71.png') center no-repeat;
+    background-size: cover;
+}
+
+.rp-undata-default .undata-txt {
+    margin-top: 28rpx;
+    font-size: 26rpx;
+    color: #767e88;
+    text-align: center;
+}
+
+.rp-undata-default .undata-card {
+    display: inline-block;
+    width: 300rpx;
+    height: 300rpx;
+    background: url('https://pic.repaiapp.com/static/png/20180926/14/1537944736510165449.png') center no-repeat;
+    background-size: cover;
+}
+
+.undata-tyshoplist {
+    background: #f6f6f6;
+    padding: 66rpx 0 80rpx;
+}
+
+.undata-tyshoplist .icont-search {
+    height: 162rpx;
+    background: url('https://pic.repaiapp.com/pic/e2/eb/a2/e2eba2d0de061fc3c0cd6fbc0507b5b1a8e02a68.png') center no-repeat;
+    background-size: auto 100%;
+}
+
+.undata-tyshoplist .ty-txt {
+    text-align: center;
+    font-size: 26rpx;
+    color: #b3b8bf;
+    margin-top: 22rpx;
+}
+
+
+.rp-undata-default .undata-ty-icon {
+    display: inline-block;
+    width: 200rpx;
+    height: 200rpx;
+    background: url('https://pic.repaiapp.com/pic/03/8a/58/038a58898b1d0e1ad0317034718f27daab01c366.png') center no-repeat;
+    background-size: cover;
+}

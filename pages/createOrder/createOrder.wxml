@@ -1,0 +1,107 @@
+<import src="../templates/loading/loading.wxml" />
+<import src="../templates/message/message.wxml" />
+<import src="../templates/dialog/dialog.wxml" />
+<template is="loading" wx:if="{{isLoading}}"></template>
+<template is="message" data="{{showMessage,messageContent}}"></template>
+<!--<template is="msg-dialog" data="{{dialog}}"></template> -->
+<template is="dialog" data="{{...defaultDialog}}"></template>
+<view class="content" wx:if="{{!isLoading}}" style="height:{{wHeight}}">
+   <view class="detail-undata" wx:if="{{!myCart || !total_dish_count >0}}">
+        <view class="blank"></view>
+        <view class="icont"></view>
+        <view class="title">购物车还没有东西哦~</view>
+        <view class="tip">点击下方“加菜”按钮去加菜</view>
+    </view>
+   <block wx:else>
+    <view class='tabCoupon {{ unicom == 1 || money == 0 ? "CouponNone" : "CouponBlock" }}'>
+      <image src='../../images/closeCoupon.png' bindtap='closeCoupon'></image>
+      <image src='../../images/tabCoupon.png' bindtap='cateCoupon'></image>
+    </view>
+    <view class="order-header">
+        <view class="title">
+            <text class="name">{{shopname}}</text>
+            <text class="num" wx:if="{{!isZT}}">{{dummyNum}}桌</text>
+        </view>
+        <view class="money">￥{{total_price}}</view>
+    </view>
+    <view class="order-list" wx:for="{{newList}}" wx:key="index">
+        <view class="title" wx:if="{{item.category.total>0}}">{{item.category.name}}({{item.category.total}}份)</view>
+        <view class="order-item" wx:for="{{item.items}}" wx:for-item="goods" wx:key="index" wx:for-index="idx">
+            <view class="goods-name" style="margin:0;">
+                <view class="name">{{goods.title}}</view>
+                <view wx:if="{{!!goods.specs_name || goods.attr.length > 0}}" class="attr">
+                <text wx:if="{{!!goods.specs_name}}">{{goods.specs_name}}</text>
+                <text wx:for="{{goods.attr}}" wx:key="index" wx:for-item="attr">{{attr.selected}}</text>
+                </view>
+            </view>
+            <view class="unit-price">￥{{goods.per_price}}/{{goods.unitname}}</view>
+            <view class="rp-computed" style="border-color: {{pagecolor.bgcolor}}">
+                <view class="dec" style="background: {{pagecolor.linecolor}};color:#fff" data-tid="{{goods.tid}}" data-menuid="{{goods.pcate}}"
+                 data-index="{{idx}}" data-total="{{goods.total}}" data-name="{{goods.title}}" data-uid="{{goods.uid}}" bindtap="tapBtnMiu">-</view>
+                <view class="input">{{goods.total}}</view>
+                <view class="add" style="background: {{pagecolor.linecolor}}" data-tid="{{goods.tid}}" data-menuid="{{goods.pcate}}" data-index="{{idx}}" bindtap="tapadd">+</view>
+            </view>
+        </view>
+    </view>
+      <view class="order-list" wx:if="{{tablesid < 0}}">
+        <view class="order-item" >
+            <!-- <view class="goods-name" style="margin:0;" >
+                <view class="name">餐位费</view>
+            </view> -->
+            <view class="goods-name" style="margin:0;">
+                <view class="name">餐盒费</view>
+            </view>
+            <view class="rp-computed" >
+                <view class="input">¥{{packvalue}}</view>
+                <!-- <view class="input" wx:else>¥{{allcost}}</view> -->
+            </view>
+        </view>
+    </view>
+    <view class="beizhu clearfix">
+        <text>备注：</text>
+        <input type="text" bindinput="bindRemarkInput" class="beizhu-input" placeholder="如有吃喝要求，请注意备注呦！" />
+    </view>
+    <block wx:if="{{tablesid != '-1'}}">
+        <view  style="height:210rpx;"></view>
+            <view  class="set-count" wx:if="{{counts>0}}">
+            <text >已选{{counts}}人就餐。</text>
+            <text  class="link" bindtap="tcpeople">点我修改</text>
+        </view>
+    </block>
+    
+   </block>
+   <!--底部下单按钮end-->
+   <!--弹出选择人数-->
+   <view class="mask" hidden="{{isHidden}}"></view>
+   <view class="peoplediv" hidden="{{isHidden}}" wx:if="{{tablesid != '-1'}}">
+      <view class="people-hint">{{!!orderid ?'请重新核对用餐人数':'请选择用餐人数'}}</view>
+      <view class="choose-hint">
+         <text class="people-number" style="color:{{pagecolor.bgcolor}};" wx:if="{{!!changeNum}}">已选择就餐人数为：{{changeNum}}人</text>
+      </view>
+      <scroll-view scroll-y="true" class="numlist clearfix">
+         <view class="number" style="background:{{changeNum == item ? pagecolor.bgcolor : 'none'}};color:{{changeNum == item ? pagecolor.textcolor : '#424242'}};border-color:{{changeNum == item ? pagecolor.bgcolor : ''}}" wx:for="{{peoplenumber}}" wx:key="id"
+            data-id="{{item}}" bindtap="clickpeople">{{item}}</view>
+         <view class="numbermore" wx:if="{{showMore}}" bindtap="shownumber">更多</view>
+      </scroll-view>
+      <view class="peoplebutton">
+         <view class="peoplefalse" bindtap="tcfalse">取消</view>
+         <view class="peopletrue" bindtap="tapYes" style="background:{{!!changeNum ? pagecolor.linecolor :'#cccccc'}};color:{{pagecolor.textcolor}};border-color:{{!!changeNum ? pagecolor.bgcolor:'#cccccc'}}">确定</view>
+      </view>
+   </view>
+   <!--弹出选择人数end-->
+
+    <!--底部下单按钮-->
+    <view class="orderbottom">
+        <view class="order-left" bindtap="backCarte">加菜</view>
+        <view class="{{isChecked?'is_checked ':'normal ' }}    order-right"  >
+            <!-- <view class="refresh" bindtap="refreshData" animation="{{animationData}}">
+                    <view class="refrsh-point" wx:if="{{newflush}}"></view>
+                </view> -->
+            <view class=" order-submit "  bindtap="createdOrder">
+            
+                <view class="right-now">立即下单</view>
+                <view class="all-tip">{{total_dish_count}}个菜，共计￥{{total_price}}</view>
+            </view>
+        </view>
+    </view>
+</view>

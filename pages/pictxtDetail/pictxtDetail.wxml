@@ -1,0 +1,25 @@
+<view class="content">
+   <view class="title">{{picData.title}}</view>
+   <view class="pic-news">
+      <text>{{picData.createtime}}</text>
+      <text>阅读 {{picData.readcounts}}</text>
+   </view>
+   <block wx:if="{{!!picData.title_two}}">
+      <view class="two-title">{{picData.title_two}}</view>
+   </block>
+   <view wx:for="{{picData.content}}" wx:key="index">
+      <view wx:if="{{item.type==2}}" class="pic-images">
+         <image src="{{item.msg}}" mode="widthFix"></image>
+      </view>
+      <view wx:if="{{item.type==1}}" class="pic-content">
+         <text>{{item.msg}}</text>
+      </view>
+      <view class="pic-video"  wx:if="{{item.type==3}}">
+         <video id="myVideo" src="{{item.msg}}" controls></video>
+      </view>
+      <view class="pic-tel" wx:if="{{item.type == 4}}">
+          <view class="rp-flex-item">如果有兴趣，可以联系我们</view>
+          <text class="icont-tel" bindtap="calling" data-tel="{{item.msg}}"></text>
+      </view>
+   </view>
+</view>

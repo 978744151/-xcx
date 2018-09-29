@@ -1,0 +1,19 @@
+<import src="../templates/message/message.wxml" />
+<template is="message" data="{{showMessage,messageContent}}"></template>
+<view class="content">
+    <view class="form-tel">
+        <view class="form-item">
+            <input type="number" bindinput="bindInput" data-typeinput="tel" maxlength="11" placeholder="手机号" />
+        </view>
+    </view>
+    <view class="form-tel">
+        <view class="form-item">
+            <input type="number" bindinput="bindInput" data-typeinput="pcode" maxlength="4" placeholder="请输入验证码" />
+            <view class="tel-code" bindtap="timeout" style="color:{{isdisable?'#f14949':'#ccc'}};">{{verifyInfo}}</view>
+        </view>
+    </view>
+    <view class="tel-hint">验证码将以短信的形式发送到您的手机</view>
+    <view class="form-btn">
+        <view class="btn" bindtap="submitFn" style="background:{{iSubmit?'#f14949':'#ccc'}};">确认更换</view>
+    </view>
+</view>

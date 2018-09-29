@@ -1,0 +1,207 @@
+<import src="../templates/nodata/nodata.wxml" />
+<import src="../templates/loading/loading.wxml" />
+<template is="loading" wx:if="{{isLoading}}"></template>
+<wxs src="orderlist.wxs" module="total" />
+<view class="content" wx:if="{{!isLoading}}">
+  <!-- tabBar -->
+  <view class='tabBox'>
+    <view class="{{tabIdx == '1' ? 'active' :''}}" data-flag='1' bindtap='changeTab'>点菜订单</view>
+    <view class="{{tabIdx == '2' ? 'active' :''}}" data-flag='2' bindtap='changeTab'>外卖订单</view>
+    <view class="{{tabIdx == '3' ? 'active' :''}}" data-flag='3' bindtap='changeTab'>自提订单</view>
+
+  </view>
+  <scroll-view scroll-y="true" style="height:{{scrollHeight}}rpx;">
+    <view style='height:12rpx;'></view>
+    <block wx:if="{{tabIdx == '1'}}">
+      <view class="scroll-wapper" wx:if="{{orderList.length>0}}">
+        <navigator url="/pages/orderDetail/orderDetail?orderid={{item.id}}&tablesid={{item.tables}}&from=list" hover-class="none" class="ordertable" wx:for="{{orderList}}" wx:key="id">
+          <view class="order-shopname">
+            <view class="order-sn">订单号：{{item.orderidsn}}
+              <!-- <text class="order-otherpay">(他人支付·不送积分)</text> -->
+            </view>
+            <!--待完成的状态颜色 wait  -->
+            <text wx:if="{{item.orderstatus == 3}}" class="orderStatus">{{item.status}}</text>
+            <text wx:if="{{item.orderstatus == 2}}" class="orderStatus wait">{{item.status}}</text>
+            <text wx:if="{{item.orderstatus == 0}}" class="orderStatus wait">{{item.status}}</text>
+            <text wx:if="{{item.orderstatus == 1}}" class="orderStatus wait">{{item.status}}</text>
+            <text wx:if="{{item.orderstatus == -1}}" class="orderStatus">{{item.status}}</text>
+          </view>
+          <view class="ordertable-news">
+            <view class="ot-left">
+              <view class="ot-style">餐桌号码：
+                <text>{{item.title}}桌</text>
+              </view>
+              <view class="ot-style">用餐人数：
+                <text>{{item.counts}}人</text>
+              </view>
+              <view class="ot-style">下单时间：
+                <text>{{item.time}}</text>
+              </view>
+            </view>
+          </view>
+          <view class="order-price">
+            <text class="price-tit">需实付款:</text>
+            <text class="price-num">￥{{total.totalNumber(item.totalprice ,  item.cutlery_money,0)}}</text>
+          </view>
+        </navigator>
+        <template is="loading" wx:if="{{isMore}}"></template>
+        <view class="rp-end" wx:if="{{!isMore && orderList.length>3}}">─ 我已经到底了 ─</view>
+
+      </view>
+      <template is="undata-default" wx:else></template>
+    </block >
+    <block wx:if="{{tabIdx == '2'}}">
+      <view class='carteOrder' wx:if="{{orderList.length>0}}">
+        <view class='orderItem' wx:for="{{orderList}}" wx:key="{{item.id}}">
+        <view bindtap='goDetails' data-id="{{item.id}}" data-tablesid="-2">
+        <view class='orderTop' bindtap='changeDetails' >
+            <view class='lf'>
+              <image src='{{item.list[0].thumb}}'></image>
+              <view class='oNum'>
+                <view>订单号：{{total.strSubSix(item.orderidsn)}}</view>
+                <text>{{item.time}}</text>
+              </view>
+            </view>
+            <view class='stu' wx:if="{{item.orderstatus==0 && item.tables == '-2'&& item.ispay == ''}}">未支付</view>
+            <view class='stu' wx:elif="{{item.orderstatus==0 && item.tables == '-2'&& item.ispay != ''}}">待商家接单</view>
+            <!-- <view class='stu' wx:elif="{{item.orderstatus==-1}}">订单已关闭</view> -->
+            <view class='stu' wx:else>{{item.status}}</view>
+          </view>
+        <view class='goodcon'>
+            <!-- goods信息 -->
+            <block wx:for="{{item.list}}" wx:for-item='items' wx:for-index='indexs' wx:if="{{indexs<3}}" >
+              <view class='gdItem'>
+                <view class='gdTitle'>
+                  <view class='name'>{{items.title}}</view>
+                  <text class='tag' wx:if="{{items.specs_name}}">{{items.specs_name}}</text>
+                  <text class='tag' wx:if="{{items.attr}}" >{{items.attr}}</text>
+                </view>
+                <view class='gdNum'>x{{items.total}}</view>
+              </view>
+            </block> 
+          <view style='color:#7c7c7c;' wx:if="{{item.totalnum >3}}">...</view>            
+          </view>
+        </view>   
+          <view class='orderTime' >
+            <!-- <image src='https://pic.repaiapp.com/static/png/20180806/16/1533545608904485497.png'></image> -->
+            <!-- <view>取餐时间：{{item.meal_time}}</view> -->
+          </view>
+          <view class='priceDesc' >
+            共{{item.totalnum}}件商品
+            <!-- <text>共{{item.totalnum}}件商品，虚拟支付</text> -->
+            <text>￥{{total.totalNumber(item.totalprice ,  item.cutlery_money,item.packvalue)}}</text>，实付
+            <text>￥{{item.rel_pay_money}}</text>
+          </view>
+          <view class='carteBtn'>
+            <!-- 订单完成或者取消订单显示 -->
+            <block wx:if="{{item.orderstatus==-1 || item.orderstatus==3}}">
+              <view class='noBg'  bindtap='goDetails' data-id="{{item.id}}" data-tablesid="-2">再来一单</view>
+            </block>
+            <!-- 待支付 -->
+            <!-- <block wx:if="{{item.orderstatus==0}}">  
+              <view class='noBg' bindtap='goDetails' data-id="{{item.id}}" data-tablesid="-2">取消订单</view>
+              <view class='hasBg' bindtap='goDetails' data-id="{{item.id}}" data-tablesid="-2">去支付</view>
+            </block> -->
+            <block wx:if="{{item.orderstatus==0 && item.tables != '-2'}}">  
+              <view class='noBg' bindtap='goDetails' data-id="{{item.id}}" data-tablesid="-1" data-ispay ="{{item.ispay}}" >取消订单</view>
+              <view class='hasBg' bindtap='goDetails' data-id="{{item.id}}" data-tablesid="-1">去支付</view>
+            </block>
+            <block wx:if="{{item.orderstatus==0 && item.tables == '-2'&& item.ispay == ''}}">  
+              <view class='noBg' bindtap='goDetails' data-id="{{item.id}}" data-tablesid="-2" data-ispay ="{{item.ispay}}">取消订单</view>
+              <view class='hasBg' bindtap='goDetails' data-id="{{item.id}}" data-tablesid="-2">去支付</view>
+            </block>
+            <block wx:if="{{item.orderstatus==0 && item.tables == '-2' && item.ispay != ''}}">  
+              <view class='noBg' bindtap='goDetails' data-id="{{item.id}}" data-tablesid="-2" >取消订单</view>
+              <!-- <view class='hasBg' bindtap='goDetails' data-id="{{item.id}}" data-tablesid="-2"></view> -->
+            </block>
+            <!--待完成 配送中 -->
+            <block wx:if="{{item.orderstatus==2}}">
+              <view class='noBg' bindtap='telShopper' data-phone = "{{phone}}">联系商家</view>
+              <!-- <view class='hasBg' bindtap='goDetails' data-id="{{item.id}}" data-tablesid="-2">确认取餐</view> -->
+            </block>
+            <!-- 待商家接单 -->
+            <block wx:if="{{item.orderstatus==1}}">
+              <view class='noBg' bindtap='goDetails' data-id="{{item.id}}" data-tablesid="-2">取消订单</view>
+            </block>
+          </view>
+        </view>
+      </view>
+      <template is="undata-default" wx:else></template>
+    </block>
+    <block wx:if="{{tabIdx == '3'}}">
+      <view class='carteOrder' wx:if="{{orderList.length>0}}">
+        <view class='orderItem' wx:for="{{orderList}}" wx:key="{{item.id}}">
+        <view bindtap='goDetails' data-id="{{item.id}}" data-tablesid="-1">
+        <view class='orderTop' bindtap='changeDetails' >
+            <view class='lf'>
+              <image src='{{item.list[0].thumb}}'></image>
+              <view class='oNum'>
+                <view>订单号：{{total.strSubSix(item.orderidsn)}}</view>
+                <text>{{item.time}}</text>
+              </view>
+            </view>
+            <!-- <view class='stu' wx:if="{{item.status== null}}">订单已关闭</view> -->
+            <view class='stu'>{{item.status}}</view>
+          </view>
+        <view class='goodcon'>
+            <!-- goods信息 -->
+            <block wx:for="{{item.list}}" wx:for-item='items' wx:for-index='indexs' wx:if="{{indexs<3}}" >
+              <view class='gdItem'>
+                <view class='gdTitle'>
+                  <view class='name'>{{items.title}}</view>
+                  <text class='tag' wx:if="{{items.specs_name}}">{{items.specs_name}}</text>
+                  <text class='tag' wx:if="{{items.attr}}" >{{items.attr}}</text>
+                </view>
+                <view class='gdNum'>x{{items.total}}</view>
+              </view>
+            </block> 
+          <view style='color:#7c7c7c;'  wx:if="{{item.totalnum >3}}">...</view>
+            
+          </view>
+        </view>
+                
+          
+          <view class='orderTime' >
+          
+            <image src='https://pic.repaiapp.com/static/png/20180806/16/1533545608904485497.png'></image>
+            <view>取餐时间：{{item.meal_time}}</view>
+          </view>
+          <view class='priceDesc' >
+            共{{item.totalnum}}件商品
+            <text>￥{{total.totalNumber(item.totalprice , item.cutlery_money,item.packvalue)}}</text>，实付
+            <text>￥{{item.rel_pay_money }}</text>
+          </view>
+          <view class='carteBtn'>
+            <!-- 订单完成或者取消订单显示 -->
+            <block wx:if="{{item.orderstatus==-1 || item.orderstatus==3}}">
+              <view class='noBg'  bindtap='goDetails' data-id="{{item.id}}" data-tablesid="-1">再来一单</view>
+            </block>
+            <!-- 待支付 -->
+            <block wx:if="{{item.orderstatus==0 && item.tables != '-2'}}">  
+              <view class='noBg' bindtap='goDetails' data-id="{{item.id}}" data-tablesid="-1">取消订单</view>
+              <view class='hasBg' bindtap='goDetails' data-id="{{item.id}}" data-tablesid="-1">去支付</view>
+            </block>
+            <block wx:if="{{item.orderstatus==0 && item.tables == '-2'&& item.ispay == ''}}">  
+              <view class='noBg' bindtap='goDetails' data-id="{{item.id}}" data-tablesid="-1">取消订单</view>
+              <view class='hasBg' bindtap='goDetails' data-id="{{item.id}}" data-tablesid="-1">去支付</view>
+            </block>
+            <block wx:if="{{item.orderstatus==0 && item.tables == '-2' && item.ispay != ''}}">  
+              <view class='noBg' bindtap='goDetails' data-id="{{item.id}}" data-tablesid="-1">取消订单</view>
+              <view class='hasBg' bindtap='goDetails' data-id="{{item.id}}" data-tablesid="-1">等待商家接单</view>
+            </block>
+            <!--待核销 -->
+            <block wx:if="{{item.orderstatus==2}}">
+              <view class='noBg' bindtap='telShopper' data-phone = "{{phone}}">联系商家</view>
+              <view class='hasBg' bindtap='goDetails' data-id="{{item.id}}" data-tablesid="-1">确认取餐</view>
+            </block>
+            <!-- 待商家接单 -->
+            <block wx:if="{{item.orderstatus==1}}">
+              <view class='noBg' bindtap='goDetails' data-id="{{item.id}}" data-tablesid="-1">取消订单</view>
+            </block>
+          </view>
+        </view>
+      </view>
+      <template is="undata-default" wx:else></template>
+    </block>
+  </scroll-view>
+</view>

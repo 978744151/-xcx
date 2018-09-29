@@ -1,0 +1,571 @@
+.rp-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+
+.rp-dialog-div {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 634rpx;
+    height: 326rpx;
+    background: #fff;
+    border-radius: 21rpx;
+    transform: translate(-50%,-50%);
+    z-index: 22;
+}
+
+.rp-mask {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.55;
+    z-index: 11;
+}
+
+.rp-dialog .tc-text {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    height: 234rpx;
+    justify-content: center;
+    border-bottom: 1rpx solid #eaeaea;
+    padding: 0 80rpx;
+}
+
+.rp-dialog .rp-title {
+    font-size: 30rpx;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 20rpx;
+    text-align: center;
+}
+
+.rp-dialog .rp-txt {
+    font-size: 28rpx;
+    color: #000;
+    text-align: center;
+    line-height: 50rpx;
+}
+
+.tc-center {
+    text-align: center;
+}
+
+.tc-btn {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    height: 91rpx;
+    align-items: center;
+}
+
+.btn-false {
+    flex: 1 1 auto;
+    text-align: center;
+    border-right: 1rpx solid #eaeaea;
+    height: 91rpx;
+    line-height: 91rpx;
+    font-size: 30rpx;
+    color: #e63838;
+}
+
+.btn-true {
+    flex: 1 1 auto;
+    text-align: center;
+    height: 91rpx;
+    line-height: 91rpx;
+    font-size: 30rpx;
+    color: #e63838;
+    font-weight: 600;
+}
+
+.roud-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+    opacity: 0;
+}
+
+.roud-container .mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.roud-dialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 562rpx;
+    height: 332rpx;
+    padding: 0 30rpx;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    z-index: 2;
+    border-radius: 10rpx;
+}
+
+.roud-dialog .txt {
+    margin: 90rpx 0 85rpx;
+    font-size: 28rpx;
+    color: #000;
+    text-align: center;
+}
+
+.roud-dialog .btn-back {
+    height: 90rpx;
+    line-height: 90rpx;
+    color: #fff;
+    text-align: center;
+    font-size: 28rpx;
+    border-radius: 6rpx;
+}
+
+.opacity-in {
+    animation: optIn 0.3s forwards;
+}
+
+.membersale-div {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 632rpx;
+    padding: 15rpx 0 0;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    z-index: 99;
+    border-radius: 10rpx;
+    box-sizing: border-box;
+}
+
+.ms-item {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 26rpx;
+    color: #000;
+    margin-top: 30rpx;
+    padding: 0 30rpx;
+}
+
+.ms-item .ms-icon,
+.ms-item .ms-icon1,
+.ms-item .ms-icon2,
+.ms-item .ms-icon3{
+    display: block;
+    width: 32rpx;
+    height: 32rpx;
+    margin-right: 15rpx;
+}
+
+.ms-item .ms-icon1 {
+    background: url(https://pic.repaiapp.com/pic/44/b3/ff/44b3ff4bc592db1f7363e1b4bf20513541ac06bf.png);
+    background-size: 100% 100%;
+    
+}
+
+.ms-item .ms-icon2 {
+    background: url(https://pic.repaiapp.com/pic/8b/ef/49/8bef494e41e25019fb3ad66ffb93ef22ae4e63e2.png);
+    background-size: 100% 100%;
+}
+
+.ms-item .ms-icon3 {
+    background: url(https://pic.repaiapp.com/pic/49/a3/2e/49a32e437ab7c3b1e22cbb7fd9a61f53d39c1750.png);
+    background-size: 100% 100%;
+}
+
+.ms-hint {
+    margin-top: 40rpx;
+    font-size: 26rpx;
+    color: #878787;
+    padding: 0 30rpx;
+}
+
+.ms-know {
+    width: 100%;
+    height: 105rpx;
+    line-height: 105rpx;
+    text-align: center;
+    border-top: 1px solid #eaeaea;
+    font-size: 32rpx;
+    margin-top: 40rpx;
+}
+
+@keyframes optIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+.msg-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 632rpx;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    z-index: 22;
+    border-radius: 26rpx;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.msg-dialog .dialog-content {
+    min-height:250rpx;
+    align-items:center;
+    align-content:center;
+    text-align:center;
+    /* display:flex; */
+    justify-content:center;
+
+}
+
+.msg-dialog .dialog-content .title {
+    padding-top: 50rpx;
+    font-size: 36rpx;
+    color: #000;
+    line-height: 42rpx;
+    margin-bottom: 38rpx;
+    font-weight: 500;
+}
+
+.msg-dialog .dialog-content .text {
+    font-size: 32rpx;
+    color: #000;
+    padding: 0 50rpx;
+    margin-bottom: 40rpx;
+}
+
+.msg-dialog .dialog-content .text.left{
+  text-align: left;
+}
+
+.msg-dialog .footer {
+    height: 110rpx;
+    line-height: 110rpx;
+    box-sizing: border-box;
+    border-top: 1px solid #eaeaea;
+    font-size: 32rpx;
+    text-align: center;
+}
+
+.msg-dialog .dialog-body{
+    padding: 50rpx 120rpx;
+    font-size: 32rpx;
+    color: #000;
+    text-align: center;
+}
+
+
+.debug-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #28292b;
+    z-index: 66;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.debug-dialog .icont-debug {
+    width: 100%;
+    height: 184rpx;
+    background: url('https://pic.repaiapp.com/pic/d0/7b/cf/d07bcff63ecb5e42b51091238e7521bd44f73d0e.png') center no-repeat;
+    background-size: auto 100%;
+}
+
+.debug-dialog .debug-txt {
+    margin-top: 75rpx;
+    font-size: 36rpx;
+    color: #696a6c;
+}
+
+.temp-stop {
+    border-top: 1px solid #f0f0f0;
+    color: #393939;
+    font-size: 32rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    text-align: center;
+}
+
+
+.que-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background: #fff;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 600rpx;
+    border-radius: 26rpx;
+    color: #000;
+    z-index: 88;
+}
+
+.quedia-box {
+    padding: 70rpx 0 50rpx;
+    text-align: center;
+}
+
+.quedia-tit {
+    font-size: 32rpx;
+    color: #000;
+}
+
+.quedia-txt {
+    font-size: 26rpx;
+    color: #8d8d8d;
+    margin-top: 10rpx;
+}
+
+.quedia-true {
+    height: 105rpx;
+    line-height: 105rpx;
+    text-align: center;
+    border-top: 1px solid #f0f0f0;
+    font-size: 32rpx;
+    color: #e63838;
+}
+
+
+
+.ty-power-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    width: 590rpx; 
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border-radius: 26rpx;
+    z-index: 66;
+}
+
+.ty-power-dialog .title {
+    display: -webkit-flex;
+    display: flex;
+    margin: 50rpx 0 20rpx 0;
+    height: 45rpx;
+    padding: 0 30rpx;
+    align-items: center;
+    font-size: 32rpx;
+    color: #000;
+}
+
+.ty-power-dialog .title .icont-king {
+    display: inline-block;
+    width: 31rpx;
+    height: 24rpx;
+    background: url('https://pic.repaiapp.com/pic/b3/68/f6/b368f69223fd0b0c2e45bbe4e6b4aba5dc235b4e.png') center no-repeat;
+    background-size: cover;
+    margin-right: 15rpx;
+}
+
+.ty-power-dialog .tip {
+    padding: 0 40rpx 20rpx 80rpx;
+    min-height: 94rpx;
+    font-size: 28rpx;
+    color: #8d8d8d;
+}
+
+.ty-power-dialog .footer {
+    height: 108rpx;
+    line-height: 108rpx;
+    font-size: 32rpx;
+    color: #f14949;
+    text-align: center;
+    border-top: 1px solid #f0f0f0;
+}
+
+
+.recharge-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background: #fff;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 530rpx;
+    border-radius: 26rpx;
+    color: #000;
+    z-index: 88;
+}
+
+.recharge-dialog .title {
+    padding-top: 42rpx;
+    font-size: 30rpx;
+    font-weight: 500;
+    height: 35rpx;
+    line-height: 35rpx;
+    text-align: center;
+}
+
+.recharge-dialog .content {
+    padding: 32rpx 30rpx;
+    font-size: 28rpx;
+    min-height: 100rpx;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.recharge-dialog .content .txt {
+    margin-bottom: 15rpx;
+}
+
+.recharge-dialog .footer {
+    border-top: 1px solid #f0f0f0;
+    font-size: 30rpx;
+    color: #dd2f3b;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+}
+
+.recharge-dialog .btn-cancel,
+.recharge-dialog .btn-confirm {
+    height: 88rpx;
+    line-height: 88rpx;
+    flex: 1;
+    text-align: center;
+}
+
+.recharge-dialog .btn-confirm{
+     font-weight: 500;
+}
+
+.recharge-dialog .btn-cancel {
+    border-right: 1px solid #f0f0f0;
+}
+
+.recharge-dialog .input-wapper {
+    width: 100%;
+    border: 1px solid #f0f0f0;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    align-items: center;
+}
+
+.recharge-dialog .input-wapper input {
+    width: 100%;
+    text-align: center;
+    height: 72rpx;
+    line-height: 72rpx;
+    border: none;
+}
+
+
+.vipdialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background: #fff;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 600rpx;
+    border-radius: 26rpx;
+    color: #000;
+    z-index: 88;
+}
+
+.vip-top {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60rpx 0;
+}
+
+.viphead {
+    width: 126rpx;
+    height: 126rpx;
+}
+
+.viphead image {
+    width: 126rpx;
+    height: 126rpx;
+    border-radius: 50%;
+}
+
+.vip-top .vip-tit {
+    font-size: 32rpx;
+    color: #000;
+    margin-top: 50rpx;
+}
+
+.vip-top .vip-hint {
+    font-size: 26rpx;
+    color: #919191;
+    margin-top: 25rpx;
+}
+
+.vip-btns {
+    display: flex;
+    display: -webkit-flex;
+    height: 105rpx;
+    border-top: 1px solid #ddd;
+    font-size: 32rpx;
+    color: #e63838;
+}
+
+.vipbtn-false {
+    flex: 1;
+    height: 105rpx;
+    line-height: 105rpx;
+    text-align: center;
+    border-left: 1px solid #ddd;
+}
+
+.vipbtn-true {
+    flex: 1;
+    height: 105rpx;
+    line-height: 105rpx;
+    text-align: center;
+}

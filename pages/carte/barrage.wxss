@@ -1,0 +1,46 @@
+
+/*弹幕*/
+
+.barrage {
+    position: fixed;
+    bottom: 115rpx;
+    left: 20rpx;
+    z-index: 47;
+    max-height: 60%;
+    padding-bottom: 32rpx;
+    overflow: hidden;
+}
+
+.barrage .barrage-item {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, .8);
+    /* padding: 10rpx 42rpx 10rpx 12rpx; */
+    width: 346rpx;
+    padding: 10rpx 12rpx;
+    border-radius: 40rpx;
+    margin-bottom: 16rpx;
+    font-size: 26rpx;
+    color: #fff;
+}
+
+.barrage .barrage-item:last-of-type{
+    margin-bottom:0;
+}
+
+.barrage .photo {
+    width: 50rpx;
+    height: 50rpx;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 12rpx;
+}
+
+.barrage .action-tip{
+   font-size: 30rpx;
+   width: 60rpx;
+}

@@ -1,0 +1,121 @@
+/*用户评价  */
+
+.appraise {
+  padding-bottom: 0rpx;
+  margin-bottom: 0;
+}
+
+.gather{
+  background: #fff;
+}
+
+.gather .goodRep {
+  text-align: center;
+  font-size: 30rpx;
+  line-height: 78rpx;
+}
+
+.gather .goodRep text {
+  color: #f14949;
+}
+
+.gather .appraiseState {
+  padding: 5rpx 0 10rpx;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.gather .appraiseState .stateBox {
+  width: 120rpx;
+  text-align: center;
+}
+
+.gather .appraiseState .stateBox image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.gather .appraiseState .stateBox view {
+  font-size: 26rpx;
+  line-height: 68rpx;
+}
+
+.appraiseConBox {
+  padding-bottom: 24rpx;
+}
+
+.appraiseCon {
+  display: flex;
+  flex-direction: row;
+  padding: 20rpx 20rpx 24rpx;
+  border-top: 1px solid #ddd;
+}
+
+.appraiseCon .userLogo {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin-right: 16rpx;
+  background: url(https://pic.repaiapp.com/static/png/20171220/10/1513738640239869949.png)no-repeat;
+  background-size: 100%;
+}
+
+.appraiseCon .userLogo image {
+  vertical-align: top;
+  width: 100%;
+  height: 100%;
+}
+
+.appraiseCon .detail {
+  flex: 1;
+  overflow: hidden;
+}
+
+.appraiseCon .detail .name {
+  display: flex;
+  justify-content: space-between;
+  line-height: 1;
+}
+
+.appraiseCon .detail .name view{
+  font-size: 28rpx;
+  color: #181818;
+}
+
+
+.appraiseCon .detail .name text {
+  font-size: 24rpx;
+  color: #9f9f9f;
+}
+
+.appraiseCon .detail .state {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 16rpx 0 16rpx;
+  line-height: 1;
+}
+
+.appraiseCon .detail .state image {
+  width: 34rpx;
+  height: 34rpx;
+  margin-right: 10rpx;
+}
+
+.appraiseCon .detail .content {
+  font-size: 28rpx;
+  line-height: normal;
+  word-break: break-all;
+}
+
+.imgViewBox image {
+  vertical-align: top;
+  width: 170rpx;
+  height: 170rpx;
+  margin-top: 16rpx;
+  margin-right: 30rpx;
+}

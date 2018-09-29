@@ -1,0 +1,147 @@
+<import src="../templates/loading/loading.wxml" />
+<import src="../templates/nodata/nodata.wxml" />
+<template is="loading" wx:if="{{isLoading}}"></template>
+<view class="content" wx:if="{{!isLoading && !isCodebg}}">
+    <view class="shops">
+        <!-- <view class="shops-tit">
+            <view class="shops-icon"></view>
+            <view class="shops-city">{{city}}</view>
+            <navigator url="/pages/nearbyshop/nearbyshop?lat={{lat}}&lng={{lng}}" hover-class="none" class="shops-right">{{data.neartip}}</navigator>
+        </view> -->
+        <view class="shops-tit">
+            <navigator class="left-part" hover-class="none" url="/pages/citySelect/citySelect">
+                <view class="shops-icon"></view>
+                <view class="shops-city">{{city}}</view>
+            </navigator>
+            <view class="shops-right">
+                <!-- {{data.neartip}} -->
+                共找到{{listCount}}家餐厅
+            </view>
+        </view>
+        <view style="height: 90rpx;"></view>
+        <view class="nearbyshop">
+            <!--  <view class="nearby-box" wx:for="{{data.nearlist}}" wx:key="index">
+                <navigator hover-class="none" url="/pages/queue/queue?id={{item.id}}" class="nearby-img">
+                    <image src="{{item.logo}}" mode="aspectFit"></image>
+                    <view class="shop-opentime" wx:if="{{item.service_time==24}}"></view>
+                </navigator>
+                <view class="nearby-news">
+                    <view class="nearby-top">
+                        <navigator hover-class="none" url="/pages/queue/queue?id={{item.id}}" class="nearby-text rp-flex-item" data-address="{{item.address}}" data-name="{{item.title}}" data-lat="{{item.lat}}" data-lng="{{item.lng}}">
+                            <view class="shopname">{{item.title}}</view>
+                            <view class="shop-say">
+                                <view class="shop-xx">
+                                    <text class="xx-hua"></text>
+                                    <text class="xx-hua"></text>
+                                    <text class="xx-hua"></text>
+                                    <text class="xx-hua"></text>
+                                    <text class="xx-hua"></text>
+                                </view>
+                                <text class="shop-price">￥{{item.money}}/人</text>
+                            </view>
+                            <view class="shop-type">
+                                <view class="shoptype-icon">
+                                    <view class="shoptype-icon-ser" wx:if="{{item.is_service == 0}}"></view>
+                                    <block wx:else>
+                                        <view class="shoptype-icon-dis" wx:if="{{item.is_dis_limit}}"></view>
+                                        <block wx:else>
+                                            <view class="shoptype-icon1" wx:if="{{item.queue_open == 1}}"></view>
+                                            <block wx:else>
+                                                <view class="shoptype-icon2"></view>
+                                            </block>
+                                        </block>
+                                    </block>
+                                </view>
+                                <text class="shoptype-txt">{{item.queue_tip}}</text>
+                            </view>
+                        </navigator>
+                    </view>
+                    <view class="nearby-right">
+                        <view class="shop-distance">{{item.distance}}km</view>
+                        <view class="nearby-phone" data-tel="{{item.tel}}" bindtap="calling"></view>
+                        <view class="nearby-table" wx:if="{{item.is_service == 1 && !item.is_dis_limit}}">
+                            <block wx:if="{{item.waitTable>0 && item.queue_open == 1 && item.queue_type == 1}}">
+                                <text>{{item.waitTable}}</text>桌
+                            </block>
+                            <block wx:if="{{(item.waitTable == 0 && item.queue_open == 1) || item.queue_type == 2}}">
+                                <text>无需排队</text>
+                            </block>
+                        </view>
+                    </view>
+                </view>
+            </view> -->
+            <view class="nearby-box" wx:for="{{allList}}" wx:key="index">
+                <navigator hover-class="none" url="/pages/queue/queue?id={{item.id}}" class="nearby-img">
+                    <image src="{{item.logo}}" mode="aspectFit"></image>
+                    <view class="shop-opentime" wx:if="{{item.service_time==24}}"></view>
+                </navigator>
+                <view class="nearby-news clamp1">
+                    <view class="" style="width: 100%;">
+                        <view class="nearby-top">
+                            <navigator hover-class="none" url="/pages/queue/queue?id={{item.id}}" class="nearby-text rp-flex-item" data-address="{{item.address}}" data-name="{{item.title}}" data-lat="{{item.lat}}" data-lng="{{item.lng}}">
+                                <view class="shopname">{{item.title}}</view>
+                                <view class="shop-say">
+                                    <view class="shop-xx">
+                                        <text class="xx-hua"></text>
+                                        <!--黄色星星-->
+                                        <text class="xx-hua"></text>
+                                        <text class="xx-hua"></text>
+                                        <text class="xx-hua"></text>
+                                        <!--灰色星星-->
+                                        <text class="xx-hua"></text>
+                                        <!-- <text class="xx-hui"></text> -->
+                                    </view>
+                                    <text class="shop-price">￥{{item.money}}/人</text>
+                                </view>
+                            </navigator>
+                            <view class="nearby-right">
+                                <view class="shop-distance">{{item.distance}}km</view>
+                                <view class="nearby-phone" data-tel="{{item.tel}}" bindtap="calling"></view>
+                            </view>
+                        </view>
+                        <navigator hover-class="none" url="/pages/queue/queue?id={{item.id}}" class="clamp1" style="font-size: 26rpx;color:#969696;">地址:{{item.address}}</navigator>
+                    </view>
+                </view>
+            </view>
+            <template is="undata-tyshoplist" wx:if="{{allList.length == 0}}"></template>
+            <view class="rp-end" wx:if="{{isEnd && allList.length>0 && pageCount > 1}}">─ 我已经到底了 ─</view>
+        </view>
+    </view>
+    <!--    <view class="last-nearby" wx:if="{{data.otherlist.length>0}}">
+        {{data.othertip}}
+    </view>
+    <view class="nearbyshop ">
+        <view class="nearby-box border-btm" wx:for="{{data.otherlist}}" wx:key="index">
+            <navigator hover-class="none" url="/pages/queue/queue?id={{item.id}}" class="nearby-img">
+                <image src="{{item.logo}}" mode="aspectFit"></image>
+                <view class="shop-opentime" wx:if="{{item.service_time==24}}"></view>
+            </navigator>
+            <view class="nearby-news">
+                <view class="nearby-top">
+                    <navigator hover-class="none" url="/pages/queue/queue?id={{item.id}}" class="nearby-text rp-flex-item" data-address="{{item.address}}" data-name="{{item.title}}" data-lat="{{item.lat}}" data-lng="{{item.lng}}">
+                        <view class="shopname">{{item.title}}</view>
+                        <view class="shop-say">
+                            <view class="shop-xx">
+                                <text class="xx-hua"></text>
+    
+                                <text class="xx-hua"></text>
+                                <text class="xx-hua"></text>
+                                <text class="xx-hua"></text>
+                                <text class="xx-hua"></text>
+                            </view>
+                            <text class="shop-price">￥{{item.money}}/人</text>
+                        </view>
+                        <view class="shop-type">
+                            <view class="icont-waring"></view>
+                            <text class="shoptype-txt">{{item.queue_tip}}</text>
+                        </view>
+                    </navigator>
+                </view>
+                <view class="nearby-right last-by">
+                    <view class="shop-addr">{{item.cityName}}</view>
+                    <view class="nearby-phone" data-tel="{{item.tel}}" bindtap="calling"></view>
+                </view>
+            </view>
+        </view>
+    </view> -->
+</view>

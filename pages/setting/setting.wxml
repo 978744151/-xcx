@@ -1,0 +1,17 @@
+<!--nolocation 没授权定位页面 -->
+<!-- <view class="power-wapper">
+    <text class="iconfont icon-on-power"></text>
+   	<view class="tip">{{tiptxt}}{{system}}</view>
+   	<text class="btn" bindtap="aginPower">{{btntxt}}</text>
+</view> -->
+<!--nolocation 没授权定位页面 -->
+<view class="power-wapper">
+    <text class="iconfont icon-on-power"></text>
+    <view class='headImg'>
+       <image src="{{head_img}}" class="img"></image>
+    </view>
+    <view class='nickName'>{{nick_name}}</view>
+   	<view class="tip">{{tiptxt}}{{system}}</view>
+    <button class='btn' wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">微信授权</button>
+   	<!-- <text class="btn" bindtap="aginPower">重新授权</text> -->
+</view>

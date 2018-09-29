@@ -1,0 +1,86 @@
+<import src="../templates/foot/foot.wxml" />
+<import src="../templates/nodata/nodata.wxml" />
+<import src="../templates/loading/loading.wxml" />
+<import src="../templates/dialog/dialog.wxml" />
+<template is="loading" wx:if="{{isIndexLoad}}"></template>
+<template is="msg-dialog" data="{{dialog}}"></template>
+<template is="debugDialog" data="{{isDebug,debugtxt}}"></template>
+<view class="content {{isOpen == 0 ? 'rp-flex-column' : ''}}" wx:if="{{!isIndexLoad && !isDebug}}">
+   <template is="undata-card" wx:if="{{isOpen == 0}}"></template>
+   <block wx:else>
+      <view class="card-wapper" style="padding-top: 48rpx;">
+         <view class="getcard" style="background:url({{vipInfo.cardstatue == 0 ? 'https://pic.repaiapp.com/pic/aa/b0/2e/aab02e022ca499bdaa2c57e1a41f310225d9e40e.png' : vipInfo.cardBg}}) no-repeat;background-size:cover;">
+            <view class="rp-flex" bindtap="linkCode">
+               <view class="rp-flex-item rp-flex getcard-content">
+                  <image src="{{vipInfo.shoplogo}}" mode="scaleToFill"></image>
+                  <view class="getcard-name rp-flex-item">
+                     <text class="f-s28">{{vipInfo.shopname}}</text>
+                     <text class="f-s24">{{vipInfo.cardname}}</text>
+                  </view>
+                  <view wx:if="{{vipInfo.isVip == 1}}" class="icont-qr"></view>
+               </view>
+            </view>
+            <view class="qr-number rp-flex">
+               <view class="rp-flex-item" bindtap="linkCode">
+                  <text  wx:if="{{vipInfo.isVip == 1}}" class="{{index == 0?'number-icont':'num-icont'}} " wx:for="{{vipInfo.cardInfo.codeImg}}" wx:for-item="num" wx:key="index" style="background-image:url({{num}})"></text>
+               </view>
+               <view hover-class="none" data-url="/pages/vipdetail/vipdetail" class="care-blank" bindtap="ItemLink">
+                  <text class="iconfont icon-k-care"></text>
+               </view>
+            </view>
+            <view class="disable-card" wx:if="{{vipInfo.cardstatue == 0}}"></view>
+         </view>
+      </view>
+      <view class="panle-isactive" wx:if="{{vipInfo.isVip == 0}}">
+         <navigator url="/pages/vipaction/vipaction" class="btn" hover-class="none" style="color:{{pagecolor.bgcolor}};border-color:{{pagecolor.bgcolor}}">立即激活</navigator>
+         <text class="tip">激活好礼，特权享不停</text>
+      </view>
+      <view class="panle-tab rp-flex" wx:if="{{vipInfo.isVip == 1}}">
+         <view class="rp-flex-item border-style" hover-class="none" data-url="/pages/points/points" bindtap="ItemLink">
+            <view class="title" style="color:{{vipInfo.cardstatue == 0 ? pagecolor.textcolor :'#222'}}">我的积分</view>
+            <view class="num" style="color:{{vipInfo.cardstatue == 0 ? pagecolor.textcolor : pagecolor.bgcolor}}">{{vipInfo.integral}}</view>
+         </view>
+         <view data-url="/pages/gradecenter/gradecenter" hover-class="none" class="rp-flex-item border-style" bindtap="ItemLink">
+            <view class="title" style="color:{{vipInfo.cardstatue == 0 ? pagecolor.textcolor :'#222'}}">等级</view>
+            <view class="num" style="color:{{vipInfo.cardstatue == 0 ? pagecolor.textcolor : pagecolor.bgcolor}}">{{vipInfo.cardInfo.level}}</view>
+         </view>
+         <view class="rp-flex-item" hover-class="none" data-url="/pages/balance/balance" bindtap="ItemLink">
+            <view class="title" style="color:{{vipInfo.cardstatue == 0 ? pagecolor.textcolor :'#222'}}">余额</view>
+            <!--  -->
+            <view class="look" style="color:{{vipInfo.cardstatue == 0 ? pagecolor.textcolor : pagecolor.bgcolor}}">{{vipInfo.money}}</view>
+         </view>
+      </view>
+      <view class="panle-isactive" wx:if="{{vipInfo.isVip == 1}}">
+         <navigator open-type="redirect" url="/pages/code/code" class="btn" hover-class="none" style="color:{{pagecolor.bgcolor}};border-color:{{pagecolor.bgcolor}}">扫码点菜</navigator>
+         <text class="tip" wx:if="{{vipInfo.cardstatue != 0}}">微信点餐，立享会员价</text>
+      </view>
+      
+      <view class="panle-list">
+          <navigator open-type="redirect" url="/pages/integral/integral"  hover-class="none" class="item" wx:if="{{vipInfo.isVip == 1}}">
+            <view class="rp-flex-item">积分商城</view>
+            <text class="iconfont icon-right-more"></text>
+         </navigator>
+
+         <view data-url="/pages/bill/bill" hover-class="none" class="item" wx:if="{{vipInfo.isVip == 1}}" bindtap="ItemLink">
+            <view class="rp-flex-item">充值记录</view>
+            <text class="iconfont icon-right-more"></text>
+         </view>
+         <view data-url="/pages/vipdetail/vipdetail" class="item" bindtap="ItemLink">
+            <view class="rp-flex-item">会员卡详情</view>
+            <text class="iconfont icon-right-more"></text>
+         </view>
+         <view data-url="/pages/vippage/vippage" class="item" wx:if="{{vipInfo.isVip == 1}}" hover-class="none" bindtap="ItemLink">
+            <view class="rp-flex-item">个人信息</view>
+            <text class="iconfont icon-right-more"></text>
+         </view>
+         <view data-url="/pages/address_out/address_out" class="item" wx:if="{{vipInfo.isVip == 1}}" hover-class="none" bindtap="ItemLink">
+            <view class="rp-flex-item">收货地址</view>
+            <text class="iconfont icon-right-more"></text>
+         </view>
+         <!-- <view data-url="/pages/nearbyshop/nearbyshop" class="item" hover-class="none" bindtap="ItemLink">
+            <view class="rp-flex-item">适用门店</view>
+            <text class="iconfont icon-right-more"></text>
+         </view> -->
+      </view>
+   </block>
+</view>

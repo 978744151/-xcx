@@ -1,0 +1,13 @@
+<import src="../templates/foot/foot.wxml" />
+<import src="../templates/loading/loading.wxml" />
+<template is="loading" wx:if="{{isIndexLoad}}"></template>
+<view class="content" wx:if="{{!isIndexLoad}}" bindtap="backVip">
+    <view class="logo-wapper">
+        <image class="logo" src="{{vipInfo.shoplogo}}" mode=""></image>
+    </view>
+    <view class="qrcode-wapper">
+        <image class="qr" src="{{vipInfo.cardInfo.codeQimg}}" mode="widthFix" ></image>
+    </view>
+    <view class="num">{{vipInfo.data.cardSn}}</view>
+    <view class="lit">微信点餐，立享会员价</view>
+</view>

@@ -1,0 +1,116 @@
+<!-- <view class="content"> -->
+<import src="../templates/loading/loading.wxml" />
+<import src="../templates/message/message.wxml" />
+<import  src="../templates/dialog/dialog.wxml" />
+<include src="../templates/picker/picker.wxml" />
+
+<template is="msg-dialog" data="{{dialog}}"></template>
+<template is="loading" wx:if="{{isIndexLoad}}"></template>
+<template is="message" data="{{showMessage,messageContent}}"></template>
+<block wx:if="{{!isIndexLoad}}">
+    <view class="vipaction-wapper">
+        <view class="form-title">必填信息</view>
+        <block wx:for="{{requireFields}}" wx:key="index">
+            <view class="form-item" wx:if="{{item.bind == 'realname'}}">
+                <view class="form-name">姓名</view>
+                <input type="text" class="rp-flex-item" bindinput="bindInput" data-typeinput="name" confirm-type="done" placeholder="请输入您的姓名" maxlength="12" />
+            </view>
+            <view class="form-item" wx:if="{{item.bind == 'mobile'}}">
+                <view class="form-name">手机</view>
+                <input type="number" class="rp-flex-item" bindinput="bindInput" data-typeinput="tel" confirm-type="done" placeholder='{{active == 1 ? "微信授权获取手机号" : "请输入您的手机号"}}' maxlength="11" value ="{{tel}}"  disabled='{{active == 1 ? "disabled" : ""}}'/>
+                <button class='handActive {{active == 1 ? "active" : ""}}'  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">自动填写</button>
+                <button class='handActive {{active == 2 ? "active" : ""}}' bindtap='handActive'>手动填写</button>
+            </view>
+            <view class="form-item" wx:if="{{item.bind == 'mobile' && active == 2}}">
+                <view class="form-name">验证码</view>
+                <input type="number" class="rp-flex-item" bindinput="bindInput" data-typeinput="pcode" confirm-type="done" maxlength="4" placeholder="请填写4位数字验证码" />
+                <view class="tel-code" bindtap="timeout" style="color:{{isdisable?'#f14949':'#ccc'}};">{{verifyInfo}}</view>
+            </view>
+            <view class="form-item" wx:if="{{item.bind == 'gender'}}">
+                <picker style="width: 100%;" bindchange="bindPickerChange" value="{{item}}" range="{{sexArray}}">
+                    <view class="picker rp-flex" style="align-items: center;width: 100%;">
+                        <view class="form-name ">性别</view>
+                        <view class="rp-flex-item">
+                            <view wx:if="{{!!sex}}">
+                                {{sex}}
+                            </view>
+                            <view wx:else style="color: #666;"> {{sexStr}}</view>
+                        </view>
+                        <text class="iconfont icon-right-more"></text>
+                    </view>
+                </picker>
+            </view>
+            <view class="form-item" wx:if="{{item.bind == 'birthday'}}" data-mold="dateTime" bindtap="risePicker">
+               <!-- <picker mode="date" value="{{startdate}}" style="width: 100%;" start="1950-01-01" end="2017-09-01" bindchange="bindDateChange">-->
+                    <view class="picker rp-flex" style="align-items: center;width: 100%;">
+                        <view class="form-name ">生日</view>
+                        <view class="rp-flex-item">
+                            <view wx:if="{{!!date}}">
+                                {{date}}
+                            </view>
+                            <view wx:if="{{!date}}" style="color: #ccc;"> {{birthdayStr}}</view>
+                        </view>
+                        <text class="iconfont icon-right-more"></text>
+                    </view>
+               <!--  </picker>-->
+            </view>
+            <view class="form-item" wx:if="{{item.bind == 'email'}}">
+                <view class="form-name">邮箱</view>
+                <input type="text" class="rp-flex-item" bindinput="bindInput" data-typeinput="email" confirm-type="done" placeholder="请输入邮箱" />
+            </view>
+        </block>
+        <view class="form-title" wx:if="{{checkFieids.length>0}}">选填信息</view>
+        <block wx:for="{{checkFieids}}" wx:key="index">
+            <view class="form-item" wx:if="{{item.bind == 'realname'}}">
+                <view class="form-name">姓名</view>
+                <input type="text" class="rp-flex-item" bindinput="bindInput" data-typeinput="name" confirm-type="done" placeholder="请输入您的姓名"  />
+            </view>
+            <view class="form-item" wx:if="{{item.bind == 'gender'}}">
+                <picker style="width: 100%;" bindchange="bindPickerChange" value="{{item}}" range="{{sexArray}}">
+                    <view class="picker rp-flex" style="align-items: center;width: 100%;">
+                        <view class="form-name ">性别</view>
+                        <view class="rp-flex-item">
+                            <view wx:if="{{!!sex}}">
+                                {{sex}}
+                            </view>
+                            <view wx:else style="color: #666;"> {{sexStr}}</view>
+                        </view>
+                        <text class="iconfont icon-right-more"></text>
+                    </view>
+                </picker>
+            </view>
+            <view class="section form-item" wx:if="{{item.bind == 'birthday'}}" data-mold="dateTime" bindtap="risePicker">
+               <!-- <picker mode="date" value="{{date}}" style="width: 100%;" start="1950-01-01" end="2017-09-01" bindchange="bindDateChange">-->
+                    <view class="picker rp-flex" style="align-items: center;width: 100%;">
+                        <view class="form-name ">生日</view>
+                        <view class="rp-flex-item">
+                            <view wx:if="{{!!date}}">
+                                {{date}}
+                            </view>
+                            <view wx:if="{{!date}}" style="color: #666;"> {{birthdayStr}}</view>
+                        </view>
+                        <text class="iconfont icon-right-more"></text>
+                    </view>
+                <!--</picker>-->
+            </view>
+            <view class="form-item" wx:if="{{item.bind == 'email'}}">
+                <view class="form-name">邮箱</view>
+                <input type="text" class="rp-flex-item" bindinput="bindInput" data-typeinput="email" confirm-type="done" placeholder="请输入您的邮箱" />
+            </view>
+        </block>
+        <view class="panle-agree">
+            <view class="agree-wapper">
+                <label class="checkbox" bindtap="checkboxChange">
+                    <checkbox value="" checked="{{isagree}}" color="#56bb37" />
+                    <text>我已阅读并同意</text>
+                </label>
+                <view style="color:#2297e5;display:inline-block;" bindtap="showRule">会员卡守则</view>
+            </view>
+            <view class="btn-blank">
+                <view class="form-btn {{!!tel && !!pcode && !!name && !!date && !!sex && isagree ? 'action':''}}" bindtap="submitFn">立即激活</view>
+            </view>
+        </view>
+    </view>
+    <import src="../vipaction/rule.wxml" />
+    <template is="vipRule" data="{{isVipRuleHidde,scrollHeight,shopName}}"></template>
+</block>

@@ -1,0 +1,248 @@
+page {
+  position: relative;
+  background: #f6f6f6;
+  height: 100%;
+}
+
+page::after {
+  content: none;
+}
+
+.top {
+  height: 136rpx;
+  background: #f14949;
+}
+
+.user {
+  height: 225rpx;
+  padding: 0 16rpx;
+  margin-bottom: 20rpx;
+}
+
+.user .info {
+  width: 100%;
+  background: #fff;
+  padding-bottom: 20rpx;
+  position: relative;
+  top: -116rpx;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+
+.info .infoTop {
+  padding: 28rpx 0 48rpx 35rpx;
+  position: relative;
+}
+
+.info .userInfo {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.info .userInfo image {
+  width: 126rpx;
+  height: 126rpx;
+  border-radius: 50%;
+  border: 1px solid #f0f0f0;
+  margin-right: 20rpx;
+  background: url('https://pic.repaiapp.com/static/png/20171220/10/1513738640239869949.png') no-repeat center;
+  background-size: cover;
+}
+
+.info .userInfo .nameBox {
+  flex: 1;
+  padding-top: 13rpx;
+}
+
+.info .userInfo .nameBox view {
+  font-size: 30rpx;
+  line-height: 54rpx;
+}
+
+.info .userInfo .nameBox text {
+  font-size: 26rpx;
+  line-height: 46rpx;
+  color: #7d7d7d;
+}
+
+.info .userInfo .nameBox text.tel {
+  padding-left: 21rpx;
+  background: url(https://pic.repaiapp.com/static/png/20171206/20/1512561868055755101.png)no-repeat left center;
+  background-size: 16rpx 22rpx;
+}
+
+.info .edit {
+  position: absolute;
+  right: 0;
+  top: 64rpx;
+  width: 173rpx;
+  height: 52rpx;
+  background: url(https://pic.repaiapp.com/static/png/20171206/20/1512561981360689855.png)no-repeat;
+  background-size: 100% 100%;
+}
+
+.info .infoBottom {
+  padding: 0 70rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info .infoBottom .dataShow {
+  text-align: center;
+}
+
+.info .infoBottom .dataShow view {
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.info .infoBottom .dataShow text {
+  font-size: 30rpx;
+  color: #7d7d7d;
+  line-height: 72rpx;
+}
+
+.content {
+  padding: 0 16rpx;
+}
+
+.card {
+  width: 100%;
+  box-sizing: border-box;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+
+.card .title {
+  font-size: 30rpx;
+  line-height: 80rpx;
+  border-bottom: 1px solid #eaeaea;
+  padding-left: 38rpx;
+}
+
+.vipBox {
+  padding: 52rpx 38rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.vipBox .left {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  overflow: hidden;
+}
+
+.vipBox .left .vipBg {
+  width: 140rpx;
+  height: 85rpx;
+  box-sizing: border-box;
+  padding: 5rpx 0 0 7rpx;
+  margin-right: 26rpx;
+  display: flex;
+  flex-direction: row;
+  background: url('https://pic.repaiapp.com/static/png/20171208/14/1512714761898819749.png')no-repeat;
+  background-size: 100%;
+}
+
+.vipBox .left .vipBg image {
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+  margin-right: 6rpx;
+}
+
+.vipBox .left .vipBg .vipBgInfo view {
+  font-size: 10rpx;
+  color: #fff;
+  line-height: 1;
+  padding-top: 2rpx;
+}
+
+.vipBox .left .vipBg .vipBgInfo text {
+  display: block;
+  font-size: 7rpx;
+  color: #fff;
+  line-height: 15rpx;
+}
+
+.vipBox .left .vipInfo {
+  flex: 1;
+  overflow: hidden;
+}
+
+.vipBox .left .vipInfo view {
+  font-size: 30rpx;
+  line-height: 44rpx;
+}
+
+.vipBox .left .vipInfo text {
+  font-size: 26rpx;
+  color: #7d7d7d;
+  line-height: 45rpx;
+}
+
+.vipBox .right .money {
+  display: flex;
+  flex-direction: row;
+}
+
+.vipBox .right .money .moneyInfo {
+  font-size: 30rpx;
+  color: #7d7d7d;
+  line-height: 44rpx;
+  margin-right: 15rpx;
+}
+
+.vipBox .right .money .btn view {
+  line-height: 44rpx;
+  font-size: 30rpx;
+  color: #f14949;
+}
+
+.vipBox .right .money .btn text {
+  line-height: 49rpx;
+  font-size: 26rpx;
+  color: #709cff;
+}
+
+.activeBtn {
+  display: block;
+  width: 178rpx;
+  height: 62rpx;
+  background: url(https://pic.repaiapp.com/static/png/20180928/10/1538103558087955199.png)no-repeat;
+  background-size: 100%;
+}
+
+.myBox {
+  /* padding:40rpx 40rpx; */
+  padding: 40rpx 0px 10rpx 0rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
+}
+.myBox navigator{
+  width: 25%;
+  margin-top:10rpx;
+  padding-bottom:30rpx;
+}
+.myBox image {
+  width: 62rpx;
+  height: 62rpx;
+}
+.myBox.myCard{padding-top: 0;justify-content: flex-start;align-items: left;text-align: left;}
+.myBox .menu view {
+  font-size: 30rpx;
+  line-height: 64rpx;
+}
+
+.versions {
+  text-align: center;
+  font-size: 26rpx;
+  color: #bababa;
+  /* margin-top: 50rpx; */
+  padding-bottom: 40rpx;
+}

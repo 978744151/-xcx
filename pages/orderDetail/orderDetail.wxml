@@ -1,0 +1,212 @@
+<import src="../templates/loading/loading.wxml" />
+<import src="../templates/dialog/dialog.wxml" />
+<template is="loading" wx:if="{{isLoading}}"></template>
+
+<view class="orderdetail" wx:if="{{!isLoading}}">
+  <view class="mask-top" wx:if="{{ orderItems.table_order_status != -1}}">
+    <view class="maskcard {{orderItems.table_order_status == 3 ? 'disable' : ''}}">
+      <view class="mc-top">
+        <view class="mc-tit">
+          <text>{{orderItems.shopTitle}}</text>
+          <text class="mc-type">取餐码</text>
+        </view>
+        <view class="mc-number">{{orderItems.flowid}}</view>
+      </view>
+      <view class="mc-bottom">
+        <view class="mc-hint">
+          <text>可以凭借取餐码到柜台取餐</text>
+          <text>或等待服务员送餐</text>
+        </view>
+        <view class="mc-code" bindtap="preview"></view>
+      </view>
+    </view>
+  </view>
+
+  <view class="top-tip" wx:else>
+    <text class="icont-cancel"></text>
+    <!-- <view class="top-txt" wx:if="{{orderItems.table_order_status == 3}}">您的订单已完成，如有疑问请联系服务员</view> -->
+    <view class="top-txt" wx:if="{{orderItems.table_order_status == -1}}">您的订单超时未付款已被取消，如有疑问请联系服务员</view>
+  </view>
+  <!--菜品详情-->
+  <view class="detail-news">
+    <view class="news-tit">
+      <view>菜品详情
+        <text class="newstit-hint">（账单明细以店内实际出账为准）</text>
+      </view>
+    </view>
+    <view class="menu-detail">
+      <block wx:key="index" wx:if="{{orderItems.waiteritems.length>0}}">
+        <view class="menu-hr">
+          <view class="waits-wapper">
+            <text class="icont-waits"></text>
+            <text class="menucon-waits" style="border-color:#4baff3; color:#4baff3;border-radius:20rpx">服务员加菜</text>
+          </view>
+          <view class="menu-content" wx:for="{{orderItems.waiteritems}}" wx:key="index">
+            <view class="menucon-name">
+              <view>{{item.title}}</view>
+            </view>
+            <view class="menucon-num">x{{item.total}}</view>
+            <view class="menucon-zt">{{item.statusStr}}</view>
+            <view class="menucon-price">￥{{item.price}}</view>
+          </view>
+        </view>
+      </block>
+      <block wx:for="{{orderItems.items}}" wx:key="index" wx:for-index="idx" wx:for-item="orderList">
+        <view class="menu-hr">
+          <view class="menucon-di" style="border-color:{{pagecolor.bgcolor}}; color:{{pagecolor.bgcolor}};">{{idx}}</view>
+          <view class="menu-content" wx:for="{{orderList}}" wx:key="index">
+            <view class="menucon-name">
+              <view>{{item.title}}</view>
+              <view class='menucon-spec' wx:if="{{!!item.specs_name && !!item.attr}}">
+                <text>{{item.specs_name}}</text>
+                <text wx:for="{{item.attr_name_v1}}" wx:key="index" wx:for-item="attr">{{attr}}</text>
+              </view>
+            </view>
+            <view class="menucon-num">x{{item.total}}</view>
+            <view class="menucon-zt">{{item.statusStr}}</view>
+            <view class="menucon-price">￥{{item.price}}</view>
+          </view>
+        </view>
+      </block>
+    </view>
+    <block>
+
+    </block>
+    <view wx:if="{{orderItems.table_order_status != 3}}">
+      <view class="menucon-all">
+        <text class="all-tit">餐位费</text>
+        <text class="menucon-price">￥{{cutlery_money}}</text>
+      </view>
+      <view class="menucon-all" >
+        <text class="all-tit">总计（{{orderItems.totalnum}}份）</text>
+        <block wx:if="{{orderItems.closeStr == ''}}">
+          <text class="all-price" style="color:{{pagecolor.bgcolor}}">￥{{totalprice}}</text>
+        </block>
+        <block wx:if="{{orderItems.closeStr != ''}}">
+          <text class="all-price" style="color:{{pagecolor.bgcolor}}">￥{{totalprice}}</text>
+        </block>
+      </view>
+    </view>
+    <block wx:else>
+      <view class="s-price">
+        <view class="s-item">
+          <text class="left-span">菜品总额</text>
+          <text class="right-span">￥{{orderItems.allPrice}}</text>
+        </view>
+        <view class="menucon-all">
+          <text class="all-tit">餐位费</text>
+          <text class="menucon-price">￥{{cutlery_money}}</text>
+        </view>
+        <view class="s-item" wx:if="{{orderItems.xuniprice>0}}">
+          <view class="left-span">
+            虚拟支付
+            <text class="iconfont icon-k-care" bindtap="showPayDetailDialog"></text>
+          </view>
+          <text class="right-span strong">-￥{{orderItems.xuniprice}}</text>
+        </view>
+
+      </view>
+      <view class="s-ft">
+        <view class="desc">
+          <text>实付</text>
+          <text class="price">￥{{orderItems.xcxprice>=0?orderItems.xcxprice:0}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+  <!--菜品详情end-->
+  <view style="height:175rpx;"></view>
+  <!--底部导航   -->
+  <block>
+    <view class="detail-bottom" wx:if="{{orderItems.closeStr == '' && orderItems.table_order_status != 3}}">
+      <view class="detail-left" bindtap="backAddGoods">加菜</view>
+      <!-- <navigator url="/pages/carte/carte?isAdd=1" class="detail-left">加菜</navigator> -->
+      <!-- <view class="detail-right" wx:if="{{orderItems.status == 0}}">等待服务员确认</view> -->
+      <!-- <view class="detail-pay" bindtap="payNow" wx:if="{{orderItems.status == 1}}" style="background:{{pagecolor.linecolor}}">立即买单</view> -->
+      <view class="detail-pay" style="background:{{pagecolor.linecolor}}">
+        <view class="refresh" bindtap="refreshData" animation="{{animationData}}">
+          <view class="refrsh-point" wx:if="{{isRefrsh}}"></view>
+        </view>
+        <view class="pay-btn" bindtap="payNow">立即买单</view>
+      </view>
+    </view>
+  </block>
+  <block wx:if="{{orderItems.closeStr == '' && orderItems.table_order_status != 3}}">
+    <view class="service-hint">
+      <view class="ser-icon"></view>
+      <view class="rp-flex-item">
+        <view class="text">菜品退换后页面若未及时更新请手动刷新页面；</view>
+        <view class="text">如有疑问请联系服务员；</view>
+      </view>
+    </view>
+  </block>
+
+  <view class="ft-btn" wx:if="{{orderItems.table_order_status == 3 || orderItems.table_order_status == -1}}" bindtap="calling">联系服务员</view>
+  <!--底部导航end-->
+
+  <!--缺菜确认订单弹出层-->
+  <block wx:if="{{flagDialog == 'open'}}">
+    <view class="mask"></view>
+    <view class="affirm">
+      <block wx:if="{{orderItems.noticeMsgWarring == ''}}">
+        <view class="icont-querenshouhuo" style="color:{{pagecolor.bgcolor}};"></view>
+        <!--不缺菜图标-->
+      </block>
+      <block wx:if="{{orderItems.noticeMsgWarring != ''}}">
+        <view class="aff-false"></view>
+        <!--缺菜图标-->
+      </block>
+      <view class="affirm-text">
+        <block wx:if="{{orderItems.noticeMsgWarring != ''}}">
+          <text>{{orderItems.noticeMsgWarring}}</text>
+        </block>
+        {{orderItems.noticeMsgNomal}}
+      </view>
+      <view class="affirm-button" style="color:{{pagecolor.bgcolor}};" bindtap="affknow">知道了</view>
+    </view>
+  </block>
+  <!--缺菜确认订单弹出层end-->
+
+</view>
+<!--取餐码预览 wx:if="{{isPrew}}"-->
+<block wx:if="{{isPrew}}">
+  <view class='maskPrewImg'>
+    <view class='prewImg'>
+      <view class="tit">{{orderItems.shopTitle}}</view>
+      <view class="subhead">取餐码</view>
+      <text class="code-num">{{orderItems.flowid}}</text>
+      <text class="time">2017-12-29 16:17:03</text>
+      <image class="code-image" src="{{orderItems.showflowidbar}}"></image>
+      <text class="isbuy-tag" wx:if="{{orderItems.table_order_status == 3}}"></text>
+      <text class="btn-close" bindtap="closePrew"></text>
+    </view>
+  </view>
+</block>
+
+<!-- 虚拟支付明细弹窗 -->
+<view class="payDetailDialog" wx:if="{{isPayDetailDialog}}">
+  <view class="p-content">
+    <view class="tit">虚拟支付明细</view>
+    <view class="block-item">
+      <text>会员折扣</text>
+      <text>-￥{{orderItems.disprice>0?orderItems.disprice:0}}</text>
+    </view>
+    <view class="block-item">
+      <text>优惠券</text>
+      <text>-￥{{orderItems.couponmoney>0?orderItems.couponmoney:0}}</text>
+    </view>
+    <view class="block-item">
+      <text>余额支付</text>
+      <text>-￥{{orderItems.creadit2>0?orderItems.creadit2:0}}</text>
+    </view>
+    <view class="block-item">
+      <text>积分抵扣</text>
+      <text>-￥{{orderItems.creadit1>0?orderItems.creadit1:0}}</text>
+    </view>
+    <view class="ft" bindtap="closePayDetailDialog">知道了</view>
+  </view>
+</view>
+
+<!--取餐码预览end-->
+<template is="is_open" data="{{dialog}}"></template>
+<template is="dialog" data="{{...defaultDialog}}"></template>

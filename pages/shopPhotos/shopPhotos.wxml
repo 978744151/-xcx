@@ -1,0 +1,7 @@
+<import src="../templates/loading/loading.wxml" />
+<template is="loading" wx:if="{{isIndexLoad}}"></template>
+<block wx:if="{{!isIndexLoad}}">
+   <view class="photos clearfix">
+      <image mode="aspectFill" wx:for="{{photos}}" wx:key="pic" src="{{item.image}}" data-pics='{{photos}}' data-pic="{{item.image}}" bindtap="imgView"></image>
+   </view>
+</block>

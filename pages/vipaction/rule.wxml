@@ -1,0 +1,29 @@
+<template name="vipRule">
+    <view class="dialog-rule {{!isVipRuleHidde?'opacity-in':''}}" hidden="{{isVipRuleHidde}}">
+        <view class="rp-flex-column">
+            <view class="title" style="">{{shopName}}会员卡守则</view>
+            <scroll-view class="rp-flex-item" scroll-y style="height:{{scrollHeight}}rpx;">
+                <view class="wapper">
+                    <view class="mar-b42">
+                       客官，欢迎您激活微信会员卡！
+                    </view>
+                    <view class="mar-b42">
+                        激活微信会员卡，即您充分理解并接受本《会员守则》。
+                    </view>
+                    <view>
+                        1.进入微信小程序我的-会员中心页面即可获得一张会员卡，激活成功后可用于在本平台付款时享受会员折扣、积分及其他会员优惠。会员卡不可在其他移动端产、品及商店前台消费。
+                    </view>
+                    <view>2.您可能需要填写部分个人信息，包括但不限于姓名、性别、生日、手机号码、所在地区以及电子邮箱等，以便我们及时准确的为您服务</view>
+                    <view>3.您的个人信息资料将用于VIP活动、统计资料、消费行为调查或研究，或其他一些合法用途。我们将尊重和保护您的个人信息，不会因利益将其转卖或向他人披露。</view>
+                    <view>4.激活成功后本卡自动与您的微信账号绑定，为保护您的VIP权益请妥善保管好您的微信账号和密码。</view>
+                    <view>5.持卡人使用会员卡时请同时遵守本平台的相关规定。</view>
+                    <view>6。您同意并认可本平台将不定期变更会员卡服务规则，(包括但不限于购物次数、使用时段、使用商品等)，变更后会员卡服务规则会将更新后的内容同步至“会员卡守则”中，请您注意查看。</view>
+                    <view>7.持卡人使用会员卡时请同时遵守本平台的相关规定。</view>
+                </view>
+            </scroll-view>
+            <view class="footer">
+                <text class="close" bindtap="closeRule"></text>
+            </view>
+        </view>
+    </view>
+</template>

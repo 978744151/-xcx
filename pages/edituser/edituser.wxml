@@ -1,0 +1,51 @@
+<import src="../templates/message/message.wxml" />
+<import src="../templates/loading/loading.wxml" />
+<template is="loading" wx:if="{{isIndexLoad}}"></template>
+<template is="message" data="{{showMessage,messageContent}}"></template>
+<view class="edituser-wapper" wx:if="{{!isIndexLoad}}">
+   <view class="tip">请准确填写对应信息，方便餐厅更好为您服务</view>
+   <view class="edit-from">
+      <view class="title" wx:if="{{type == 'gender'}}">性别</view>
+      <view class="title" wx:if="{{type == 'realname'}}">姓名</view>
+      <view class="title" wx:if="{{type == 'email'}}">邮箱</view>
+      <view class="title {{type == 'birthday' && !!typeValue ? 'color-ccc' : ''}}" wx:if="{{type == 'birthday'}}">生日</view>
+      <view class="chang-input ">
+         <view class="dc-wapper ">
+            <block wx:if="{{type == 'realname' || type == 'email'}}">
+               <input class="rp-flex-item " type="text" value="{{typeValue}}" bindinput="bindInput" />
+            </block>
+            <!--职业  -->
+            <!-- <block wx:if="{{type == 'realname' || type == 'email'}}">
+               <input class="rp-flex-item " type="text" value="{{typeValue}}" bindinput="bindInput" />
+            </block> -->
+
+
+            <block wx:if="{{type == 'gender'}}">
+               <picker style="width: 100%;" bindchange="bindPickerChange" value="{{typeValue-1}}" range="{{sexArray}}">
+                  <view class="picker rp-flex" style="align-items: center;width: 100%;">
+                     <!-- <view class="form-name">性别</view> -->
+                     <view class="rp-flex-item ">{{sex}}</view>
+                     <text class="iconfont icon-right-more"></text>
+                  </view>
+               </picker>
+            </block>
+            <block wx:if="{{type == 'birthday'}}">
+               <view class="picker rp-flex color-ccc" style="align-items: center;width: 100%;" wx:if="{{!!typeValue}}" bindtap="showMsg">
+                  <view class="rp-flex-item">{{birthday}}</view>
+               </view>
+               <picker mode="date" value="{{start}}" style="width: 100%;" start="1950-01-01" end="2017-09-01" bindchange="bindDateChange" wx:else>
+                  <view class="picker rp-flex" style="align-items: center;width: 100%;">
+                     <!-- <view class="form-name ">生日</view> -->
+                     <view class="rp-flex-item">{{birthday}}</view>
+                     <text class="iconfont icon-right-more"></text>
+                  </view>
+               </picker>
+            </block>
+         </view>
+      </view>
+   </view>
+   <view class="tip-btm" wx:if="{{type == 'birthday' &&  !!typeValue}}">生日信息已填写，无法修改,若想修改请联系客服</view>
+   <view class="form-submit-wapper" wx:if="{{!(type == 'birthday' && !!typeValue)}}">
+      <view class="btn" bindtap="submitFn">保存</view>
+   </view>
+</view>

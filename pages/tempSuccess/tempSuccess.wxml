@@ -1,0 +1,49 @@
+<!-- 支付成功 -->
+<!-- <view class="cc" bindtap="pullUpSuc">支付成功</view> -->
+<view class="mask" wx:if="{{isSuccess}}"></view>
+<view class="content" style="visibility:{{isSuccess?'visible':'hidden'}};">
+    <view class="rp-suc {{isSuccess?'rfade-up':''}}" >
+        <view class="suc-wapper">
+            <view class="suc-header">
+                <view class="suc-header-wapper">
+                    <view class="title">
+                        <text class="suc-icon"></text>
+                        <text>支付成功</text>
+                    </view>
+                    <view class="money">
+                        <text>实付金额：</text>
+                        <view class="strong">
+                            <text>￥</text>
+                            <text class="num">{{successData.payPrice}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="suc-body">
+                <view class="name rp-flex">
+                    <view class="rp-flex-item">
+                        {{successData.shopTitle}}
+                    </view>
+                    <view class="right-span">
+                        {{successData.table_title}}
+                    </view>
+                </view>
+                <view class="list">
+                    <view class="item">消费总额：￥{{successData.rel_pay}}</view>
+                    <view class="item">优惠金额：￥{{successData.couponmoney}}</view>
+                    <view class="item">消费余额：￥{{successData.use_money}}</view>
+                    <view class="item">消费积分：{{successData.use_credit}}积分</view>
+                    <view class="item">获赠积分：
+                        <text style="color:#f14949;">{{successData.get_credit}}积分</text>
+                    </view>
+                    <view class="item">订单编号：{{successData.ordersn}}</view>
+                    <view class="item">消费时间：{{successData.time}}</view>
+                </view>
+                <view bindtap="backIndex" open-type="switchTab" class="suc-footer">
+                    返回首页
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+

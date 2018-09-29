@@ -1,0 +1,9 @@
+<import src="../templates/loading/loading.wxml" />
+<template is="loading" wx:if="{{isLoading}}"></template>
+<view class="ordering" wx:if="{{!isLoading}}">
+    <view class="ing-ok"></view>
+    <text class="ing-p1">订单提交中...</text>
+    <text class="ing-p2" wx:if="{{type == 'yuding'}}">您点的菜品正在提交给后厨，请耐心等待</text>
+    <text class="ing-p2" wx:else>您点的菜品正在提交给后厨，请耐心等待</text>
+    <text class="ing-p3">{{second}}s后进入订单页</text>
+</view>

@@ -1,0 +1,22 @@
+<!--index.wxml-->
+<import src="../templates/foot/foot.wxml" />
+<import src="../templates/loading/loading.wxml" />
+<import src="../templates/dialog/dialog.wxml" />
+<import src="../templates/message/message.wxml" />
+<template is="message" data="{{showMessage,messageContent}}"></template>
+<template is="msg-dialog" data="{{dialog}}"></template>
+<template is="is_open" data="{{dialog}}"></template>
+<template is="debugDialog" data="{{isDebug,debugtxt}}"></template>
+<template is="loading" wx:if="{{isLoading}}"></template>
+<view class="sweep" wx:if="{{!isLoading}}">
+    <view bindtap="shopinfo" class="shoplogo">
+        <view class="logo-wapper">
+            <image class="shoplogo-avatar" src="{{shopinfo.storelogo}}" mode="scaleToFill"></image>
+        </view>
+        <text class="shoplogo-nickname"></text>
+        <!-- <text class="shopinfo-text">{{shopinfo.screen_bottom}}</text>style="background:#e63838;color:{{pagecolor.textcolor}};" -->
+    </view>
+    <view class="scaninfo" bindtap="shopscan"></view>
+    <view class="jishu"><image src="https://pic.repaiapp.com/static/png/20180928/19/1538133642371179749.png"></image></view>
+    <template is="power-dialog" data="{{isPowerHidden,powerDialogTip,powerBtnColor}}"></template>
+</view>                             

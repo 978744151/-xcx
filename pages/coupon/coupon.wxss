@@ -1,0 +1,69 @@
+.coupon{padding-bottom: 125rpx;}
+.content{padding:20rpx 20rpx 0; position: relative}
+.content .item{
+   width: 100%;box-sizing: border-box;border:1px solid #ddd;border-radius: 8rpx;
+   background: #fff;
+   padding:30rpx 30rpx 30rpx 0;
+   box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.1); 
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   height: 230rpx;
+}
+.item .left{width: 218rpx;text-align: center;color: #c8b285;}
+.item .left .money{display: flex;justify-content: center;align-items: baseline;}
+.item .left .money image{width: 137rpx;height: 66rpx;margin-bottom: 18rpx;}
+.item .left .money text.disc{font-size: 68rpx;line-height: 97rpx;display: block;font-weight: 500;}
+.item .left .money text.tip,.item .left .money text.discount{font-size: 36rpx;padding-top:34rpx;display: block;}
+.item .left .money text.discount{font-size: 30rpx;}
+.item .left .flag{margin: 0 auto;color: #fff;display:block;width: 128rpx;height: 37rpx;background: #c8b285;font-size: 26rpx;line-height: 37rpx;text-align: center;border-radius:19rpx; }
+
+.item .right{position: relative;flex: 1;padding-left:20rpx; }
+.item .right::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2rpx;
+  height: 100%;
+  background: url('https://pic.repaiapp.com/static/png/20171213/10/1513131372046539952.png') repeat-x center;
+  background-size: 2rpx auto;
+}
+.item .right .title{font-size: 34rpx;line-height: 80rpx;font-weight: 500;}
+.item .right .text{font-size: 26rpx;line-height: 30rpx;}
+.item .right .time{font-size:26rpx;line-height: 58rpx;padding-bottom: 6rpx}
+.useBtn{position: fixed;width: 100%;height: 96rpx;line-height: 96rpx;color: #fff;font-size: 36rpx;text-align: center;left: 0;bottom: 0;background: #f14949;}
+.nodiscount{
+  position: relative;
+  text-align: center;
+  padding-top: 250rpx;
+}
+.nodiscount image{
+  width: 294rpx;
+  height: 227rpx;
+}
+.belongNo{
+  width:690rpx;
+  position: absolute;
+  background:#fff;
+  opacity: 0.38;
+  left:30rpx;
+  height:230rpx;
+  top:20rpx;
+  z-index: 9
+}
+.getNow{
+  width:160rpx;
+  height:60rpx;
+  background:#f14949;
+  color:#fff;
+  position: absolute;
+  z-index: 99;
+  right:8%;
+  top:50%;
+  transform: translateY(-50%);
+  text-align: center;
+  line-height:60rpx;
+  border-radius: 8rpx;
+}
+

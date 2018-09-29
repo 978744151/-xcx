@@ -1,0 +1,215 @@
+page {
+    background: #fff;
+    height: 100%;
+}
+
+.content {
+    padding-bottom: 20rpx;
+}
+
+.card-panle {
+    height: 375rpx;
+    background: #202533;
+    padding: 25rpx 30rpx 0 30rpx;
+}
+
+.card-panle .body {
+    border-top-left-radius: 8rpx;
+    border-top-right-radius: 8rpx;
+    background: #ebc959;
+    padding: 35rpx;
+    height: 310rpx;
+    color: #fff;
+}
+
+.card-panle .part-one {
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    padding-left: 12rpx;
+    font-size: 0;
+}
+
+.card-panle .name {
+    font-size: 32rpx;
+    margin-bottom: 10rpx;
+    font-weight: 500;
+}
+
+.part-progress {
+    position: relative;
+    margin: 102rpx 0 62rpx;
+}
+
+.part-progress .tip {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 38rpx;
+    line-height: 38rpx;
+    padding: 0 12rpx;
+    /*-webkit-transform: translateX(x);*/
+    transform: translate(-50%, -58rpx);
+    border: 1rpx solid #fff;
+    font-size: 23rpx;
+    border-radius: 4rpx;
+    letter-spacing: .5rpx;
+}
+
+.part-progress .tip .wapper {
+    position: relative;
+}
+
+.part-progress .arrow::after {
+    content: '';
+    position: absolute;
+    bottom: -10rpx;
+    left: 50%;
+    margin-left: -5rpx;
+    width: 0;
+    height: 0;
+    border-top: 10rpx solid #fff;
+    border-left: 10rpx solid transparent;
+    border-right: 10rpx solid transparent;
+    z-index: 1;
+}
+
+.part-progress .arrow::before {
+    content: '';
+    position: absolute;
+    bottom: -8rpx;
+    left: 50%;
+    margin-left: -4rpx;
+    width: 0;
+    height: 0;
+    border-top: 8rpx solid #ebc959;
+    border-left: 8rpx solid transparent;
+    border-right: 8rpx solid transparent;
+    z-index: 2;
+}
+
+.part-progress .next-level {
+    position: absolute;
+    bottom: -30rpx;
+    right: 0;
+    line-height: 24rpx;
+    font-size: 23rpx;
+    letter-spacing: .5rpx;
+}
+
+progress {
+    transform: scale(1, .5);
+}
+
+.card-panle .part-two {
+    text-align: center;
+}
+
+.card-panle .part-two .tag {
+    display: inline-block;
+    color: #ebc859;
+    height: 37rpx;
+    line-height: 37rpx;
+    padding: 0 10rpx;
+    background: #fff;
+    font-size: 26rpx;
+    border-radius: 4rpx;
+    margin-right: 12rpx;
+}
+
+.card-panle .part-two text {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.power-panle .tip {
+    height: 68rpx;
+    line-height: 68rpx;
+    background: #f5f5f5;
+    font-size: 26rpx;
+    padding: 0 26rpx;
+}
+
+.power-panle .title {
+    margin: 42rpx 0 35rpx;
+    text-align: center;
+}
+
+.power-panle .title .strong {
+    display: block;
+    font-size: 32rpx;
+    color: #010101;
+    margin-bottom: 10rpx;
+}
+
+.power-panle .title .sup {
+    font-size: 28rpx;
+    color: #939393;
+}
+
+.power-panle .list {
+    display: flex;
+    /*padding: 0 30rpx;*/
+    padding-right: 35rpx;
+    flex-wrap: wrap;
+    /*justify-content: space-between;*/
+}
+
+.power-panle .list .item {
+    display: block;
+    text-align: center;
+    width: 200rpx;
+    margin-left: 35rpx;
+    margin-bottom: 40rpx;
+}
+
+.power-panle .list .circle {
+    display: -webkit-flex;
+    display: flex;
+    width: 160rpx;
+    height: 180rpx;
+    border-radius: 50%;
+    align-items: center;
+    border: 10rpx solid #9fb2a6;
+    padding: 0 10rpx;
+    margin-bottom: 20rpx;
+}
+
+.power-panle .list .circle-txt {
+    display: block;
+    width: 100%;
+    font-weight: bold;
+    text-align: center;
+    font-size: 30rpx;
+    color: #000000;
+}
+
+.power-panle .list .sup {
+    display: block;
+    padding: 0 20rpx;
+    color: #939393;
+    font-size: 26rpx;
+}
+
+.rote-panle {
+    margin: 100rpx 0 150rpx 0;
+    text-align: center;
+}
+
+.rote-panle .rote-btn {
+    display: inline-block;
+    height: 70rpx;
+    line-height: 70rpx;
+    width: 336rpx;
+    color: #3d925b;
+    border: 1rpx solid #3d925b;
+    border-radius: 4rpx;
+    font-size: 25rpx;
+}
+
+.icon-k-care{
+    display: inline-block;
+    margin-right: 10rpx;
+    vertical-align: middle;
+    font-size: 28rpx;
+}

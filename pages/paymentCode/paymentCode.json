@@ -1,0 +1,7 @@
+{
+    "navigationBarBackgroundColor": "#fefefe",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": false,
+    "disableScroll": true,
+    "navigationBarTitleText": "VIP支付"
+}

@@ -1,0 +1,54 @@
+/* pages/praise/praise.wxss */
+page{background: #fff;}
+.state{padding-bottom: 60rpx;border-bottom: 1px solid #ddd;}
+.goodRep{text-align: center;font-size: 30rpx;line-height: 100rpx;color: #a6a5a5;}
+.goodRep text{color: #f14949;}
+.appraiseState{justify-content: center;align-items: center;display: flex;}
+.appraiseState .stateBox{width: 120rpx;text-align: center;}
+.appraiseState .stateBox image{width: 50rpx;height: 50rpx;}
+.appraiseState .stateBox view{font-size: 26rpx;line-height: 68rpx;}
+.textarea textarea{width: 100%;box-sizing: border-box;height: 180rpx;padding: 30rpx 20rpx 0;line-height: 40rpx;}
+/*上传图片  */
+.upPic{padding: 0 30rpx 30rpx;display: flex;}
+.upPic .picBox{width: 210rpx;height: 210rpx;box-sizing: border-box;border: 1rpx solid #ddd;position: relative;margin-right: 30rpx;}
+.upPic .picBox image{width: 100%;height: 100%;}
+.upPic .picBox text{z-index: 100;position: absolute;width: 44rpx;height: 44rpx;background: url(https://pic.repaiapp.com/static/png/20171206/14/1512542528473165151.png)no-repeat;background-size: 44rpx;top:-22rpx;right: -22rpx;}
+.upPic .addPic{width: 210rpx;height: 210rpx;border: 1rpx dashed #ddd;background:#f6f6f6;box-sizing: border-box;text-align: center; color: #a6a5a5;padding-top: 46rpx;}
+.upPic .addPic image{width:79rpx;height: 65rpx;margin: 0 auto; }
+.upPic .addPic view{line-height:39rpx;padding-top: 4rpx; }
+.upPic .addPic text{line-height:37rpx;font-size:  26rpx;}
+
+.send{padding: 40rpx 20rpx 0;border-top: 1px solid #ddd;}
+.send text{display: block;width: 100%;height: 88rpx;line-height: 88rpx;border-radius: 4rpx;background: #f14949;color: #fff;text-align: center;}
+.isSend text{background: #f79292;color: #f6f6f6;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

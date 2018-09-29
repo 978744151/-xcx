@@ -1,0 +1,17 @@
+var totalNumber = function(a,b,c){
+  var totalprice = parseFloat(a) + parseFloat(b) + parseFloat(c);
+  // console.log(parseFloat(a), parseFloat(b), totalprice)
+  return totalprice
+} 
+
+/**
+ * @desc 截取订单号后8位
+ */
+var strSubSix = function(str){
+    return str.substring(str.length-8)
+}
+
+module.exports = {
+  totalNumber: totalNumber,
+    strSubSix: strSubSix
+}

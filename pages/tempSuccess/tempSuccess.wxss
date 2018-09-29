@@ -1,0 +1,178 @@
+.starbox {
+    border-top: 1rpx solid #ebebeb;
+    border-bottom: none;
+    height: 95rpx;
+}
+
+.startit {
+    font-size: 30rpx;
+    color: #010101;
+}
+
+.helptext.pj-textarea {
+    padding: 0 24rpx;
+    height: auto;
+}
+
+.pj-textarea-wapper {
+    font-size: 28rpx;
+    background: #f6f6f6;
+    padding: 24rpx 12rpx;
+    border-radius: 4rpx;
+}
+
+.pj-textarea-wapper textarea {
+    height: 146rpx;
+    width: 100%;
+}
+
+.ss-subimt {
+    padding: 24rpx 24rpx 40rpx 24rpx;
+    justify-content: flex-end;
+}
+
+.ss-subimt button {
+    display: block;
+    float: right;
+    text-align: center;
+    width: 172rpx;
+    height: 56rpx;
+    line-height: 56rpx;
+    align-items: flex-end;
+    font-size: 24rpx;
+    color: #2297e5;
+    background-color: transparent;
+    border: 1rpx solid #2297e5;
+}
+
+.ss-subimt button::after {
+    content: none;
+}
+
+.content {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 66;
+    background: transparent;
+}
+
+.mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+    z-index: 10;
+}
+
+.rp-suc {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    transform: translate(-50%,-50%);
+    /* transform: translate(0, 100%); */
+    opacity: 0;
+    transition: opacity ease-in .3s;
+    z-index: 20;
+}
+
+.rp-suc.rfade-up{
+    opacity:1;
+    transition: opacity ease-in .3s;
+}
+
+.suc-wapper {
+    padding: 0 24rpx 24rpx 24rpx;
+}
+
+.suc-header {
+    padding: 0 24rpx;
+    border-radius: 32rpx;
+    background: #fff;
+    text-align: center;
+}
+
+.suc-header-wapper {
+    padding: 60rpx 0;
+    border-bottom: 1rpx solid #ebebeb;
+}
+
+.suc-header .title {
+    color: #53b837;
+    font-size: 30rpx;
+    margin-bottom: 20rpx;
+}
+
+.suc-header .title text {
+    vertical-align: middle;
+}
+
+.suc-header .title .suc-icon {
+    display: inline-block;
+    height: 34rpx;
+    width: 34rpx;
+    background: url('https://pic.repaiapp.com/pic/8a/33/ca/8a33ca9772ae8cbb64d5314ff0e32eaf3daedda6.png') center no-repeat;
+    background-size: cover;
+    margin-right: 15rpx;
+}
+
+.suc-header .money {
+    font-size: 28rpx;
+    color: #565656;
+}
+
+.suc-header .money .strong {
+    display: inline-block;
+    color: #000;
+    font-weight: bold;
+}
+
+.suc-header .money .strong .num {
+    font-size: 42rpx;
+}
+
+.suc-body {
+    border-radius: 16rpx;
+    background: #fff;
+}
+
+.suc-body .name {
+    height: 106rpx;
+    line-height: 106rpx;
+    padding: 0 24rpx;
+    border-bottom: 1rpx solid #ebebeb;
+}
+
+.suc-body .name .rp-flex-item {
+    font-size: 30rpx;
+    color: #010101;
+}
+
+.suc-body .name .right-span {
+    font-size: 28rpx;
+    color: #656565;
+}
+
+.suc-body .list {
+    padding: 34rpx 24rpx;
+    font-size: 30rpx;
+    color: #656565;
+}
+
+.suc-body .list .item {
+    margin-bottom: 22rpx;
+}
+
+.suc-footer {
+    border-top: 1rpx solid #ebebeb;
+    height: 104rpx;
+    line-height: 104rpx;
+    color: #010101;
+    font-size: 30rpx;
+    text-align: center;
+}

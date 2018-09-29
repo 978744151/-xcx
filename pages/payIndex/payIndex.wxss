@@ -1,0 +1,242 @@
+/* pages/payIndex/payIndex.wxss */
+
+page {
+    background: #242736;
+}
+
+page::after {
+    content: none;
+}
+
+.panle-payindex {
+    padding: 0 32rpx;
+    text-align: center;
+}
+
+.panle-payindex .title {
+    font-size: 28rpx;
+    color: #fff;
+    line-height: 1;
+    margin: 36rpx 0 70rpx;
+}
+
+.code-section {
+    position: relative;
+    background: #fff;
+    border-radius: 6rpx;
+}
+
+.code-section::after,
+.code-section::before {
+    content: '';
+    position: absolute;
+    width: 30rpx;
+    height: 30rpx;
+    background: #242736;
+    border-radius: 50%;
+}
+
+.code-section::after {
+    top: 320rpx;
+    left: -15rpx;
+}
+
+.code-section::before {
+    top: 320rpx;
+    right: -15rpx;
+}
+
+.code-section .top-span {
+    position: relative;
+    height: 335rpx;
+}
+
+.code-section .top-span::after {
+    content: '';
+    position: absolute;
+    bottom: -1rpx;
+    left: 50%;
+    width: 640rpx;
+    margin-left: -320rpx;
+    height: 3rpx;
+    background: url('https://pic.repaiapp.com/static/png/20180111/10/1515638116007385251.png') no-repeat center;
+    background-size: cover;
+}
+
+.code-section .top-span .user-img {
+    position: absolute;
+    top: -40rpx;
+    left: 50%;
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+    margin-left: -40rpx;
+}
+
+.code-section .top-span .user-name {
+    display: block;
+    padding-top: 48rpx;
+    font-size: 28rpx;
+    color: #242736;
+    line-height: 1;
+    margin-bottom: 30rpx;
+}
+
+.code-section .top-span .code-img {
+    height: 150rpx;
+    width: 530rpx;
+}
+
+
+.code-section .top-span .code-num {
+    font-size: 28rpx;
+    margin-top: 20rpx;
+    line-height: 1;
+}
+
+.code-section .bottom-span {
+    height: 470rpx;
+}
+
+.code-section .bottom-span .qrcode-img {
+    width: 340rpx;
+    height: 340rpx;
+    margin-top: 40rpx;
+    margin-bottom: 30rpx;
+    vertical-align: top;
+}
+
+.code-section .bottom-span .vip-num {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30rpx;
+    line-height: 1;
+    color: #242736;
+}
+
+.code-section .bottom-span .vip-num .strong {
+    color: #ff8400;
+}
+
+.refresh {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    margin-top: 28rpx;
+    line-height: 1;
+}
+
+.refresh .icont-refresh {
+    display: inline-block;
+    width: 22rpx;
+    height: 24rpx;
+    margin-left: 10rpx;
+    background: url('https://pic.repaiapp.com/static/png/20180111/11/1515641083347410254.png') no-repeat center;
+    background-size: cover;
+}
+
+.refresh .icont-refresh.active{
+  transform: rotate(360deg);
+  transition: 1s transform ease;
+}
+
+.ft {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.ft .i-bl {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    align-items: center;
+    padding: 16rpx 30rpx;
+}
+
+.ft .i-bl .item {
+    display: -webkit-inline-flex;
+    display: -moz-inline-flex;
+    display: -ms-inline-flex;
+    display: -o-inline-flex;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    color: #8f9199;
+    font-size: 28rpx;
+}
+
+
+.ft .i-bl .item.active {
+    color: #fff;
+}
+
+.ft .i-bl .item .icont {
+    display: inline-block;
+    width: 54rpx;
+    height: 54rpx;
+    margin-bottom: 16rpx;
+}
+
+.ft .i-bl .item .icont.icont-img1 {
+    background: url('https://pic.repaiapp.com/static/png/20180111/14/1515652786128335297.png') no-repeat center;
+    background-size: cover;
+}
+
+.ft .i-bl .item .icont.icont-img2 {
+    background: url('https://pic.repaiapp.com/static/png/20180112/10/1515725393869525799.png') no-repeat center;
+    background-size: cover;
+}
+
+.ft .i-bl .item .icont.icont-img3 {
+    background: url('https://pic.repaiapp.com/static/png/20180112/10/1515725444838752102.png') no-repeat center;
+    background-size: cover;
+}
+
+.dialog-code {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 22;
+    background: #fff;
+    text-align: center;
+}
+
+.dialog-code image {
+    -webkit-transform: rotate(90deg) scale(1.25, 1.25);
+    transform: rotate(90deg) scale(1.25, 1.25);
+    height: 100%;
+    transition: transform 1s;
+}
+
+.moncode-hint{
+   position: absolute;
+   right: -200rpx;
+   top: 50%;
+   margin-top: -20rpx;
+   font-size: 26rpx;
+   color: #ff9600;
+   background: url(https://pic.repaiapp.com/pic/33/13/58/331358145b1321eeec478116bc1067ceac7874cc.png) left center no-repeat;
+   background-size: 26rpx 30rpx;
+   padding-left: 30rpx;
+   -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}

@@ -1,0 +1,65 @@
+<import src="../templates/message/message.wxml" />
+<import src="../templates/loading/loading.wxml" />
+<template is="message" data="{{showMessage,messageContent}}"></template>
+<view class="search-selection">
+    <view class="blank">
+        <view class="input-search" bindtap="getFocus">
+            <text class="icont-search"></text>
+            <input type="text" class="{{isFocus ?'rp-flex-item':'' || !!searchValue ?'rp-flex-item':''}}" placeholder="请输入选择城市" value="{{searchValue}}" bindinput="bindInput" focus="{{isFocus}}" bindfocus="getFocus" bindblur="blur" bindconfirm="handleConfirm" confirm-type="search" />
+        </view>
+    </view>
+</view>
+<scroll-view class="seh-list" scroll-y="true" style="height:{{winHeight-52}}px;" wx:if="{{searchValue}}">
+    <view class="seh-item" wx:for="{{shcity}}" wx:key="index" data-text="{{item.city}}" data-id="{{item.id}}" bindtap="wxSortPickerViewItemTap">{{item.city}}</view>
+</scroll-view>
+<block wx:if="{{!searchValue}}">
+    <view class="aa" style="height: 52px;"></view>
+    <view class="searchLetter touchClass">
+        <view style="height:{{itemH}}px;font-size: 20rpx;" data-letter="HOT" catchtouchstart="searchStart" catchtouchmove="searchMove" catchtouchend="searchEnd">热</view>
+        <view wx:for="{{searchLetter}}" style="height:{{itemH}}px" wx:key="index" data-letter="{{item.name}}" catchtouchstart="searchStart" catchtouchmove="searchMove" catchtouchend="searchEnd">{{item.name}}</view>
+    </view>
+    <scroll-view scroll-y="true" style="height:{{winHeight-52}}px;" bindscroll="bindScroll" scroll-into-view="{{showLetter}}">
+        <view class="selection" id="HOT">
+            <block wx:if="{{cityArr.length}}">
+                <view class="item_letter">当前城市</view>
+                <view class="now-city">
+                    <view class="left-map rp-flex" bindtap="back" data-id="{{adcode}}" data-text="{{qqCity}}">
+                        <view class="icont-map"></view>
+                        <view class="rp-flex-item strong">当前:{{qqCity}}</view>
+                    </view>
+                    <view class="right-map" bindtap="aginMap">
+                        <view class="icont {{isMapLoad?'loading':'map'}}"></view>
+                        <view class="text">重新定位</view>
+                    </view>
+                </view>
+            </block>
+            <view style="margin-bottom: 15px">
+                <view class="item_letter">热门城市</view>
+                <view style="margin-left:28rpx;">
+                    <view class="kuai" data-text="北京市" data-id="110100" bindtap="wxSortPickerViewItemTap">北京市</view>
+                    <view class="kuai" data-text="上海市" data-id="310100" bindtap="wxSortPickerViewItemTap">上海市</view>
+                    <view class="kuai" data-text="天津市" data-id="120100" bindtap="wxSortPickerViewItemTap">天津市</view>
+                    <view class="kuai" data-text="广州市" data-id="440100" bindtap="wxSortPickerViewItemTap">广州市</view>
+                    <view class="kuai" data-text="成都市" data-id="510100" bindtap="wxSortPickerViewItemTap">成都市</view>
+                    <view class="kuai" data-text="杭州市" data-id="330100" bindtap="wxSortPickerViewItemTap">杭州市</view>
+                    <view class="kuai" data-text="深圳市" data-id="440300" bindtap="wxSortPickerViewItemTap">深圳市</view>
+                    <view class="kuai" data-text="苏州市" data-id="320500" bindtap="wxSortPickerViewItemTap">苏州市</view>
+                    <view class="kuai" data-text="重庆市" data-id="500100" bindtap="wxSortPickerViewItemTap">重庆市</view>
+                    <view class="kuai" data-text="武汉市" data-id="420100" bindtap="wxSortPickerViewItemTap">武汉市</view>
+                    <view class="kuai" data-text="厦门市" data-id="350200" bindtap="wxSortPickerViewItemTap">厦门市</view>
+                    <view class="kuai" data-text="南京市" data-id="320100" bindtap="wxSortPickerViewItemTap">南京市</view>
+                </view>
+            </view>
+        </view>
+        <view class="selection" wx:for="{{cityList}}" wx:key="{{item.initial}}" id="{{item.initial}}">
+            <block wx:if="{{index===0}}">
+            </block>
+            <view class="item_letter">{{item.initial}}</view>
+            <view class="item_city" wx:for="{{item.cityInfo}}" wx:for-item="ct" wx:key="{{ct.id}}" wx:for-index="idx" data-text="{{ct.city}}" data-id="{{ct.id}}" bindtap="wxSortPickerViewItemTap">{{ct.city}}</view>
+        </view>
+    </scroll-view>
+</block>
+<!--  -->
+<block wx:if="{{isShowLetter}}">
+    <view class="showSlectedLetter">{{showLetter}}</view>
+</block>

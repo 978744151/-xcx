@@ -1,0 +1,100 @@
+<block>
+  <view class='wraper'>
+    <view class='itemOne'>
+       <view class='itemOneT'>
+        <text></text>
+        <view>前往门店柜台联通自助销售服务机办理联通网卡.</view>
+      </view>
+    </view>
+    <view class='itemTwo itemCard'>
+      <view class='itemTop'>
+        <text></text>
+        <view>前往办卡机扫码自助充值{{cardInfo.money}}元话费.</view>
+      </view>
+    </view>
+    <view class='itemTwo'>
+      <view class='itemTop'>
+        <text></text>
+        <view>点击下面的扫码按钮,扫码大王卡白卡条形码,免费领取{{cardInfo.money}}元优惠券.</view>
+      </view>
+      <view class='scan' bindtap='showCode'></view>
+      <view class='desc'>扫码领取{{cardInfo.money}}元优惠券</view>
+      <view class='scanDesc' bindtap='showCourse'></view>
+    </view>
+    <view style='height:30rpx;'></view>
+  </view>
+  <view class='course' wx:if="{{Course}}">
+    <view class='closeCourse' bindtap='closeCourse'></view>
+  </view>
+  <!-- 成功 -->
+  <block wx:if="{{readyCoin}}">
+    <view class='couponModal'>
+      <view class='mask'></view>
+      <view class='modalCon'>
+        <view class='kingLogo'></view>
+        <view class='kingCou1'>
+          <block>
+            <image src='../../images/num{{hundred}}.png' wx:if="{{hundred}}"></image>
+            <image src='../../images/num{{ten}}.png' wx:if="{{ten}}"></image>
+            <image src='../../images/num{{individual}}.png'></image>
+            <image src='../../images/yuan.png'></image>
+          </block>
+        </view>
+        <view class='couponDesc'>恭喜您获得{{cardInfo.money}}元会员余额</view>
+        <navigator class='kingLook' bind:tap="goKingCard" url='/pages/vip/vip' open-type='navigate' hover-class='none'>查看余额</navigator>
+        <view class='closeKing' bindtap='closeKingModal'></view>
+      </view>
+    </view>
+  </block>
+  <!-- 失败 -->
+  <block wx:if="{{yetCoin}}">
+    <view class='couponModal'>
+      <view class='mask'></view>
+      <view class='modalCon'>
+        <view class='kingLogo'></view>
+        <view class='kingCou'>
+          <block>
+            <image src='../../images/num{{hundred}}.png' wx:if="{{hundred}}"></image>
+            <image src='../../images/num{{ten}}.png' wx:if="{{ten}}"></image>
+            <image src='../../images/num{{individual}}.png'></image>
+            <image src='../../images/yuan.png'></image>
+          </block>
+        </view>
+        <view class='couponDesc'>该大王卡已兑换余额</view>
+        <navigator class='kingLook' bind:tap="goKingCard" url='/pages/vip/vip' open-type='navigate' hover-class='none'>查看余额</navigator>
+        <view class='closeKing' bindtap='closeKingModal'></view>
+      </view>
+    </view>
+  </block>
+  <block wx:if="{{isVip == 0 || status}}">
+    <!-- 是否会员 -->
+    <!-- isVip == 0 -->
+    <view class='couponModal'>
+      <view class='mask'></view>
+      <view class='modalCon'>
+        <view class='kingLogo'></view>
+        <view class='kingJu'>
+          <image src="{{stu=='-4' ? 'https://pic.repaiapp.com/static/png/20180918/11/1537242109386310257.png' : 'https://pic.repaiapp.com/static/png/20180918/11/1537242081890901101.png'}}"></image>
+        </view>
+        <view class='couponDesc statusBox' wx:if="{{isVip == 0}}">你还不是会员，请先激活会员</view>
+        <view class='couponDesc statusBox' wx:else>
+            <view wx:if="{{stu=='-2'}}">
+                <view>您的话费充值支付失败</view>
+                <text>请前往办卡机重新充值</text>
+            </view>
+            <view wx:if="{{stu=='-3'}}">
+                <view>您还未充值话费,请前往办</view>
+                <text>卡机自助充值50元话费</text>
+            </view>
+            <view wx:if="{{stu=='-4'}}">
+                <view>您的话费充值正在路上,</view>
+                <text>请5分钟后在重试～</text>
+            </view>
+        </view>
+        <navigator class='kingLook' open-type='switchTab' url='/pages/mycenter/mycenter' hover-class="other-navigator-hover" wx:if="{{isVip == 0}}">立即激活</navigator>
+        <view class='kingLook' bindtap='closeKingModal' wx:else>我知道了</view>
+        <view class='closeKing' bindtap='closeKingModal' wx:if="{{isVip !== 0}}"></view>
+      </view>
+    </view>
+  </block>
+</block>

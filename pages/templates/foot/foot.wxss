@@ -1,0 +1,21 @@
+.rp-foot-wapper {
+    position: absolute;
+    left: 0rpx;
+    bottom: 0rpx;
+    text-align: center;
+    width: 100%;
+}
+
+.rp-foot {
+    text-align: center;
+    padding: 25rpx 0;
+    width: 100%;
+}
+
+.rp-foot .img {
+    width: 100%;
+    height: 117rpx;
+    /*background: url('https://pic.repaiapp.com/pic/05/25/31/052531731aeab17ee0b85a11c74a7da348631ee0.png') center no-repeat;*/
+    background:  url('https://pic.repaiapp.com/pic/0f/2e/2a/0f2e2a4c80fe54a0072a2f3191e1d4c104ecd649.png') center no-repeat;
+    background-size: auto 117rpx;
+}

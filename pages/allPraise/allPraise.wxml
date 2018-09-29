@@ -1,0 +1,59 @@
+<import src="../templates/loading/loading.wxml" />
+<template is="loading" wx:if="{{isIndexLoad}}"></template>
+<!--用户评价  -->
+<view class="appraise" wx:if="{{!isIndexLoad}}">
+  <view class="gather">
+    <view class="goodRep">商家好评率
+      <text>{{allPraise.goodrate}}%</text>
+    </view>
+    <view class="appraiseState">
+      <view class="stateBox">
+        <image src="{{praise.yawp.img}}"></image>
+        <view>{{praise.yawp.name}}
+          <text>{{allPraise.bumancounts}}</text>
+        </view>
+      </view>
+      <view class="stateBox">
+        <image src="{{praise.common.img}}"></image>
+        <view>{{praise.common.name}}
+          <text>{{allPraise.yibancounts}}</text>
+        </view>
+      </view>
+      <view class="stateBox">
+        <image src="{{praise.ok.img}}"></image>
+        <view>{{praise.ok.name}}
+          <text>{{allPraise.manyicounts}}</text>
+        </view>
+      </view>
+      <view class="stateBox">
+        <image src="{{praise.supPraise.img}}"></image>
+        <view>{{praise.supPraise.name}}
+          <text>{{allPraise.chaozancounts}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="appraiseConBox">
+      <view class="appraiseCon" wx:for="{{praiseList}}" wx:key="index">
+        <view class="userLogo">
+          <image src="{{item.headimg}}"></image>
+        </view>
+        <view class="detail">
+          <view class="name">
+            <view>{{item.nickname}}</view>
+            <text>{{item.dateline}}</text>
+          </view>
+          <view class="state">
+            <image src="{{item.star==1? praise.yawp.img:(item.star==2? praise.common.img:(item.star==3?praise.ok.img:praise.supPraise.img))}}"></image>
+            <text>{{item.star==1? praise.yawp.name:(item.star==2 ? praise.common.name:(item.star==3?praise.ok.name:praise.supPraise.name))}}</text>
+          </view>
+          <view class="content" wx:if="{{item.content!==''}}">{{item.content}}</view>
+          <view class="imgViewBox" wx:if="{{item.pics.length>0}}">
+            <image src="{{i}}" wx:for="{{item.pics}}" wx:key="index" data-picarr="{{item.pics}}" data-pic="{{i}}" wx:for-item="i" bindtap="imgView"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <template is="loading" wx:if="{{isMore}}"></template>
+  <view class="rp-end" wx:if="{{!isMore && isEnd && praiseList.length>3}}">─ 我已经到底了 ─</view>
+</view>

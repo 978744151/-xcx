@@ -1,0 +1,95 @@
+<import src="../templates/loading/loading.wxml" />
+<import src="../templates/message/message.wxml" />
+
+<template is="message" data="{{showMessage,messageContent}}"></template>
+<template is="loading" wx:if="{{isLoad}}"></template>
+<block wx:if="{{!isLoad}}">
+   <view class="coupon" wx:if="{{validCount>0}}">
+      <!--优惠券列表  -->
+      <view class="content " wx:for="{{validList}}" wx:key="index">
+         <!--代金券  -->
+         <view class='belongNo' wx:if="{{item.status ==-1}}"></view>  
+         <view class="item active" wx:if="{{item.card_type == 5}}">
+            <view class="left">
+               <view class="money">
+                  <text class="tip">{{item.prefix_char}}</text>
+                  <text class="disc">{{item.middle_char}}</text>
+               </view>
+               <text class="flag">代金券</text>
+            </view>
+            <view class="right">
+               <view class="title">商家代金券</view>
+               <text>·{{item.used_description}}</text>
+               <view class="time">·{{item.time_description}}</view>
+            </view>
+         </view>
+         <view class='getNow' bindtap="getCoupon" data-index="{{index}}" data-id="{{item.id}}" wx:if="{{item.status ==-1}}">立即领取</view>
+         <!--通用券  -->
+         <view class="item" wx:if="{{item.code_type == -1 }}">
+            <view class="left">
+               <view class="money">
+                  <image src="https://pic.repaiapp.com/static/png/20171207/18/1512642335775325651.png"></image>
+               </view>
+               <text class="flag">通用券</text>
+            </view>
+            <view class="right">
+               <view class="title">商家通用券</view>
+               <text>·全场通用,满99可用</text>
+               <view class="time">·2017-09-21至2017-09-24</view>
+            </view>
+         </view>
+         <!--折扣券  -->
+         <view class="item" wx:if="{{item.card_type == 4}}">
+            <view class="left">
+               <view class="money">
+                  <text class="disc">{{item.middle_char}}</text><text class="discount">{{item.suffix_char}}</text>
+               </view>
+               <text class="flag">折扣券</text>
+            </view>
+            <view class="right">
+               <view class="title">商家折扣券</view>
+               <text>·{{item.used_description}}</text>
+               <view class="time">·{{item.time_description}}</view>
+            </view>
+         </view>
+
+         <!--团购券  -->
+         <view class="item" wx:if="{{flase}}">
+            <view class="left">
+               <view class="money">
+                  <image src="https://pic.repaiapp.com/static/png/20171207/18/1512642348498375698.png"></image>
+               </view>
+               <text class="flag">团购券</text>
+            </view>
+            <view class="right">
+               <view class="title">商家团购券</view>
+               <text>·全场通用</text>
+               <view class="time">·2017-09-21至2017-09-24</view>
+            </view>
+         </view>
+         <!--兑换券  -->
+         <view class="item" wx:if="{{flase}}">
+            <view class="left">
+               <view class="money">
+                  <image src="https://pic.repaiapp.com/static/png/20171207/18/1512642357959910150.png"></image>
+               </view>
+               <text class="flag">兑换券</text>
+            </view>
+            <view class="right">
+               <view class="title">商家代兑换券</view>
+               <text>·全场通用</text>
+               <view class="time">·2017-09-21至2017-09-24</view>
+            </view>
+         </view>
+      </view>
+      <template is="loading" wx:if="{{isMore}}"></template>
+      <view class="unmore-wapper">
+         <view class="unmore" wx:if="{{!isMore&&isEnd}}">没有更多了...</view>
+      </view>
+      <navigator url="/pages/code/code" redirect hover-class="none" class="useBtn">立即使用</navigator>
+   </view>
+   <!--没有优惠券  -->
+   <view class="nodiscount" wx:else>
+      <image src="https://pic.repaiapp.com/pic/a5/95/e3/a595e3981fdb6f7a84bd7cc1471443e1c1a0bc9b.png"></image>
+   </view>
+</block>

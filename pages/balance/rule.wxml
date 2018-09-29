@@ -1,0 +1,141 @@
+<template name="vipRule">
+    <view class="dialog-rule {{!isVipRuleHidde?'opacity-in':''}}" hidden="{{isVipRuleHidde}}">
+        <view class="rp-flex-column">
+            <view class="title" style="">撒椒VIP储值卡协议</view>
+            <scroll-view class="rp-flex-item" scroll-y style="height:{{scrollHeight}}rpx;">
+                <view class="wapper">
+                    <view style="text-indent: 46rpx;">基于购卡人（以下简称“您”）向深圳撒椒餐饮管理有限责任公司（以下简称“撒椒公司”）购买储值会员卡，为明确双方的权利义务，您同意和撒椒公司签订如下协议：</view>
+                    <view style="font-weight: 500;margin: 30rpx 0;text-align: center;">第一条 声明与承诺</view>
+                    <view style="margin-bottom: 15rpx;"> 1.1 本协议已对与您的权益有或可能具有重大关系的条款，及对撒椒公司具有或可能具有免责或限制责任的条款用粗体字予以标注，请您注意。您确认，在您购买会员卡之前，您已充分阅读、理解并接受本协议的全部内容。</view>
+                    <view style="margin-bottom: 15rpx;">1.2  您同意，撒椒公司有权随时对本协议内容进行单方面的变更，并提前30日在撒椒官方微博@撒椒江湖菜（http://weibo.com/p/1006065732957239/home?profile_ftype=1&is_all=1#_0）进行公告，无需单独通知您；您有义务定期关注撒椒门店、发卡人官网或发卡人指定的其他途径以了解本协议的变更情况。新协议涉及调整收费项目、调整收费标准、调整优惠条件等内容的，撒椒公司在新协议生效之日起30日内，对您按原协议执行，若您在新协议生效后继续使用撒椒储值会员卡的，表示已充分阅读、理解并接受新协议的内容，也将遵循新协议的内容使用本服务；原您如对新协议存在异议应在新协议生效之日起30日内办理注销。</view>
+                    <view style="font-weight: 500;margin: 30rpx 0;text-align: center;">第二条 相关定义</view>
+                    <view style="margin-bottom: 15rpx;">2.1 ”撒椒储值会员卡“（以下简称”会员卡“）是由撒椒公司以实体门店为基础，以线上电子卡形式发行的，可在大陆地区全部撒椒餐厅消费、积分的会员卡。撒椒储值会员卡分为记名卡和不记名卡，以人民币计价。单张不记名卡资金限额不超过1000元，单张记名卡资金限额不超过5000元。</view>
+                    <view style="margin-bottom: 15rpx;">2.2 “撒椒公司”指深圳撒椒餐饮管理有限公司。</view>
+                    <view style="margin-bottom: 15rpx;">2.3 “撒椒餐厅”指经撒椒公司授权许可经营的餐厅。</view>
+                    <view style="margin-bottom: 15rpx;">2.4 “购卡人”指符合本协议之规定购买会员卡的单位或个人。</view>
+                    <view style="margin-bottom: 15rpx;">2.5 “持卡人”指撒椒储值会员卡的实际持有人。</view>
+                    <view style="margin-bottom: 15rpx;">2.6“售卡企业”指经发卡人授权销售会员卡的机构，包括但不限于撒椒门店、经发卡人书面授权的网络销售渠道等。发卡人将在其官网对取得其授权的售卡企业的名单进行公示。</view>
+                    <view style="font-weight: 500;margin: 30rpx 0;text-align: center;">第三条 购买</view>
+                    <view style="margin-bottom: 15rpx;">3.1 您同意，凡自愿遵守本协议的自然人或单位，均可购买成为撒椒储值会员。如不储值，消费时出示VIP卡同时可以进行积分。（积分使用规则请见第4.3条）</view>
+                    <view style="margin-bottom: 15rpx;">3.2 您同意，购买撒椒储值VIP卡，应当按照有关法律法规的规定和撒椒公司的要求提供个人、单位的身份信息及证明文件。您应当向撒椒公司提供真实、完整、有效、合法的身份信息及证明文件，不得冒用他人身份或使用伪造、变造身份信息及证明文件。</view>
+                    <view style="margin-bottom: 15rpx;">3.3 您同意，购买记名卡或一次性购买1万元（含）以上的不记名卡时，应当使用实名并提供有效身份证件。并同意撒椒公司通过合法手段核对购卡人提供的信息，并保存上述证件的复印件或影印件。 </view>
+                    <view style="margin-bottom: 15rpx;">3.4 个人客户的有效身份证件，包括：居住在境内的中国公民，为居民身份证或者临时居民身份证；居住在境内的16 周岁以下的中国公民，为户口簿；中国人民解放军军人，为军人身份证件或居民身份证；中国人民武装警察，为武装警察身份证件或居民身份证；香港、澳门居民，为港澳居民往来内地通行证；台湾居民，为台湾居民来往大陆通行证或者其他有效旅行证件；外国公民，为护照；政府有权机关出具的能够证明其真实身份的证明文件。法人和其他组织客户的有效身份证件，是指政府有权机关颁发的能够证明其合法真实身份的证件或文件，包括但不限于营业执照、事业单位法人证书、税务登记证、组织机构代码证。个体工商户的有效身份证件，包括营业执照、经营者或授权经办人员的有效身份证件。 </view>
+                    <view style="margin-bottom: 15rpx;">3.5 您可通过银行转账、现金、支票、银行卡支付等形式购买会员卡,不得使用信用卡购买。单位一次性购买会员卡5000元（含）以上，个人一次性购买会员卡5万元（含）以上时，您应通过银行转账等非现金结算方式购买，不得使用现金。 </view>
+                    <view style="font-weight: 500;margin: 30rpx 0;text-align: center;">第四条 使用 </view>
+                    <view style="margin-bottom: 15rpx;">
+                        <view>4.1 会员卡功能：</view>
+                        <view style="text-indent: 46rpx;">积分：消费金额转换积分，积分可用来消费或兑换商品使用。（积分规则见门店活动）</view>
+                        <view style="text-indent: 46rpx;">电子代金券：以二维码、图形或其他电子形式作为载体的虚拟卡，可在撒椒门店消费时抵用相应现金使用。 </view>
+                        <view style="text-indent: 46rpx;">电子菜品券：以二维码、图形或其他电子形式作为载体的虚拟卡，可在撒椒门店消费时抵用相应菜品。</view>
+                    </view>
+                    <view style="margin-bottom: 15rpx;">4.2 撒椒公司可为持卡人提供各种优惠活动，并及时将优惠活动信息通过官方网站、微信公众号等方式通知持卡人。优惠活动的具体内容、形式以各门店现场提供为准。</view>
+                    <view style="margin-bottom: 15rpx;">4.3 记名会员卡（下称记名卡）终身有效，不记名会员卡（下称不记名卡）有效期3年，在有效期届满后，将自动延期30天，发卡人将于该延期期限到期日的次月第一个工作日从该会员卡账户中扣除此次延期的延期管理费；延期管理费按有效期到期日该会员卡账户余额的1%收取，但最低为人民币2元。若在此次延期的到期日会员卡账户内仍有余额，将再自动延期30天，发卡人将于该第二次延期期限到期日的次月第一个工作日从该会员卡账户中扣除第二次延期的延期管理费；延期管理费按前一次延期到期日该预付卡账户余额的1%收取，但最低为人民币2元。之后的延期期限、延期方式和延期管理费的计算与收取以此类推。延期管理费将直接从该会员卡账户余额中扣取，直至扣完为止。持卡人未在有效期内进行交易造成经济损失的，应当自行承担。</view>
+                    <view style="margin-bottom: 15rpx;">4.4 您同意，在购买记名会员卡时，需提供真实姓名及身份证，成为撒椒储值记名卡。记名卡具体消费明细查询、充值及挂失等功能请于门店办理。</view>
+                    <view style="margin-bottom: 15rpx;">4.5 您同意，凡持卡进行的成功交易，不论是否本人消费，均视为持卡人本人行为。</view>
+                    <view style="margin-bottom: 15rpx;">4.6 您同意，会员卡不得透支使用；不得用于或变相用于提取现金。 </view>
+                    <view style="margin-bottom: 15rpx;">4.7 当使用会员卡消费后，如发生退款的，用户已使用的会员卡支付的金额将被退回该会员卡内。</view>
+                    <view style="margin-bottom: 15rpx;">4.8 您同意，因不可抗力或供电、通讯、系统故障等原因导致持卡人使用卡片受阻的，门店店长可以为协助持卡人解决问题并提供必要的帮助，但不承担任何责任。</view>
+                    <view style="font-weight: 500;margin: 30rpx 0;text-align: center;">第五条 充值</view>
+                    <view style="margin-bottom: 15rpx;">5.1 会员卡只能通过银行储蓄卡刷卡、现金、银行转账进行账户充值。不得使用信用卡为会员卡充值。办理一次性金额5000元以上的充值业务，不得使用现金。单张记名卡充值后的金额不得超过5000元，不记名卡不得超过1000元。</view>
+                    <view style="font-weight: 500;margin: 30rpx 0;text-align: center;">第六条 挂失及补、换卡 </view>
+                    <view style="margin-bottom: 15rpx;">6.1 您应妥善保管会员卡。会员卡一经售出，卡内储值金额即可作为现金消费使用。因您保管不善，导致会员卡遗失、灭失或被他人冒用的，应当自行承担经济损失。</view>
+                    <view style="margin-bottom: 15rpx;">6.2 您同意，不记名卡遗失的，不得挂失；记名卡不慎遗失时，可办理挂失。您如需补卡， 应凭本人身份证件及相关购卡凭证，于撒椒任一家门店办理新卡。</view>
+                    <view style="margin-bottom: 15rpx;">6.3 因非人为毁损、消磁或其他原因导致会员卡无法交易的，您可持有效身份证件到任一家撒椒门店办理换卡，并按门店的要求提供相关证明材料。</view>
+                    <view style="font-weight: 500;margin: 30rpx 0;text-align: center;">第七条 会员卡的退货 </view>
+                    <view style="margin-bottom: 15rpx;">7.1 您同意，不记名会员卡一经申领，不得退货。记名会员卡持卡人要求退回会员卡内剩余资金的，应由会员本人在购卡3个月后提出书面申请。</view>
+                    <view style="margin-bottom: 15rpx;">7.2 如会员卡业务终止，撒椒公司将免费退回所发行的全部记名、不记名会员卡。</view>
+                    <view style="margin-bottom: 15rpx;">7.3 您办理退回业务时应持会员卡、本人有效身份证件、购卡人身份证件、原购卡银行账户以及撒椒公司要求持卡人提供的其他资料办理赎回手续，不得由他人代理退回。企业退卡人应提供加盖公章的退卡申请和营业执照复印件。会员卡退卡人应退还购卡的原始发票、充值发票（如适用）以及相关的付款凭证。如会员卡退卡人要求退还其在购买时享受过任何折扣或优惠的预付卡，在计算退款时将按退卡人在购买（及充值时，如适用）时实际支付的金额或按预付卡全额扣除上述优惠后的金额办理退款。如会员卡退卡人购买会员卡可按其年度累计购卡金额享有任何折扣或优惠的，在办理退卡后会将退卡金额从其年度累计购卡金额中扣除。 </view>
+                    <view style="margin-bottom: 15rpx;">7.4您退回的资金以银行转账方式划入原购卡银行账户中。用现金购买或原购卡银行账户已撤销的，退回资金退至持卡人提供的与购卡人同名的单位或个人银行账户中。退卡手续费统一按原始发票（包括充值发票，如适用）金额3%的标准收取，最低人民币10元。在扣除前述手续费后，卡内剩余资金将被退至退卡人购买预付卡时使用的银行卡（在使用银行卡购买的情形下）或退卡人同名的银行账户内（在使用非银行卡交易形式购卡的情形下）。</view>
+                    <view style="font-weight: 500;margin: 30rpx 0;text-align: center;">第八条 收费标准</view>
+                    <view style="margin-bottom: 15rpx;">
+                        <view style="text-indent: 46rpx;">.下为办卡、补卡、换卡、退货手续所产生的相关们用明细：</view>
+                        <view style="border:1rpx solid #000;font-size: 24rpx;text-align: center;padding: 20rpx 0;border-bottom: none;">会员卡收费标准</view>
+                        <!-- <image src="https://pic.repaiapp.com/pic/2f/02/a8/2f02a8c7c460a1f7882403b2401e2ede8fe79234.png" style="height: 524rpx;" mode="aspectFill"></image> -->
+                        <view class="table" style="display: table;width: 100%;box-sizing: border-box;border:1px solid #000;font-size: 24rpx;table-layout: fixed;border-collapse: collapse;">
+                            <!--   <view class="row" style="display: table-row;">
+                                <view style="display: table-cell;width: 100%;padding: 20rpx 0; vertical-align: middle;">会员卡收费标准</view>
+                            </view> -->
+                            <view class="row" style="display: table-row;text-align: center;">
+                                <view style="display: table-cell;padding: 20rpx 0; vertical-align: middle;border:1rpx solid #000;box-sizing: border-box;">序号</view>
+                                <view style="display: table-cell;padding: 20rpx 0; vertical-align: middle;border:1rpx solid #000;box-sizing: border-box;">项目</view>
+                                <view style="display: table-cell;padding: 20rpx 0; vertical-align: middle;border:1rpx solid #000;box-sizing: border-box;">不记名卡</view>
+                                <view style="display: table-cell;padding: 20rpx 0; vertical-align: middle;border:1rpx solid #000;box-sizing: border-box;">记名卡</view>
+                                <!-- <view style="display: table-cell;padding: 20rpx 0; vertical-align: middle;border:1rpx solid #000;box-sizing: border-box;">退货技术服务费</view> -->
+                                <view style="display: table-cell;padding: 20rpx 0; vertical-align: middle;border:1rpx solid #000;box-sizing: border-box;">备注</view>
+                            </view>
+                            <view class="row" style="display: table-row;text-align: center;">
+                                <view style="display: table-cell;padding: 20rpx 0; vertical-align: middle;border:1rpx solid #000;box-sizing: border-box;">1</view>
+                                <view style="display: table-cell;padding: 20rpx 0; vertical-align: middle;border:1rpx solid #000;box-sizing: border-box;">办卡技术服务费</view>
+                                <view style="display: table-cell;padding: 20rpx 0; vertical-align: middle;border:1rpx solid #000;box-sizing: border-box;">0元/张</view>
+                                <view style="display: table-cell;padding: 20rpx 0; vertical-align: middle;border:1rpx solid #000;box-sizing: border-box;">0元/张</view>
+                                <view style="display: table-cell;padding: 20rpx 0; vertical-align: middle;border:1rpx solid #000;box-sizing: border-box;">300元/卡及以上</view>
+                            </view>
+                            <view class="row" style="display: table-row;text-align: center;">
+                                <view style="display: table-cell;padding: 20rpx 0; vertical-align: middle;border:1rpx solid #000;box-sizing: border-box;">2</view>
+                                <view style="display: table-cell;padding: 20rpx 0; vertical-align: middle;border:1rpx solid #000;box-sizing: border-box;">换卡技术服务费</view>
+                                <view style="display: table-cell;padding: 20rpx 0; vertical-align: middle;border:1rpx solid #000;box-sizing: border-box;">10元/张</view>
+                                <view style="display: table-cell;padding: 20rpx 0; vertical-align: middle;border:1rpx solid #000;box-sizing: border-box;">10元/张</view>
+                                <view style="display: table-cell;padding: 20rpx 0; vertical-align: middle;border:1rpx solid #000;box-sizing: border-box;">坏卡、消磁换卡等</view>
+                            </view>
+                            <view class="row" style="display: table-row;text-align: center;">
+                                <view style="display: table-cell;padding: 20rpx 0; vertical-align: middle;border:1rpx solid #000;box-sizing: border-box;">3</view>
+                                <view style="display: table-cell;padding: 20rpx 0; vertical-align: middle;border:1rpx solid #000;box-sizing: border-box;">补卡技术服务费</view>
+                                <view style="display: table-cell;padding: 20rpx 0; vertical-align: middle;border:1rpx solid #000;box-sizing: border-box;">不能补回</view>
+                                <view style="display: table-cell;padding: 20rpx 0; vertical-align: middle;border:1rpx solid #000;box-sizing: border-box;">10元/张</view>
+                                <view style="display: table-cell;padding: 20rpx 0; vertical-align: middle;border:1rpx solid #000;box-sizing: border-box;">挂失补卡</view>
+                            </view>
+                            <view class="row" style="display: table-row;text-align: center;">
+                                <view style="display: table-cell;padding: 20rpx 0; vertical-align: middle;border:1rpx solid #000;box-sizing: border-box;">4</view>
+                                <view style="display: table-cell;padding: 20rpx 0; vertical-align: middle;border:1rpx solid #000;box-sizing: border-box;">退货技术服务费</view>
+                                <view style="display: table-cell;padding: 20rpx 0; vertical-align: middle;border:1rpx solid #000;box-sizing: border-box;">退货技术服务费</view>
+                                <view style="display: table-cell;padding: 20rpx 0; vertical-align: middle;border:1rpx solid #000;box-sizing: border-box;">10元/张</view>
+                                <view style="display: table-cell;padding: 20rpx 0; vertical-align: middle;border:1rpx solid #000;box-sizing: border-box;">最低</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view style="font-weight: 500;margin: 30rpx 0;text-align: center;">第九条 查询服务及异议处理</view>
+                    <view style="margin-bottom: 15rpx;">9.1 客户服务热线为：
+                        <text bindtap="calling" style="color: #279694;">0755-29303844</text> 。热线人工服务时间为9:00AM-9:00PM。 </view>
+                    <view style="margin-bottom: 15rpx;">9.2 客户办理挂失、补卡、换卡手续时，有关办理时间、地点等事项按照撒椒公司门店的工作流程进行处理。 </view>
+                    <view style="font-weight: 500;margin: 30rpx 0;text-align: center;">第十条 发票的申请与开具 </view>
+                    <view style="margin-bottom: 15rpx;">10.1您在售卡门店购买会员卡或充值后，应根据销售或充值小票上的销售单号和授权码，于购买会员卡或充值后30日内在发卡人门店申请发票，逾期则不予处理。根据国家税务总局公告2016年第53号文件规定，开具内容为“储值卡业务”的增值税普通发票。</view>
+                    <view style="margin-bottom: 15rpx;">10.2 您在通过经发卡人书面授权的网络销售渠道购买会员卡或直接向发卡人购卡，以及持卡人通过前述渠道充值时，应在购卡或充值的同时向授权商提出发票申请。 </view>
+                    <view style="margin-bottom: 15rpx;">10.3您所申请的发票金额需与销售或充值小票上的购卡金额一致；所申请的发票内容需符合国家的法律、法规，不可依您任意的要求而开具。 </view>
+                    <view style="margin-bottom: 15rpx;">10.4您在门店进行消费时，撒椒公司将不再就该消费开具发票；但同一笔交易中，若持卡人同时使用会员卡之外的付款方式进行付款，则撒椒公司可就会员卡之外的付款方式支付的款项根据国家适用法律、法规及财务政策开具发票。</view>
+                    <view style="font-weight: 500;margin: 30rpx 0;text-align: center;">第十一条 双方的权利义务</view>
+                    <view style="font-weight: 500;margin-bottom: 15rpx;">11.1 撒椒公司的权利义务</view>
+                    <view style="margin-bottom: 15rpx;">11.1.1 撒椒公司有权要求您按规定提供个人、单位的身份信息及证明文件。 </view>
+                    <view style="margin-bottom: 15rpx;">11.1.2 撒椒公司有权拒绝不符合《撒椒储值会员卡章程》及本协议约定内容的购卡人的购卡申请。 </view>
+                    <view style="margin-bottom: 15rpx;">11.1.3 撒椒公司采取有效措施加强对购卡人和持卡人信息的保护，确保信息安全，防止信息泄露和滥用。未经购卡人、持卡人同意，不得用于与购卡人、持卡人的会员卡业务无关的目的。法律法规另有规定的除外。 </view>
+                    <view style="margin-bottom: 15rpx;">11.1.4 撒椒公司将以门店活动形式或通过网站、微信，向持卡人提供会员卡使用的有关资料，包括章程、协议、活动等。 </view>
+                    <view style="margin-bottom: 15rpx;">11.1.5 撒椒公司根据中国人民银行《支付机构客户备付金存管办法》的有关规定，将购卡人的购卡资金存入专用备付金账户，并确保备付金的资金安全。 </view>
+                    <view style="margin-bottom: 15rpx;">11.1.6撒椒公司接受中国人民银行监管,依法开展反洗钱和反恐怖融资工作，购卡人、持卡人应依法予以配合，抵制洗钱和恐怖融资活动，防范被洗钱和恐怖融资犯罪分子所利用。</view>
+                    <view style="font-weight: 500;margin-bottom: 15rpx;">11.2 购卡人/持卡人的权利义务</view>
+                    <view style="margin-bottom: 15rpx;">11.2.2 您有权知悉会员卡的功能、使用方法、收费项目及标准。 </view>
+                    <view style="margin-bottom: 15rpx;">11.2.3 如您对会员卡业务有疑问的，有权在规定时间内向撒椒公司提出查询或更正要求。 </view>
+                    <view style="margin-bottom: 15rpx;">11.2.4 您未妥善保管会员卡，导致会员卡污损、遗失、被盗、被抢、被骗的，应当自行承担经济损失。 </view>
+                    <view style="margin-bottom: 15rpx;">11.2.5 您对会员卡、卡号及密码保管不善，导致他人冒用储值卡造成的经济损失，应当自行承担。 </view>
+                    <view style="margin-bottom: 15rpx;">11.2.6 撒椒公司在发现异常交易或有疑义或有违反法律规定之虞时，有权不经通知先行暂停该会员卡的使用，经认定有违约违法事实后，将根据法律法规对未清偿款项进行追索，并拒绝您使用储值服务之部分或全部功能。 </view>
+                    <view style="font-weight: 500;margin-bottom: 15rpx;">11.3 免责条款：在适用法律允许的最大范围内，无论是基于侵权、违约还是其他事由，发卡人、售卡企业或特约商户不对购卡人、持卡人或任何第三人因预付卡引起的任何直接或间接的损失或损害承担任何责任，包括但不限于任何收入损失、利润损失、商誉损失、数据损失、资金使用损失等。本条之规定不排除或限制发卡人、售卡企业或特约商户在如下方面的责任：（1）欺诈行为引起的责任；（2）适用法律规定不应排除或限制的责任。</view>
+                    <view style="font-weight: 500;margin-bottom: 15rpx;">11.4 您存在以下情形的，撒椒公司有权拒绝交易、暂停或终止对您的服务，所有损失应由您自行承担：</view>
+                    <view style="margin-bottom: 15rpx;font-weight: 500;">11.4.1发卡人、售卡企业或特约商户根据国家适用法律、法规核实您身份及预付卡交易信息等情况，遭拒绝的；</view>
+                    <view style="margin-bottom: 15rpx;font-weight: 500;">11.4.2 冒用他人身份或使用伪造、变造身份证明文件购买或使用预付卡或进行充值的；</view>
+                    <view style="margin-bottom: 15rpx;font-weight: 500;">11.4.3 在发卡人公布的售卡或充值渠道之外购买预付卡或进行充值的；</view>
+                    <view style="margin-bottom: 15rpx;font-weight: 500;">11.4.4 在购买或使用预付卡或进行充值时存在欺诈行为；</view>
+                    <view style="margin-bottom: 15rpx;font-weight: 500;">11.4.5 违反本协议购买或使用预付卡或进行充值；</view>
+                    <view style="margin-bottom: 15rpx;font-weight: 500;">11.4.6 违反国家或地方适用法律、法规进行非法交易；</view>
+                    <view style="margin-bottom: 15rpx;font-weight: 500;">11.4.7 使用伪造、变造、残缺不全的预付卡；</view>
+                    <view style="margin-bottom: 15rpx;font-weight: 500;">11.4.8 有其他损害发卡人、售卡企业、特约商户或其他购卡人/持卡人的合法权益的情形。</view>
+                    <view style="font-weight: 500;margin: 30rpx 0;text-align: center;">第十二条 其他约定 </view>
+                    <view style="margin-bottom: 15rpx;">11.2.1本协议未尽事宜按照国家有关法律、法规、规章、《撒椒储值会员卡章程》及行业惯例执行，如撒椒公司与购卡人、持卡人另有约定的，遵从其约定。</view>
+                    <view style="margin-bottom: 15rpx;">11.2.2 双方因不可抗力无法履行本协议的，根据不可抗力的影响，部分或者全部免除责任，但法律另有规定的除外。当事一方延迟履行协议后发生不可抗力的，不能免除责任。 </view>
+                    <view> 11.2.3 任何由本协议引起的争议，双方应协商解决。若自一方书面通知另一方要求协商之日起15日内未能解决，则任何一方均有权向深圳撒椒餐饮管理有限责任公司所在地深圳市南山区人民法院提起诉讼。 </view>
+                    <view> 11.2.4 本协议自您购买撒椒公司的会员卡时，在本协议签字之日起生效。</view>
+                </view>
+            </scroll-view>
+            <view class="footer">
+                <text class="close" bindtap="closeRule"></text>
+            </view>
+        </view>
+    </view>
+</template>

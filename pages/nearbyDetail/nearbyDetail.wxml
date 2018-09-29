@@ -1,0 +1,50 @@
+<import src="../templates/loading/loading.wxml" />
+<template is="loading" wx:if="{{isLoading}}"></template>
+<view class="content" wx:if="{{!isLoading}}">
+    <view class="shopimg">
+        <image src="{{shopData.thumbs[0].image}}" mode="aspectFill"></image>
+    </view>
+    <view class="shopnews">
+        <view class="shop-tit">
+            <text>{{shopData.title}}</text>
+            <view class="shop-boon1" wx:if="{{shopData.enable_park != 0}}">停车</view>
+            <view class="shop-boon2" wx:if="{{shopData.enable_wifi != 0}}">WIFI</view>
+            <view class="shop-boon3" wx:if="{{shopData.enable_card != 0}}">刷卡</view>
+            <view class="shop-boon4" wx:if="{{shopData.enable_room != 0}}">包厢</view>
+        </view>
+        <view class="shop-say">
+            <view class="shop-xx">
+                <text class="xx-hua"></text>
+                <!--黄色星星-->
+                <text class="xx-hua"></text>
+                <text class="xx-hua"></text>
+                <text class="xx-hua"></text>
+                <!--灰色星星-->
+                <text class="xx-hua"></text>
+                <!-- <text class="xx-hui"></text> -->
+            </view>
+            <text class="shop-price">￥{{shopData.consume}}/人</text>
+        </view>
+    </view>
+    <view class="shopbox" bindtap="calling">
+        <view class="shop-tel"></view>
+        <view class="shop-text">餐厅电话</view>
+        <view class="shop-right"></view>
+    </view>
+    <view class="shopbox" bindtap="tapMap">
+        <view class="shop-area"></view>
+        <view class="shop-text">地址：{{shopData.address}}</view>
+        <view class="shop-right"></view>
+    </view>
+    <view class="shopbox">
+        <view class="shop-time"></view>
+        <view class="shop-text">营业时间：{{shopData.time}}</view>
+    </view>
+    <view class="gonggao">
+        <view class="gonggao-tit">
+            <text></text>店铺公告</view>
+        <view class="gonggao-text">
+            <text>{{shopData.content}}</text>
+        </view>
+    </view>
+</view>

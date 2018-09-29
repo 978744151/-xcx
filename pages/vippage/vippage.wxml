@@ -1,0 +1,68 @@
+<import src="../templates/foot/foot.wxml" />
+<import src="../templates/loading/loading.wxml" />
+<template is="loading" wx:if="{{isIndexLoad}}"></template>
+<view class="content" wx:if="{{!isIndexLoad}}">
+    <view class="banner">
+        <view class="user-image">
+            <image src="{{data.avatar}}" mode="scaleToFill"></image>
+        </view>
+        <view class="name">{{data.realname}}</view>
+    </view>
+    <view class="my-tip">请准确填写对应信息，方便餐厅更好为您服务</view>
+    <navigator url="/pages/editel/editel" class="listitem">
+        <view class="part-one">手机</view>
+        <view class="part-two">{{data.mobile}}</view>
+        <text class="iconfont icon-right-more"></text>
+    </navigator>
+    <navigator url="/pages/edituser/edituser?type=gender&value={{data.gender}}" class="listitem">
+        <view class="part-one">性别</view>
+        <view class="part-two">
+            <block wx:if="{{data.gender == 1}}">
+                男
+            </block>
+            <block wx:if="{{data.gender == 2}}">
+                女
+            </block>
+            <block wx:if="{{data.gender != 1 && data.gender != 2}}">
+                未填写
+            </block>
+        </view>
+        <text class="iconfont icon-right-more"></text>
+    </navigator>
+    <navigator url="/pages/edituser/edituser?type=birthday&value={{data.birthday}}" class="listitem">
+        <view class="part-one">生日</view>
+        <view class="part-two">
+            <block wx:if="{{!!data.birthday}}">
+                {{data.birthday}}
+            </block>
+            <block wx:else>
+                未填写
+            </block>
+        </view>
+        <text class="iconfont icon-right-more"></text>
+    </navigator>
+    <navigator url="/pages/edituser/edituser?type=realname&value={{data.realname}}" class="listitem mar-t20">
+        <view class="part-one">姓名</view>
+        <view class="part-two">
+            <block wx:if="{{!!data.realname}}">
+                {{data.realname}}
+            </block>
+            <block wx:else>
+                未填写
+            </block>
+        </view>
+        <text class="iconfont icon-right-more"></text>
+    </navigator>
+    <navigator url="/pages/edituser/edituser?type=email&value={{data.email}}" class="listitem">
+        <view class="part-one">邮箱</view>
+        <view class="part-two">
+            <block wx:if="{{!!data.email}}">
+                {{data.email}}
+            </block>
+            <block wx:else>
+                未填写
+            </block>
+        </view>
+        <text class="iconfont icon-right-more"></text>
+    </navigator>
+</view>

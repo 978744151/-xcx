@@ -1,0 +1,87 @@
+<template name="undata-default">
+    <view class="rp-undata-default">
+        <view class="undata-icon"></view>
+        <view class="undata-txt">没有相关订单</view>
+    </view>
+</template>
+<template name="undata-card">
+    <view class="rp-undata-default">
+        <view class="undata-card"></view>
+        <view class="undata-txt">暂无发放会员卡</view>
+    </view>
+</template>
+<template name="undata-table">
+    <view class="rp-undata-default">
+        <view class="undata-icon"></view>
+        <view class="undata-txt">没有相关商品</view>
+    </view>
+</template>
+
+<template name="undata-table-99">
+    <view class="rp-undata-default">
+        <view class="undata-icon"></view>
+        <view class="undata-txt">门店不存在</view>
+    </view>
+</template>
+
+<template name="undata-table-97">
+    <view class="rp-undata-default">
+        <view class="undata-icon"></view>
+        <view class="undata-txt">餐桌不存在！</view>
+    </view>
+</template>
+
+<template name="undata-table-96">
+    <view class="rp-undata-default">
+        <view class="undata-icon"></view>
+        <view class="undata-txt">餐桌类型不存在！</view>
+    </view>
+</template>
+
+<template name="undata-table-95">
+    <view class="rp-undata-default">
+        <view class="undata-icon"></view>
+        <view class="undata-txt">门店暂停营业!</view>
+    </view>
+</template>
+
+<template name="undata-table-94">
+    <view class="rp-undata-default">
+        <view class="undata-icon"></view>
+        <view class="undata-txt">门店休息中!</view>
+    </view>
+</template>
+
+<template name="undata-table-93">
+    <view class="rp-undata-default">
+        <view class="undata-icon"></view>
+        <view class="undata-txt">商家已经关闭店内点餐模式，您暂时不能使用!</view>
+    </view>
+</template>
+
+<template name="undata-table-195">
+    <view class="rp-undata-default">
+        <view class="undata-icon"></view>
+        <view class="undata-txt">门店暂无商品分类!</view>
+    </view>
+</template>
+
+
+<template name="undata-default-ty">
+    <view class="rp-undata-default">
+        <view class="undata-ty-icon"></view>
+        <view class="undata-txt">暂无账单明细</view>
+    </view>
+</template>
+
+<template name="undata-tyshoplist">
+    <view class="undata-tyshoplist">
+        <view class="icont-search"></view>
+        <view class="ty-txt">没有找到合适的商家</view>
+    </view>
+</template>
+
+
+
+
+

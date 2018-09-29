@@ -1,0 +1,328 @@
+<import src="../templates/loading/loading.wxml" />
+<import src="../templates/dialog/dialog.wxml" />
+<import src="../templates/message/message.wxml" />
+<import src="../templates/dialog/dialog.wxml" />
+<template is="loading" wx:if="{{isLoading}}"></template>
+<template is="message" data="{{showMessage,messageContent}}"></template>
+<view class="payment" wx:if="{{!isLoading}}">
+<!-- 自提头部 -->
+<block wx:if="{{!xz}}">
+<view class='orderCarte' bindtap="selectAdr">
+  <block wx:if="{{address==''}}">
+      <button class='noChooseTime' wx:if="{{true}}" bindtap='addTimer'>+选择收货地址</button>
+  </block>
+  <block wx:else>
+      <view class='addressdet'>{{address.address}}</view>
+      <view class='addresscont'>{{address.contactname}} {{address.phone}}</view>
+      <view class='select-address'></view>
+  </block>
+</view>
+</block>
+
+<!-- 正常点餐头部 -->
+  <view class='paytime-sale'>
+      <text class="font-w500">配送时间</text>         
+      <text style="color:#f14949;font-size:26rpx;margin-left:12rpx;">{{orderInfo.sendtime}}</text>
+  </view>
+  <!--菜品总计-->
+  <view class="paymenu">
+    <view class="paymenu-tit">  
+      <view>
+        <text class="font-w500">菜品总额</text>
+        <text style="color:#595959;font-size:26rpx;margin-left:12rpx;">共{{total_dish_count}}份</text>
+      </view>
+      <view class="paymenu-sale">
+        <text class="font-w500">￥{{total_price - packvalue}}</text>
+      </view>
+    </view>
+    
+    <view class="paymenu-list">
+      <view class="paymenu-div" wx:for="{{newList}}" wx:for-item="order" wx:key="id">
+        <view class="paymenu-name">
+          <view class="payname-tit">
+            <text>{{order.title}}</text>
+          </view>
+          <view class="paymenu-spec">
+            <text class="tag" wx:if="{{!!order.specs_name}}">{{order.specs_name}}</text>
+            <text class="tag" wx:for="{{order.attr_name_v1}}" wx:key="index">{{item}}</text>
+          </view>
+
+        </view>
+        <text class="paymenu-num">x{{order.total}}</text>
+        <view class="paymenu-price">
+          <view class="paymenu-oldp">￥{{order.price}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="paymenu-div">
+      <view class="paymenu-name" style="margin:0;">
+          <view class="name">餐盒费</view>
+      </view>
+      <view class="paymenu-price" >
+          <view class="input">￥{{packvalue}}</view>
+      </view>
+      </view>
+          <view class="paymenu-div">
+          <view class="paymenu-name" style="margin:0;">
+              <view class="name">配送费</view>
+          </view>
+          <view class="paymenu-price" >
+              <view class="input">￥{{newpscost}}</view>
+          </view>
+      </view>
+    <view class="paymenu-more" wx:if="{{item.items.length>3}}" bindtap="showMoreGoods">
+      {{toggleTxt}}({{total_dish_count}})
+      <text class="{{isToggle?'rotate':''}}"></text>
+    </view>
+  </view>
+  <!--菜品总计end-->
+
+  <view class="paycheck" wx:if="{{orderInfo.is_vip == 1}}">
+    <!-- <view class="paycheck-item" wx:if="{{total_price>0}}">
+      <view class="item-sup">
+        <text class="name">菜品VIP价</text>
+      </view>
+      <view class="item-switch">
+        <text class="sale">-￥{{orderInfo.vipPrice}}</text>
+      </view>
+    </view> -->
+    <view class="paycheck-item" wx:if="{{orderInfo.mem_discount>0}}">
+      <view class="item-sup">
+        <text class="name">会员折扣</text>
+        <text class="sup">{{orderInfo.memberInfo.cardtitle}}{{mem_discountStr}}折</text>
+        <text class="iconfont icon-k-care" bindtap="showDialog" data-name="vip"></text>
+      </view>
+      <view class="item-switch">
+        <text class="sale" wx:if="{{switchChecked && saleMoney>0}}">-￥{{saleMoney}}</text>
+        <!-- <switch class="sale-switch" checked="{{cardstatue == 0 ? false : true}}"  bindchange="useSale" disabled="{{cardstatue == 0 ? true : false}}"/>  -->
+      </view>
+    </view>
+    <navigator url="/pages/chooseCoupon/chooseCoupon?id={{orderInfo.id}}&allPrice={{orderInfo.allPrice}}&saleMoney={{saleMoney}}&couponPrice={{couponPrice}}&tablesid={{tablesid}}" hover-class="none" class="paycheck-item">
+      <view class="paycheck-tit">优惠券</view>
+      <view>
+        <text class="{{couponMoney>0?'sale':'nosale'}}">{{couponMsg}}</text>
+        <text class="iconfont icon-right-more"></text>
+      </view>
+    </navigator>
+
+    <view class="paycheck-item" wx:if="{{orderInfo.moneyrule.is_rechargerule == 1}}">
+      <view class="item-sup">
+        <text class="name">余额支付</text>
+        <text class="sup rp-flex-item clamp1">共￥{{orderInfo.moneyrule.lastmoney}}，最多可用￥{{payMoney}}</text>
+        <text class="iconfont icon-k-care" bindtap="showDialog" data-name="money"></text>
+      </view>
+      <view class="item-switch">
+        <text class="sale" wx:if="{{isBalancePayment && remainMoney >0}}">-￥{{remainMoney}}</text>
+        <switch class="sale-switch" name="switch" bindchange="balancePayment" checked="{{isBalancePayment}}" />
+      </view>
+    </view>
+    <view class="payshow-item" hidden="{{!isBalancePayment}}">
+      <text>使用</text>
+      <!--bindinput="bindInput" -->
+      <input type="number" placeholder="" value="{{remainMoney}}" bindblur="bindInput" data-type="money" />
+      <view class="d-ib">
+        <text>元，抵扣</text>
+        <text class="strong">￥{{remainMoney}}</text>
+      </view>
+    </view>
+    <view class="paycheck-item" wx:if="{{orderInfo.creaditrule.is_creaditrule == 1}}">
+      <view class="item-sup">
+        <text class="name">积分</text>
+        <view class="sup rp-flex-item clamp1">
+          <text> 共{{orderInfo.creaditrule.lastcreadit}}，最多可抵用</text>
+          <text>￥{{payMoney}}</text>
+        </view>
+        <text class="iconfont icon-k-care" bindtap="showDialog" data-name="point"></text>
+      </view>
+      <view class="item-switch">
+        <text class="sale" wx:if="{{isCheckPoint && pointsNum >0}}">-￥{{pointMoney}}</text>
+        <switch class="sale-switch" name="switch" bindchange="usePoint" checked="{{isCheckPoint}}" />
+      </view>
+    </view>
+    <view class="payshow-item" hidden="{{!isCheckPoint && !(pointMoney>0)}}">
+      <text>使用</text>
+      <input type="digit" placeholder="" value="{{pointsNum}}" bindblur="bindInput" data-type="point" />
+      <view class="d-ib c6f">积分，抵扣
+        <text class="strong">￥{{pointMoney}}</text>
+      </view>
+    </view>
+    <!-- <view class="paycheck-item">
+            <view class="paycheck-tit">商品总额</view>
+            <text>￥{{orderInfo.totalprice}}</text>
+        </view>
+        <view class="paycheck-item" wx:if="{{switchChecked && orderInfo.is_vip == 1 && cardstatue != 0}}">
+            <view class="paycheck-tit">会员折扣
+                <text class="pay-ques" bindtap="salehint"></text>
+            </view>
+            <text>-￥{{saleMoney}}</text>
+        </view>-->
+  </view>
+
+  <view class="paydetail-panle">
+    <view class="tit border-tn">
+      <view class="left-part">小计</view>
+      <view class="right-part">￥{{payMoney}}</view>
+    </view>
+    <view class="pay-section">
+      <view class="item">
+        <view class="rp-flex-item">商品总额</view>
+        <text class="c6f">￥{{goodsCost}}  |  配送费{{newpscost}}</text>
+      </view>
+      <!-- <view class="item">
+                <view class="rp-flex-item">优惠券</view>
+                <text class="c6f">-￥0</text>   
+            </view> -->
+      <view class="item" wx:if="{{orderInfo.vipPrice>0}}">
+        <view class="rp-flex-item">
+          vip会员菜品优惠
+          <text class="pay-ques" bindtap="salehint"></text>
+        </view>
+        <text class="c6f">-￥{{orderInfo.vipPrice}}</text>
+      </view>
+      <view class="item" wx:if="{{switchChecked && orderInfo.is_vip != 0  && saleMoney>0}}">
+        <view class="rp-flex-item">会员折扣</view>
+        <text class="c6f">-￥{{saleMoney}}</text>
+      </view>
+      <view class="item" wx:if="{{orderInfo.couponlist.count>0 && couponMoney >0}}">
+        <view class="rp-flex-item">优惠券</view>
+        <text class="c6f">-￥{{couponMoney}}</text>
+      </view>
+      <view class="item" wx:if="{{isBalancePayment && remainMoney >0}}">
+        <view class="rp-flex-item">余额支付</view>
+        <text class="c6f">-￥{{remainMoney}}</text>
+      </view>
+      <view class="item" wx:if="{{isCheckPoint && pointsNum >0}}">
+        <view class="rp-flex-item">积分抵扣</view>
+        <text class="c6f">-￥{{pointMoney}}</text>
+      </view>
+    </view>
+     <view class="tit border-bn" wx:if="{{orderInfo.is_vip != 0 && sendPoints>0}}">
+        <text> 本单预计可得</text>
+        <view class="strong get-points">
+          {{sendPoints}}积分
+          <block wx:if="{{orderInfo.memberInfo.is_birthday == 1}}">x2</block>
+        </view>
+        <text  wx:if="{{orderInfo.memberInfo.is_birthday == 1}}">(生日当天双倍积分)</text>
+      </view>
+  </view>
+
+  <view style="height:200rpx;"></view>
+  <view class="payment-bottom" >
+    <view  class='tabCoupon {{ unicom == 1 || money == 0 ? "CouponNone" : "CouponBlock" }}'>
+      <view class='firstBox' bindtap='closeCoupon'><image src='../../images/closeCoupon.png'></image></view>
+      <image src='../../images/tabCoupon1.png' bindtap='cateCoupon'></image>
+    </view>
+    <!-- <view class="pay-hint" wx:if="{{!xb}}">
+      <text class="hint-icon"></text>支付前请确保服务员在您身边，方便确认您买单</view> -->
+    <view wx:if="{{tablesid != '-1'}}">
+        <view style="height:66rpx;"></view>
+        <view  class="set-count" wx:if="{{changeNum>0}}">
+            <text >已选{{changeNum}}人就餐。</text>
+            <text  class="link" bindtap="tcpeople">点我修改</text>
+        </view>
+        <view  class="set-count" wx:else>
+            <text >请选择用餐人数</text>
+            <text  class="link" bindtap="tcpeople">点我选择</text>
+        </view>
+    </view>
+    <view class="pay-sub">
+      <view class="paysub-money">需付金额：
+        <view class="font-w500" style="color:{{pagecolor.bgcolor}};display: inline-block;">
+          <text>￥</text>
+          <text>{{payMoney}}</text>
+        </view>
+      </view>
+      <view class="paysubmit" bindtap="sendPayNow">
+        <block wx:if="{{payMoney>0}}">
+          <text class="wxicon"></text>微信买单
+        </block>
+        <block wx:else>
+          确认买单
+        </block>
+      </view>
+    </view>
+  </view>
+  <!-- </form>-->
+  <!--开具发票-->
+  <template is="sale-dialog" data="{{...saleDialog}}" wx:if="{{saledia}}"></template>
+  <!--缺菜确认订单弹出层-->
+  <block wx:if="{{flagDialog == 'open'}}">
+    <view class="mask"></view>
+    <view class="affirm">
+      <block wx:if="{{orderItems.noticeMsgWarring == ''}}">
+        <view class="icont-querenshouhuo" style="color:{{pagecolor.bgcolor}};"></view>
+        <!--不缺菜图标-->
+      </block>
+      <block wx:if="{{orderItems.noticeMsgWarring != ''}}">
+        <view class="aff-false"></view>
+        <!--缺菜图标-->
+      </block>
+      <view class="affirm-text">
+        <block wx:if="{{orderItems.noticeMsgWarring != ''}}">
+          <text>{{orderItems.noticeMsgWarring}}</text>
+        </block>
+        {{orderItems.noticeMsgNomal}}
+      </view>
+      <view class="affirm-button" style="color:{{pagecolor.bgcolor}};" bindtap="affknow">知道了</view>
+    </view>
+  </block>
+  <!--缺菜确认订单弹出层end-->
+</view>
+<view class="mask" wx:if="{{isShowOtherPayDialog}}"></view>
+<view class="vippay-dialog" wx:if="{{isShowOtherPayDialog}}">
+    <view class="close-btn" bindtap="closeOtherPayDialog"></view>
+    <view class="hd">
+        <view class="icont-vippay"></view>
+        <view class="vippay-txt">虚拟支付</view>
+    </view>
+    <view class="bd">
+      <view class="name">{{storetename}}</view>
+      <view class="pay-money">
+        <text class="char-rmb">￥</text>
+        <text class="pay-num">{{payMoney}}</text>
+      </view>
+    </view>
+     <view class="nt">
+          <view class="icont-nt"></view>
+          <view class="nt-txt">
+            <text>需支付：</text>
+            <!--<text  wx:if="{{switchChecked && saleMoney>0}}">￥{{saleMoney}}折扣</text> -->
+            <text wx:if="{{isCheckPoint && pointsNum >0}}">{{pointsNum}}积分</text>
+            <text wx:else>0积分</text>
+            <text wx:if="{{isBalancePayment && remainMoney >0}}">+￥{{remainMoney}}余额</text>
+            <text wx:else>+0余额</text>
+            <!--<text wx:if="{{couponMoney>0}}">+￥{{couponMoney}}抵用券</text>
+            <text wx:if="{{payMoney>0}}">+￥{{payMoney}}现金</text> -->
+          </view>
+      </view>
+    <view class="ft" bindtap="tapOtherPay">
+        <view class="pay-btn">确认支付</view>
+    </view>
+    
+   
+</view>
+ <!--弹出选择人数-->
+   <view class="mask" hidden="{{isHidden}}"></view>
+   <view class="peoplediv" hidden="{{isHidden}}" wx:if="{{tablesid != '-1'}}">
+      <view class="people-hint">{{!!orderid ?'请重新核对用餐人数':'请选择用餐人数'}}</view>
+      <view class="choose-hint">
+         <text class="people-number" style="color:{{pagecolor.bgcolor}};" wx:if="{{!!changeNum}}">已选择就餐人数为：{{changeNum}}人</text>
+      </view>
+      <scroll-view scroll-y="true" class="numlist clearfix">
+         <view class="number" style="background:{{changeNum == item ? pagecolor.bgcolor : 'none'}};color:{{changeNum == item ? pagecolor.textcolor : '#424242'}};border-color:{{changeNum == item ? pagecolor.bgcolor : ''}}" wx:for="{{peoplenumber}}" wx:key="id"
+            data-id="{{item}}" bindtap="clickpeople">{{item}}</view>
+         <view class="numbermore" wx:if="{{showMore}}" bindtap="shownumber">更多</view>
+      </scroll-view>
+      <view class="peoplebutton">
+         <view class="peoplefalse" bindtap="tcfalse">取消</view>
+         <view class="peopletrue" bindtap="tapYes" style="background:{{!!changeNum ? pagecolor.bgcolor :'#cccccc'}};color:{{pagecolor.textcolor}};border-color:{{!!changeNum ? pagecolor.bgcolor:'#cccccc'}}">确定</view>
+      </view>
+   </view>
+   <!--弹出选择人数end-->
+<template is="msg-dialog" data="{{dialog,isTitle}}"></template>
+<template is="dialog" data="{{...defaultDialog}}"></template>
+<include src="/pages/tempSuccess/tempSuccess" />
+
+
+
+<view class='pickerTime'  bindtap='showPickerTime' hidden='{{!isTime}}'></view>

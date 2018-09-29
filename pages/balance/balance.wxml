@@ -1,0 +1,94 @@
+<import src="../templates/loading/loading.wxml" />
+<import src="../templates/dialog/dialog.wxml" />
+<import src="../templates/message/message.wxml" />
+<import src="../balance/rule.wxml" />
+<template is="message" data="{{showMessage,messageContent}}"></template>
+<template is="loading" wx:if="{{isLoading}}"></template>
+<template is="recharge-dialog" data="{{dialog}}"></template>
+<template is="power-dialog" data="{{...openDialog}}"></template>
+<template is="vipRule" data="{{isVipRuleHidde,scrollHeight,shopName}}"></template>
+
+<view class="panle-bal {{infoData.isopen == 0 ? 'blur20':''}}" wx:if="{{!isLoading}}">
+    <view class="banner-section">
+        <view class="vip-banner" style="background:url({{infoData.vipImg}}) no-repeat;background-size:100% auto">
+        <view class="vip-info">
+            <view class="rp-flex-item rp-flex">
+                <image src="{{infoData.logo}}" class="br-img" mode="scaleToFill"></image>
+                <view class="vip-name">{{infoData.vipName}}</view>
+            </view>
+            <view class="user-info">
+                <view class="user-desc">
+                    <view class="user-name">{{infoData.vipname}}</view>
+                    <view class="user-level">{{infoData.cardtitle ? infoData.cardtitle : ''}}</view>
+                </view>
+                <image src="{{infoData.headimg}}" class="br-img"></image>
+            </view>
+        </view>
+        <view class="balance">
+            <view class="balance-txt">当前可用余额(元)</view>
+            <view class="money">{{infoData.money}}</view>
+        </view>
+        </view>
+    </view>
+    <view class="tab-section">
+        <navigator url="/pages/bill/bill"  hover-class="none" class="tab-item">
+        <view class="tit">已累计获得金额:</view>
+        <view class="strong">{{infoData.historymoney}}元</view>
+        </navigator>
+        <navigator url="/pages/points/points"  hover-class="none" class="tab-item">
+        <view class="tit">已累计获得积分:</view>
+        <view class="strong">{{infoData.historycredit}}积分</view>
+        </navigator>
+    </view>
+    <view style="height:20rpx;background:#f2f2f2;"></view>
+    <view class="b-section">
+        <view class="list-section">
+        <block wx:for="{{infoData.rechage}}" wx:key="index">
+            <view class="money-item {{moneynum == index ? 'money-active' : ''}}" data-index="{{index}}" wx:if="{{item.type != 3}}" bindtap="clickmoney" data-money="{{item.price}}" data-point="{{item.point}}" data-type="{{item.type}}" data-str="{{item.str}}">
+                <view class="t-money">{{item.price}}</view>
+                <view class="t-zs">{{item.str}}</view>
+                <view class="mon-em"></view>
+                <view class="t-desc c-money" wx:if="{{item.type != 2}}">{{item.tip}}</view>
+                <view class="t-desc c-points" wx:if="{{item.type != 1}}">{{item.tip}}</view>
+            </view>
+            <view class="money-item {{moneynum == index ? 'money-active' : ''}}" data-index="{{index}}" bindtap="showconfirmInput" data-type="{{item.type}}" wx:else>
+                <view class="t-other">其他金额</view>
+                <view class="t-zs">请输入其他金额</view>
+                <view class="mon-em"></view>
+            </view>
+        </block>
+        <!--<view class="money-item money-active" bindtap="clickmoney">
+            <view class="t-money">100</view>
+            <view class="t-zs">充100赠5元</view>
+            <view class="mon-em"></view>
+            <view class="t-desc c-points">赠送100积分</view>
+        </view>-->
+        </view>
+        <view class="depost-blank">
+        <view class="despost-money-desc">
+            <block wx:if="{{money > 0 && type != 3}}">
+                <view wx:if="{{type == 1}}">
+                    实付金额：
+                    <text>{{money}}</text>可得
+                    <text>{{aPoint}}</text>元
+                </view>
+                <view wx:if="{{type == 0}}">
+                    实付金额：
+                    <text>{{money}}</text>元赠送
+                    <text>{{point}}</text>积分
+                </view>
+            </block>
+        </view>
+        <view class="pay-btn" style="background:{{pagecolor.linecolor}};opacity:{{ money>0 ? 1 : .75}}" bindtap="showconfirm">立即充值</view>
+        </view>
+    </view>
+    <view class="b-ft">
+        <navigator url="/pages/bill/bill" hover-class="none" class="ft-tab">
+        <text class="icont-money icont"></text>账单明细
+        </navigator>
+        <navigator url="/pages/despostRule/despostRule" hover-class="none" class="ft-tab">
+        <text class="icont-rule icont"></text> 充值规则
+        </navigator>
+    </view>
+
+</view>

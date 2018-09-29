@@ -1,0 +1,48 @@
+<!-- 付款码 -->
+<import src="../templates/loading/loading.wxml" />
+<import src="../templates/dialog/dialog.wxml" />
+<template is="loading" wx:if="{{isLoading}}"></template>
+<view wx:if="{{!isLoading}}">
+    <scroll-view class="paymentcode-panle {{isVipHidden?'':'blur'}}" scroll-y="true" style="height:{{scrollHeight}}rpx;">
+        <view class="card-panle">
+            <view class="card-content" style="background: url({{infoData.vipImg}}) center no-repeat;background-size: cover;">
+            </view>
+            <view class="card-info">
+                <view class="card-name">{{infoData.vipName}}</view>
+                <view class="card-num">VIP卡号：{{infoData.vipNum}}</view>
+            </view>
+        </view>
+        <view class="process">
+            <view class="tip" style="width: {{pert}}%;"></view>
+        </view>
+        <view class="code-panle">
+            <view class="content">
+                <view class="title">
+                    <text class="f-s26">余额 ￥</text>
+                    <text class="money">{{infoData.money}}</text>
+                    <navigator url="/pages/balance/balance" hover-class="none" class="link"> 去充值> </navigator>
+                </view>
+                <view class="column-code" bindtap="showCCode" data-imgsrc="{{infoData.showQcode}}">
+                    <image src="{{infoData.hideQcode}}" mode="scaleToFill"></image>
+                </view>
+                <view class="look-code" bindtap="showCCode" data-imgsrc="{{infoData.showQcode}}">
+                    <text>{{infoData.codeStr}}</text>
+                    <tex>查看数字</tex>
+                </view>
+                <view class="qr-code" bindtap="lookCode" data-imgsrc="{{infoData.cQcode}}">
+                    <image src="{{infoData.cQcode}}" mode="scaleToFill"></image>
+                </view>
+            </view>
+        </view>
+        <view class="careful-panle" bindtap="showDialog">
+            <text class="iconfont icon-s-care"></text>
+            <text class="aa">注意事项</text>
+        </view>
+    </scroll-view>
+    <template is="vipdialog" data="{{userInfo,isVipHidden,isAction}}"></template>
+    <template is="paydialog" wx:if="{{showDialog}}"></template>
+    <view class="dialog-code" wx:if="{{showCode}}" bindtap="closeCode">
+        <image src="{{infoData.showQcode}}" mode="aspectFit"></image>
+        <view class="moncode-hint">付款码数字仅用于支付时向收银员展示，请勿泄露以防咋骗</view>
+    </view>
+</view>

@@ -1,0 +1,49 @@
+<import src="../templates/message/message.wxml" />
+<import src="../templates/loading/loading.wxml" />
+
+<template is="loading" wx:if="{{isIndexLoad}}"></template>
+<template is="message" data="{{showMessage,messageContent}}"></template>
+<block wx:if="{{!isIndexLoad}}">
+   <view class="state">
+      <view class="goodRep">
+      {{current==0?'本次用餐是否满意?':(current==1?praise.yawp.hint:(current==2?praise.common.hint:(current==3?praise.ok.hint:praise.supPraise.hint)))}}
+      </view>
+      <view class="appraiseState">
+         <view class="stateBox" data-type="1" bindtap="isOk">
+            <image src="{{current==1?praise.yawp.img:praise.yawp.unimg}}"></image>
+            <view>{{praise.yawp.name}}</view>
+         </view>
+         <view class="stateBox" data-type="2" bindtap="isOk">
+            <image src="{{current==2?praise.common.img:praise.common.unimg}}"></image>
+            <view>{{praise.common.name}}</view>
+         </view>
+         <view class="stateBox" data-type="3" bindtap="isOk">
+            <image src="{{current==3?praise.ok.img:praise.ok.unimg}}"></image>
+            <view>{{praise.ok.name}}</view>
+         </view>
+         <view class="stateBox" data-type="4" bindtap="isOk">
+            <image src="{{current==4?praise.supPraise.img:praise.supPraise.unimg}}"></image>
+            <view>{{praise.supPraise.name}}</view>
+         </view>
+      </view>
+   </view>
+   <view class="textarea">
+      <textarea disabled="{{isSend}}" placeholder-class="color:#a6a5a5;" value="{{praiseCon}}" maxlength="60" placeholder="请输入您对菜品或餐厅的评价" bindinput="inputValue" />
+   </view>
+   <!--上传图片  -->
+   <view class="upPic">
+      <view class="picBox" wx:for="{{picArr}}" wx:key="index" style="margin-right:{{index==2?'0':'30'}}rpx;">
+         <image src="{{item}}"></image>
+         <text data-index="{{index}}" bindtap="closePic" wx:if="{{!isSend}}"></text>
+      </view>
+      <view class="addPic" wx:if="{{picArr.length<3 && !isSend}}" catchtap="choosePic">
+         <image src="https://pic.repaiapp.com/static/png/20171206/14/1512542205599125054.png"></image>
+         <view>添加图片</view>
+         <text>(1/3张)</text>
+      </view>
+   </view>
+   <view class="send {{isSend?'isSend':''}}">
+      <text wx:if="{{isSend}}" bindtap="tapSubmit">评价成功</text>
+      <text bindtap="submitPraise" wx:else>发表评论</text>
+   </view>
+</block>

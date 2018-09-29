@@ -1,0 +1,7 @@
+{
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "充值明细",
+  "enablePullDownRefresh": false,
+  "disableScroll": true
+}

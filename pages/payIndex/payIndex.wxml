@@ -1,0 +1,45 @@
+<!--pages/payIndex/payIndex.wxml-->
+<import src="../templates/dialog/dialog.wxml" />
+<template is="dialog" data="{{...dialog}}"></template>
+<view class="panle-payindex">
+    <view class="title">给收银员扫一扫完成会员卡支付</view>
+    <view class="code-section">
+        <view class="top-span">
+            <image class="user-img" src="{{data.headimg}}"></image>
+            <text class="user-name">{{data.username}}</text>
+            <image class="code-img" src="{{data.cardInfo.payCodeImg}}" bindtap="showDilaog"></image>
+            <view class="code-num" bindtap="showDilaog">{{data.cardInfo.payCodeNum}} 查看数字</view>
+        </view>
+        <view class="bottom-span">
+            <image class="qrcode-img" bindtap="lookCode" data-imgsrc="{{data.cardInfo.payQcodeImg}}" src="{{data.cardInfo.payQcodeImg}}"></image>
+            <view class="vip-num">
+                <text>会员卡余额：</text>
+                <text class="strong">{{data.money}}元</text>
+            </view>
+        </view>
+    </view>
+    <view class="refresh" bindtap="updateCode">
+        每分钟自动更新
+        <text class="icont-refresh {{isUpdate ? 'active':''}}"></text>
+    </view>
+    <view class="ft">
+    	<view class="i-bl">
+    		<view class="item active">
+    			<view class="icont icont-img1"></view>
+    			<view class="text">储值付款</view>
+    		</view>
+    		<navigator url="/pages/pay/pay" hover-class="none" class="item">
+    			<view class="icont icont-img2"></view>
+    			<view class="text">快速买单</view>
+    		</navigator>
+    		<navigator url="/pages/balance/balance" hover-class="none" class="item">
+    			<view class="icont icont-img3"></view>
+    			<view class="text">充值</view>
+    		</navigator>
+    	</view>
+    </view>
+</view>
+<view class="dialog-code" wx:if="{{showCode}}" bindtap="closeCode">
+    <image src="{{data.cardInfo.payCodeImg}}" mode="aspectFit"></image>
+    <view class="moncode-hint">付款码数字仅用于支付时向收银员展示，请勿泄露以防咋骗</view>
+</view>

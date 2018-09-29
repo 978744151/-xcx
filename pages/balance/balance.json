@@ -1,0 +1,6 @@
+{
+    "navigationBarBackgroundColor": "#fefefe",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "我的余额",
+    "enablePullDownRefresh": false
+}

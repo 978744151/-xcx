@@ -1,0 +1,107 @@
+<import src="../templates/loading/loading.wxml" />
+<template is="loading" wx:if="{{isIndexLoad}}"></template>
+<view class="content" wx:if="{{!isIndexLoad}}">
+    <!--banner-->
+    <view class="banner">
+        <image  mode="aspectFill" class="slide-image" src="{{items.thumb}}"></image>
+    </view>
+    <!--信息说明-->
+    <view class="goodsinfor">
+        <view class="title">
+            <text wx:if="{{items.type == 3}}" class="xushi tag-sw"></text>
+            <text wx:if="{{items.type == 4}}" class="xuni tag-xl"></text>
+            <text class="titleCon">{{items.title}}</text>
+            <!-- <text class="jifen">{{items.credit}}积分</text> -->
+        </view>
+        <view class="exchang-money">
+            <text class="strong" wx:if="{{items.creditmoney>0}}">￥{{items.creditmoney}}</text>
+            <text class="strong" wx:if="{{items.creditmoney>0&&items.credit>0}}">+</text>
+            <text class="strong" wx:if="{{items.credit>=0}}">{{items.credit}}</text>
+            <text class="f-s30" wx:if="{{items.credit>=0}}">积分</text>
+        </view>
+        <view class="exchange-other">
+            <text class="rp-flex-item left">市场价￥{{items.money}}</text>
+            <text class="rp-flex-item center" wx:if="{{items.postfee>0 && items.type == 3}}">运费：￥{{items.postfee}}</text>
+            <text class="rp-flex-item center" wx:if="{{items.postfee <= 0 && items.type == 3}}">免运费</text>
+            <text class="rp-flex-item right" wx:if="{{!!items.address}}">由{{items.address}}发货</text>
+            <text class="rp-flex-item right" wx:if="{{items.type == 4}}">由线下店核销</text>
+        </view>
+        <view class="exchange">
+            <!--恭喜兑换成功-->
+            <view class="success">
+                <view class="success-icon"></view>
+                <text>恭喜您兑换成功</text>
+            </view>
+            <view class="validity">
+                <text wx:if="{{items.type == 4}}">票据有效期: </text>
+                <text wx:else>有效期限：</text>
+                {{items.timeout}}
+            </view>
+            <!--实物是否发货-->
+            <block wx:if="{{items.type == 3}}">
+                <view class="status" wx:if="{{items.status == 0}}">
+                    <view class="wuliu-no"></view>
+                    <view class="wuliu-notext">待发货
+                        <text>{{items.action.noince}}</text>
+                    </view>
+                </view>
+                <view class="status" wx:if="{{items.status == 1}}">
+                    <view class="wuliu-yes"></view>
+                    <!--已发货-->
+                    <view class="wuliu-notext">已发货 {{items.action.noince}}</view>
+                </view>
+                <view class="wuliu-close-static" wx:if="{{items.status == -1}}">
+                    <view class="wuliu-close"></view>
+                    <!--已发货-->
+                    <view class="wuliu-notext">订单已被商家取消 {{items.action.noince}}</view>
+                </view>
+            </block>
+            <!--虚拟是否发货-->
+            <view class="dummy" wx:if="{{items.type == 4}}">
+                <view class="dummy-no" wx:if="{{items.status == 0}}">
+                    <!--虚拟未核销-->
+                    <view class="dummy-noicon {{items.action.applytype == 3 ||  items.action.applytype == 2 ? 'ff':''}}"></view>
+                    <view class="dummy-text clamp2" wx:if="{{items.action.applytype == 3}}">{{items.action.text}}</view>
+                    <view class="dummy-text clamp2" wx:if="{{items.action.applytype == 2}}">
+                        <view>{{items.action.account}}</view> 
+                        <view>{{items.action.pwd}}</view>
+                    </view>
+                    <block wx:else>
+                        <view class="dummy-text">{{items.action.noince}}</view>
+                        <image class="{{items.action.pictype == 1 ? 'qcode':''}}" src="{{items.action.pic}}" data-imgsrc="{{items.action.pic}}" bindtap="lookCode"></image>
+                    </block>   
+                </view>
+                <view class="dummy-yes {{items.action.applytype == 3 ? 'ff':''}}" wx:if="{{items.status == 1 || items.status == 2}}">
+                    <!--虚拟已核销-->
+                    <view class="dummy-yesicon"></view>
+                    <view class="dummy-yestext">{{items.action.noince}}</view>
+                   <!-- <image class="{{items.action.pictype == 1 ? 'qcode':''}}" src="{{items.action.pic}}" bindtap="lookCode" data-imgsrc="{{items.action.pic}}"></image>-->
+                </view>
+                <view class="dummy-yes" wx:if="{{items.status == -1}}">
+                    <!--虚拟已核销-->
+                    <view class="dummy-close"></view>
+                    <view class="dummy-text">卷码：订单已被商家取消{{items.action.noince}}</view>
+                    <!-- <image class="{{items.action.pictype == 1 ? 'qcode':''}}" src="{{items.action.pic}}" bindtap="lookCode" data-imgsrc="{{items.action.pic}}"></image>-->
+                </view>
+            </view>
+          <!--  <view class="dummy">
+                 <view class="dummy-no">
+                    
+                    <view class="dummy-noicon"></view>
+                    <view class="dummy-text">{{items.action.noince}}</view>
+                    <image src="{{items.action.pic}}" data-imgsrc="{{items.action.pic}}" bindtap="lookCode"></image>
+                </view>
+            </view> -->
+            <view class="successInfor">相关解释参考下文“兑换成功操作”;</view>
+        </view>
+        <view class="exchange-hint" wx:if="{{items.success.length>0}}">
+            <view class="hint-tit">
+                <text></text>兑换成功文案:</view>
+            <view class="hint-text">
+                <text wx:for="{{items.success}}" wx:key="index">{{item}}</text>
+            </view>
+        </view>
+        <!--立即兑换-->
+        <view class="footer" style="background:{{color.linecolor}}" bindtap="calling">联系客服</view>
+    </view>
+</view>

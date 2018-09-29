@@ -1,0 +1,447 @@
+page {
+    background: #fff;
+}
+
+.panle-bal.blur20{
+    filter: blur(20rpx)
+}
+
+.banner-section {
+    padding: 30rpx 30rpx 0 30rpx;
+    background: #252525;  
+}
+
+.vip-banner{
+    height: 280rpx;
+    padding: 15rpx 18rpx 0 18rpx;
+}
+
+.banner-section .vip-info{
+    display: flex;
+    align-items: center;
+}
+
+.banner-section .vip-name{
+    font-size: 26rpx;
+    color: #fff;
+    margin-left: 14rpx;
+}
+
+.banner-section .user-info{
+    display: inline-flex;
+    align-items: center;
+}
+
+.banner-section .user-desc{
+    font-size: 22rpx;
+    color: #fff;
+    text-align: right;
+    margin-right: 10rpx;
+    line-height: 22rpx;
+}
+
+.banner-section .user-level{
+    margin-top: 10rpx;
+}
+
+.banner-section  .br-img{
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 50%;
+}
+
+.banner-section .balance{
+    margin-top: 32rpx;
+    text-align: center;
+    color: #fff;
+    
+}
+
+.banner-section .balance-txt{
+    font-size: 26rpx;
+    line-height: 36rpx;
+}
+
+.banner-section .money{
+    margin-top: 18rpx;
+    font-size: 80rpx;
+    line-height: 60rpx;
+}
+
+
+.tab-section{
+    display: flex;
+    align-items: center;
+    padding: 20rpx 0;
+    height: 68rpx;
+    /* background: #fff; */
+}
+
+.tab-section .tab-item{
+    position: relative;
+    flex: 1;
+    text-align: center;
+}
+
+.tab-section .tab-item:first-of-type::after{
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 10%;
+    height: 80%;
+    width: 1px;
+    background: #f0f0f0;
+}
+
+.tab-section .tab-item .tit{
+    line-height: 34rpx;
+    font-size: 26rpx;
+    color: #333333;
+}
+
+.tab-section .tab-item .strong{
+    color: #ec2222;
+    line-height: 26rpx;
+    font-size: 26rpx;
+    margin: 10rpx 0 8rpx 0;
+}
+
+.b-section{
+    position: relative;
+    background: #fff;
+    /* flex: 1; */
+}
+
+.list-section {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    padding: 28rpx 30rpx 0;
+
+}
+
+.money-item {
+    position: relative;
+    display: flex;
+    display: -webkit-flex;
+    flex-flow: column;
+    width: 325rpx;
+    height: 150rpx;
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
+    margin-bottom: 20rpx;
+    /* font-size: 35rpx; */
+    color: #4c4c4c;
+    align-items: center;
+    justify-content: center;
+    /* font-weight: bold; */
+    margin-right: 38rpx;
+    box-sizing: border-box;
+}
+
+.money-item:nth-child(2n) {
+    margin-right: 0;
+}
+
+.money-active {
+    border: 1px solid #f14949;
+}
+
+.mon-em {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 35rpx;
+    height: 35rpx;
+    background: url(https://pic.repaiapp.com/pic/a3/0b/18/a30b18f3db1ed02cae60a4982586ac4806f1bd3f.png);
+    background-size: 100% 100%;
+}
+
+.money-active .mon-em {
+    display: block;
+}
+
+.list-section .item {
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    padding: 20rpx 0;
+    border-bottom: 1px solid #f0f0f0;
+    box-sizing: border-box;
+}
+
+.list-section .item:last-of-type {
+    border: none;
+}
+
+.list-section .item .rp-flex-item {
+    font-size: 32rpx;
+}
+
+.list-section .item .btn-pay {
+    width: 126rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    font-size: 28rpx;
+    color: #f14949;
+    border-radius: 4rpx;
+    border: 1px solid #dd2f3b;
+    text-align: center;
+}
+
+.list-section .item .rmb {
+    margin-right: 8rpx;
+}
+
+.depost-blank{
+    position: relative;
+    padding: 0 30rpx 110rpx;
+}
+
+.depost-blank .despost-money-desc{
+    font-size: 26rpx;
+    padding-bottom: 28rpx;
+    line-height: 26rpx;
+    height: 26rpx;
+}
+
+.depost-blank .despost-money-desc text{
+    color:#ec2222;
+}
+
+.depost-blank .pay-btn{
+    height: 88rpx;
+    line-height: 88rpx;
+    text-align: center;
+    color: #fff;
+    font-size: 34rpx;
+    border-radius: 8rpx;
+}
+
+
+.b-ft{
+    position: fixed;
+    bottom: 0;
+    left: 0; 
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16rpx 0;
+    height: 30rpx;
+    line-height: 30rpx;
+    color:#707070;
+    font-size: 26rpx;
+    background: #fff;
+}
+
+.b-ft .ft-tab{
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding:0 26rpx;
+    box-sizing: border-box;
+}
+
+.b-ft .ft-tab:first-of-type{
+    border-right:1px solid #707070;
+}
+
+.b-ft .icont{
+    display: inline-block;
+    width: 28rpx;
+    height: 28rpx;
+    margin-right: 10rpx;
+}
+
+.b-ft .icont-rule{
+    background: url('https://pic.repaiapp.com/pic/2d/7d/13/2d7d13932c3726dbfc0e6341fcdaf7faff02d075.png') center no-repeat;
+    background-size: cover;
+}
+
+.b-ft .icont-money{
+    background: url('https://pic.repaiapp.com/pic/87/50/2b/87502b397973a7598aea032800ad2d1f35723ab8.png') center no-repeat;
+    background-size: cover;
+}
+
+.dialog-rule {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 22;
+    border-top: 1px solid #efefef;
+    opacity: 0;
+}
+
+.dialog-rule .rp-flex-item {
+    font-size: 28rpx;
+    color: #000000;
+    line-height: 180%;
+}
+
+.dialog-rule .rp-flex-item .wapper {
+    padding: 0 34rpx 30rpx 34rpx;
+}
+
+.mar-b42 {
+    margin-bottom: 42rpx;
+}
+
+.dialog-rule .title {
+    height: 120rpx;
+    font-size: 42rpx;
+    text-align: center;
+    padding-top: 70rpx;
+    font-weight: bold;
+}
+
+.dialog-rule .footer {
+    height: 190rpx;
+    text-align: center;
+}
+
+.dialog-rule .footer .close {
+    display: inline-block;
+    width: 68rpx;
+    height: 68rpx;
+    margin-top: 82rpx;
+    background: url('https://pic.repaiapp.com/pic/6a/23/d3/6a23d35f040def0c689a299957b695d3230f0ac1.png') center no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.icont-zdan {
+    display: inline-block;
+    width: 25rpx;
+    height: 28rpx;
+    background: url('https://pic.repaiapp.com/pic/e0/45/b7/e045b75b78d966186097a615d40119a3243c6d66.png') center no-repeat;
+    background-size: 25rpx 28rpx;
+    margin-right: 12rpx;
+}
+
+.right-link text {
+    vertical-align: middle;
+}
+
+
+.money-item .t-desc{
+    position: absolute;
+    right: 0;
+    top: 8rpx;
+    height: 34rpx;
+    padding:0 8rpx 0 15rpx;
+    font-size: 23rpx;
+    line-height: 34rpx;
+    border-top-left-radius: 20rpx;
+    border-bottom-left-radius: 20rpx;
+}
+
+.t-money.t-mar{
+    margin-top: 24rpx;
+}
+
+.money-item .t-desc.c-points{
+    background: #f14949;
+    color: #fff;
+}
+
+.money-item .t-desc.c-money{
+    background: #ffc000;
+    color: #333;
+}
+
+.t-zs {
+    font-size: 24rpx;
+    /* margin-top: 24rpx; */
+    line-height: 24rpx;
+    /*color:#4c4c4c;*/
+}
+
+.t-other {
+    font-size: 34rpx;
+    line-height: 34rpx;
+    margin-bottom: 10rpx;
+}
+
+.t-money {
+    font-size: 48rpx;
+    line-height: 40rpx;
+    margin-bottom: 12rpx;
+    margin-top: 24rpx;
+}
+
+.t-notice {
+    display: flex;
+    font-size: 28rpx;
+    color: #fff;
+    padding: 0 30rpx;
+    align-items: baseline;
+}
+
+.t-notice .iconfont {
+    font-size: 28rpx;
+    margin-right: 12rpx;
+}
+
+
+.table {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-tr {
+    display: table-row;
+    height: 30px;
+}
+
+.table-th {
+    display: table-cell;
+    font-weight: bold;
+    height: 100%;
+    border: 1px solid gray;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #E5E5E5;
+}
+
+.table-td {
+    display: table-cell;
+    height: 100%;
+}
+
+.sub-table {
+    width: 100%;
+    height: 100%;
+    display: table;
+}
+
+.sub-table-tr {
+    display: table-row;
+    height: 100%;
+}
+
+.sub-table-td {
+    display: table-cell;
+    height: 100%;
+    border: 1px solid gray;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.s-num .new-icont{
+    width: 100%;
+    height: 120rpx;
+    background: url('https://pic.repaiapp.com/pic/c0/8d/ac/c08dac798a236752c918ea0795c1c2cf3e43c368.png') center no-repeat;
+    background-size: auto 100%;
+}
+
+.s-num .new-tip-txt{
+    margin-top: 28rpx;
+    font-size: 28rpx;
+    line-height: 28rpx;
+}

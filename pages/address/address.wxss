@@ -1,0 +1,137 @@
+page {
+    background:#f3f5f7;
+
+}
+
+.edit-addr {
+    background-color: #fff;
+    margin-top: 30rpx;
+}
+
+.cell {
+    padding: 20rpx 30rpx;
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.cell-picker {
+    width: 100%;
+    height: 54rpx;
+    line-height: 54rpx;
+    font-size: 28rpx;
+}
+
+.cell:before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 2rpx;
+    border-top: 2rpx solid #e5e5e5;
+    color: #e5e5e5;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+    left: 30rpx;
+    z-index: 2;
+}
+
+.cell .cell-hd {
+    display: block;
+    width: 150rpx;
+    word-wrap: break-word;
+    word-break: break-all;
+    font-size: 28rpx;
+}
+
+.cell .cell-bd {
+    font-size: 28rpx;
+}
+
+.cell .cell-bd.cell-list {
+    width: 520rpx;
+}
+
+.cell .cell-bd.cell-list .cell-input {
+    padding: 15rpx 15rpx 20rpx 0;
+    border-bottom: 1rpx solid #e5e5e5;
+    display: block;
+}
+
+.addr-detailadr {
+    width: 100%;
+    height: 120rpx;
+    padding: 20rpx 0 0 0rpx;
+}
+
+.addr-action {
+    padding: 30rpx;
+}
+
+.addr-action .addr-del {
+    background-color: #ff3d1d;
+    color: #fff;
+    border-radius: 5rpx;
+    font-size: 32rpx;
+    display: inline-block;
+    text-align: center;
+    height: 70rpx;
+    line-height: 70rpx;
+}
+
+.addr-action .addr-edit {
+    background-color: #f14949;
+    color: #fff;
+    border-radius: 5rpx;
+    font-size: 32rpx;
+    display: inline-block;
+    text-align: center;
+    height: 70rpx;
+    line-height: 70rpx;
+}
+
+.addr-back {
+    width: 100%;
+    height: 400rpx;
+}
+
+.color-cf{
+    color: #cfcfcf;
+}
+
+.radio-wapper{
+    width: 100rpx;
+    text-align: center;
+}
+.cell-more {
+    position: relative;
+    padding-right: 30rpx;
+    color: #bababa;
+}
+
+.cell-more:after {
+    content: " ";
+    height: 12rpx;
+    width: 12rpx;
+    border-width: 4rpx 4rpx 0 0;
+    border-color: #C8C8CD;
+    border-style: solid;
+    -webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+    transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+    top: -4rpx;
+    position: absolute;
+    top: 50%;
+    margin-top: -8rpx;
+    right: 0rpx;
+}
+.fr{
+  float: right
+}
+

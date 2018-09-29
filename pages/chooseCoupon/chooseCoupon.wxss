@@ -1,0 +1,236 @@
+page{
+  background: #f4f4f4;
+  /* min-height: 100%; */
+  padding-bottom: 108rpx;
+}
+.listnav{
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 80rpx;
+  background: #fff;
+  border-top: 1px solid #d6d6d6;
+}
+.navitem{
+  width: 50%;
+  text-align: center;
+}
+.navitem text{
+  display: inline-block;
+  height: 75rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  color: #262626;
+  padding: 0 10rpx;
+}
+.navitem.active text{
+  color: #c91616;
+  border-bottom:5rpx solid #c91616; 
+}
+.scroll-wapper{
+  padding: 20rpx 30rpx;
+}
+.nouse-coupon{
+  background: #fff;
+  height: 88rpx;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20rpx;
+  border-radius: 6rpx;
+}
+.nouse-coupon text{
+  font-size: 32rpx;
+  color: #151515;
+}
+.nouse-coupon .radio{
+  width: 40rpx;
+  height: 40rpx;
+  background: url(https://pic.repaiapp.com/pic/cf/79/ee/cf79ee1579c7805814bf857a0d0dab319db2eb9a.png);
+  background-size: 100% 100%;
+}
+.nouse-coupon .radio.action{
+  width: 40rpx;
+  height: 40rpx;
+  background: url(https://pic.repaiapp.com/pic/54/a7/02/54a7026a3e67586c1370a69e7e700aff4f8fc13c.png);
+  background-size: 100% 100%;
+}
+.coupon-item{
+  position: relative;
+  width: 100%;
+  height: 230rpx;
+  margin-top: 20rpx;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  align-items: center;
+  background: #fff;
+  border-radius: 6rpx;
+}
+
+.coupon-item::after{
+  content: '';
+  position: absolute;
+  left: 218rpx;
+  top: 50%;
+  height: 168rpx;
+  width: 2rpx;
+  margin-top: -84rpx;
+  background: url('https://pic.repaiapp.com/static/png/20171213/10/1513131372046539952.png') repeat-x center;
+  background-size: 2rpx auto;
+}
+
+.main-num{
+  display: inline-flex;
+  justify-content: center;
+  align-items: baseline;
+  color: #c8b285;
+}
+
+.coupon-item .coupon-type{
+  display: inline-block;
+  text-align: center;
+  font-size: 26rpx;
+  color: #fff;
+  height: 36rpx;
+  line-height: 36rpx;
+  background: #c8b285;
+  width: 128rpx;
+  border-radius: 20rpx;
+}
+
+.coupon-left{
+  display: flex;
+  flex-direction: column;
+  width: 218rpx;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.coupon-left .text1{
+  font-size: 30rpx;
+}
+.coupon-left .text2{
+  font-size: 68rpx;
+}
+.coupon-right{
+  flex: 1;
+  padding-left: 20rpx;
+}
+.coupon-right text{
+  display: block;
+}
+.coupon-right .coupon-name{
+  font-size: 34rpx;
+  line-height: 34rpx;
+  font-weight: 500;
+}
+.coupon-right .coupon-hint{
+  margin-top: 20rpx;
+  font-size: 26rpx;
+  line-height: 26rpx;
+}
+.coupon-item .radio{
+  position: absolute;
+  right: 20rpx;
+  top: 90rpx;
+  width: 40rpx;
+  height: 40rpx;
+  background: url(https://pic.repaiapp.com/pic/cf/79/ee/cf79ee1579c7805814bf857a0d0dab319db2eb9a.png);
+  background-size: 100% 100%;
+}
+.coupon-item .radio.action{
+  width: 40rpx;
+  height: 40rpx;
+  background: url(https://pic.repaiapp.com/pic/54/a7/02/54a7026a3e67586c1370a69e7e700aff4f8fc13c.png);
+  background-size: 100% 100%;
+}
+.coupon-img2{
+  display: block;
+  width: 138rpx;
+  height: 66rpx;
+  line-height: 66rpx;
+  background: url(https://pic.repaiapp.com/pic/96/2d/7d/962d7dbad6d340bc6ffb832832b6b433c6d77ae6.png);
+  background-size: 100% 100%;
+  margin: 0 auto;
+  font-size: 45rpx;
+}
+.coupon-img4{
+  display: block;
+  width: 138rpx;
+  height: 66rpx;
+  line-height: 66rpx;
+  background: url(https://pic.repaiapp.com/pic/c3/e1/74/c3e174b540226abf1078be867107066e31e34d3b.png);
+  background-size: 100% 100%;
+  margin: 0 auto;
+  font-size: 45rpx;
+}
+.coupon-img5{
+  display: block;
+  width: 138rpx;
+  height: 66rpx;
+  line-height: 66rpx;
+  background: url(https://pic.repaiapp.com/pic/8e/ae/d2/8eaed2acd8b088d2808d4049fe7f82fa82d4700c.png);
+  background-size: 100% 100%;
+  margin: 0 auto;
+  font-size: 45rpx;
+}
+.nocoupon-bg{
+  background: url(https://pic.repaiapp.com/pic/ee/75/db/ee75db12f3ac4eab9a29e2f3c657a7567e19012e.png);
+  background-size: 100% 100%;
+}
+
+.nocoupon-bg.coupon-item:first-child{
+  margin-top: 0;
+}
+
+.nocoupon-color{
+  color: #999999;
+}
+.nocoupon-img{
+  display: block;
+  width: 138rpx;
+  height: 66rpx;
+  line-height: 66rpx;
+  background: url(https://pic.repaiapp.com/pic/71/4d/e1/714de1aaa69816e441d4b61032f5a102fef8456a.png);
+  background-size: 100% 100%;
+  margin: 0 auto;
+  font-size: 45rpx;
+}
+
+.undata {
+    padding-top: 260rpx;
+    text-align: center;
+}
+
+.undata .nothing-icont {
+	height: 200rpx;
+	background:  url('https://pic.repaiapp.com/pic/3e/e6/de/3ee6de595b06051ff1915b59c4eb98d681a98fe6.png') center no-repeat;
+	background-size: auto 100%;
+	margin-bottom: 40rpx;
+}
+
+.undata .nothing-txt{
+	font-size: 30rpx;
+	color:#a2a2a2;
+}
+
+.ft-btn{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 98rpx;
+  line-height: 98rpx;
+  background: #dd3232;
+  text-align: center;
+  font-size: 36rpx;
+  color: #fff;
+}

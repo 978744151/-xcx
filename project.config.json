@@ -1,0 +1,259 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.3.0",
+	"appid": "wxab53aa02e3916cc9",
+	"projectname": "%E7%82%B9%E9%A4%90%E8%87%AA%E6%8F%90",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 36,
+			"list": [
+				{
+					"id": 0,
+					"name": "订单详情",
+					"pathName": "pages/orderDetail/orderDetail",
+					"query": "orderid=1411&tablesid=1556&from=list"
+				},
+				{
+					"id": 1,
+					"name": "点菜买单",
+					"pathName": "pages/carte/carte",
+					"query": "tablesid=1703&storeid=3243"
+				},
+				{
+					"id": 2,
+					"name": "向商家付款",
+					"pathName": "pages/payment/payment",
+					"query": "orderid=1624&tablesid=1703"
+				},
+				{
+					"id": -1,
+					"name": "积分商城",
+					"pathName": "pages/integral/integral",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "兑换详情",
+					"pathName": "pages/itgexchange/itgexchange",
+					"query": "id=269"
+				},
+				{
+					"id": 6,
+					"name": "点菜首页",
+					"pathName": "pages/carte/carte",
+					"query": ""
+				},
+				{
+					"id": 7,
+					"name": "carte",
+					"pathName": "pages/carte/carte",
+					"query": "tablesid=1556&storeid=3243"
+				},
+				{
+					"id": 7,
+					"name": "储值支付",
+					"pathName": "pages/payIndex/payIndex",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "确认订单",
+					"pathName": "pages/createOrder/createOrder",
+					"query": ""
+				},
+				{
+					"id": 10,
+					"name": "maskDetail",
+					"pathName": "pages/maskDetail/maskDetail",
+					"query": "orderid=1370"
+				},
+				{
+					"id": -1,
+					"name": "优惠券",
+					"pathName": "pages/coupon/coupon",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "用户评价",
+					"pathName": "pages/allPraise/allPraise",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "点餐买单",
+					"pathName": "pages/cartePlace/cartePlace",
+					"query": "tablesid=25"
+				},
+				{
+					"id": -1,
+					"name": "选择优惠券",
+					"pathName": "pages/chooseCoupon/chooseCoupon",
+					"query": "id=1375&allPrice=128.00&saleMoney=6.40"
+				},
+				{
+					"id": -1,
+					"name": "vip",
+					"pathName": "pages/vip/vip",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "等级中心",
+					"pathName": "pages/gradecenter/gradecenter",
+					"query": ""
+				},
+				{
+					"id": 18,
+					"name": "订单详情",
+					"pathName": "pages/orderDetail/orderDetail",
+					"query": "orderid=1416&tablesid=1556&from=list"
+				},
+				{
+					"id": 17,
+					"name": "快捷支付",
+					"pathName": "pages/pay/pay",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "编辑地址",
+					"pathName": "pages/address/address",
+					"query": ""
+				},
+				{
+					"id": 19,
+					"name": "向商家付款",
+					"pathName": "pages/payment/payment",
+					"query": "orderid=7125&tablesid=1702"
+				},
+				{
+					"id": -1,
+					"name": "快速买单",
+					"pathName": "pages/pay/pay",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "明细",
+					"pathName": "pages/bill/bill",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "快速买单",
+					"pathName": "pages/pay/pay",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "订单",
+					"pathName": "pages/orderlist/orderlist",
+					"query": "orderid=7101&tablesid=1702"
+				},
+				{
+					"id": -1,
+					"name": "自提订单详情",
+					"pathName": "pages/oCarteDetail/oCarteDetail",
+					"query": ""
+				},
+				{
+					"id": 25,
+					"name": "teststststststststst",
+					"pathName": "pages/payment/payment",
+					"query": "type=diancan&orderid=1776&tablesid=-1"
+				},
+				{
+					"id": 26,
+					"name": "外卖确认订单",
+					"pathName": "pages/createOrder_out/index",
+					"query": ""
+				},
+				{
+					"id": 27,
+					"name": "外卖收货地址",
+					"pathName": "pages/address_out/address_out",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "新增地址",
+					"pathName": "pages/address/address",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "外卖订单详情",
+					"pathName": "pages/oCarteDetail/oCarteDetail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "大王卡领取优惠券",
+					"pathName": "pages/getKingCoup/getKingCoup",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "code扫码",
+					"pathName": "pages/code/code",
+					"query": ""
+				},
+				{
+					"id": 32,
+					"name": "外卖",
+					"pathName": "pages/outFood/outFood",
+					"query": "tablesid=-2"
+				},
+				{
+					"id": -1,
+					"name": "自提",
+					"pathName": "pages/orderCarte/orderCarte",
+					"query": "tablesid=-1"
+				},
+				{
+					"id": -1,
+					"name": "会员请求入口",
+					"pathName": "pages/vipaction/vipaction",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "设置",
+					"pathName": "pages/setting/setting",
+					"query": "tablesid=-1"
+				},
+				{
+					"id": -1,
+					"name": "详情",
+					"pathName": "pages/createOrder_out/createOrder_out",
+					"query": "tablesid=-2&storeid=3243&isZT=true&isJC=true"
+				}
+			]
+		}
+	}
+}

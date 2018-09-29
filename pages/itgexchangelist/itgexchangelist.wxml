@@ -1,0 +1,59 @@
+<import src="../templates/loading/loading.wxml" />
+<import src="../templates/nodata/nodata.wxml" />
+<template is="loading" wx:if="{{isIndexLoad}}"></template>
+<view class="content" wx:if="{{!isIndexLoad}}">
+    <!--订单号码-->
+    <navigator class="contnetList" wx:for="{{list}}" wx:key="index" url="/pages/itgexchange/itgexchange?id={{item.tid}}" hover-class="none">
+        <view class="order">
+            <view class="rp-flex-item">订单号：{{item.orderid}} </view>
+            <view class="aa">{{item.type == 3 ? '实物' : '虚拟'}}订单</view>
+        </view>
+        <view class="infor">
+            <view class="left">
+                <image mode="aspectFill" src="{{!!item.thumb ? item.thumb : 'https://pic.repaiapp.com/pic/1b/fb/ac/1bfbac487e8aca2f513361287609fef25fcf9c19.png'}}"></image>
+            </view>
+            <view class="right">
+                <view class="name">
+                    <text wx:if="{{item.type == 3}}" class="sw tag-sw"></text>
+                    <text wx:if="{{item.type == 4}}" class="sw tag-xl"></text>
+                    <text class="title clamp1">{{item.title}}</text>
+                </view>
+                <view class="wuliu-dan">
+                    <view class="mar-b10 clamp1">
+                        <block wx:if="{{item.type == 3}}">
+                          订单状态:{{item.msg}}
+                        </block>
+                        <block wx:if="{{item.type == 4}}">
+                            <text>核销方式:</text>
+                            <text wx:if="{{item.applytype == 1}}">扫码核销</text>
+                            <text wx:if="{{item.applytype == 2}}">账号密码核销</text>
+                            <text wx:if="{{item.applytype == 3}}">自由文本核销</text>
+                        </block>
+                    </view>
+                    <view class="clamp1" wx:if="{{item.type == 3}}">
+                        {{item.noince}}
+                    </view>
+                    <view class="clamp1" wx:else>
+                        核销状态:
+                        <block wx:if="{{item.applytype == 1}}">
+                           <text wx:if="{{item.is_check == 1}}">已核销</text>
+                           <text wx:else>未核销</text>
+                           (二维码,条形码,劵码)
+                        </block>
+                        <block wx:if="{{item.applytype == 2}}">
+                           {{item.account}}{{item.pwd}}
+                        </block>
+                        <block wx:if="{{item.applytype == 3}}">
+                           {{item.text}}
+                        </block>
+                    </view>
+                </view>
+                <!-- <text class="iconfont icon-right-more"></text> -->
+            </view>
+            <text class="right-detail"></text>
+        </view>
+    </navigator>
+    <template is="undata-default" wx:if="{{list.length <= 0}}"></template>
+    <template is="loading" wx:if="{{isMore}}"></template>
+    <view class="rp-end" wx:if="{{!isMore && count>5 && isEnd}}">─ 我已经到底了 ─</view> 
+</view>

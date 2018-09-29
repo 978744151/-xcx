@@ -1,0 +1,111 @@
+<import src="../templates/dialog/dialog.wxml" />
+<import src="../templates/message/message.wxml" />
+<import src="../templates/loading/loading.wxml" />
+<import src="../templates/bg/bg.wxml" />
+<template is="loading" wx:if="{{isIndexLoad}}"></template>
+<template is="message" data="{{showMessage,messageContent}}"></template>
+<template is="dialog" data="{{...dialogInfo}}"></template>
+<view class="content" wx:if="{{!isIndexLoad && !isCodebg}}">
+  <!--banner-->
+  <view class="banner">
+    <image class="slide-image" src="{{!!items.thumb?items.thumb:'https://pic.repaiapp.com/pic/1b/fb/ac/1bfbac487e8aca2f513361287609fef25fcf9c19.png'}}" mode="aspectFill"></image>
+  </view>
+  <!--信息说明-->
+  <view class="goodsinfor">
+    <view class="title">
+      <text class="t-tag tag-sw" wx:if="{{items.type == 3}}"></text>
+      <text class="t-tag tag-xl" wx:if="{{items.type == 4}}"></text>
+      <text class="titleCon">{{items.title}}</text>
+    </view>
+    <!--点击兑换-->
+    <view class="exchang-money">
+      <text class="strong" wx:if="{{items.creditmoney>0}}">￥{{items.creditmoney}}</text>
+      <text class="strong" wx:if="{{items.creditmoney>0&&items.credit>=0}}">+</text>
+      <text class="strong" wx:if="{{items.credit>=0}}">{{items.credit}}</text>
+      <text class="f-s30" wx:if="{{items.credit>=0}}">积分</text>
+    </view>
+    <view class="exchange-other">
+      <text class="rp-flex-item left">市场价￥{{items.money}}</text>
+      <text class="rp-flex-item center" wx:if="{{items.postfee>0 && items.type == 3}}">运费：￥{{items.postfee}}</text>
+      <text class="rp-flex-item center" wx:if="{{items.postfee <= 0 && items.type == 3}}">免运费</text>
+      <text class="rp-flex-item right" wx:if="{{!!items.address}}">由{{items.address}}发货</text>
+      <text class="rp-flex-item right" wx:if="{{items.type == 4}}">由线下店核销</text>
+    </view>
+    <!--有效期-->
+    <view class="validity">活动截止日期:{{items.timeout}}</view>
+    <!--配送地址-->
+    <block wx:if="{{items.type == 3}}">
+      <view class="address">
+        <view></view>
+        配送地址:
+      </view>
+      <!--配送到-->
+      <navigator url="/pages/address/address?id={{address.id}}" class="addressList" wx:if="{{!!address}}" hover-class="none">
+        <view class="rp-flex align-center">
+          <view class="padd-r10">配送至：</view>
+          <view class="rp-flex-item">{{address.address}} {{address.detail}}</view>
+          <view class="iconfont icon-right-more"></view>
+        </view>
+      </navigator>
+      <navigator url="/pages/address/address" class="addressList" wx:else>
+        <view class="rp-flex align-center">
+          <view>配送至：</view>
+          <view class="rp-flex-item">您还未填写收货信息，马上去填写。</view>
+          <view class="iconfont icon-right-more"></view>
+        </view>
+      </navigator>
+    </block>
+    <!--点击兑换end-->
+    <view wx:if="{{state==1}}">
+      <!--恭喜兑换成功-->
+      <view class="success">
+        <image src="../../images/integral/check.png"></image>
+        <text>恭喜您兑换成功</text>
+      </view>
+      <view class="validity bordernone">有效期限:2017-06-29至2017-07-29</view>
+      <!--是否发货-->
+      <view class="status">
+        <!--<image src="../../images/integral/fh.png"></image>-->
+        <image src="../../images/integral/fh1.png"></image>
+      </view>
+      <view class="successInfor">相关解释参考下文“兑换成功操作”;</view>
+    </view>
+    <!--详细说明-->
+    <view class="address">
+      <view></view>
+      详细说明:
+    </view>
+    <!--活动规则-->
+    <view class="activityRules" wx:if="{{items.des.length>0||items.rule.length>0}}">
+      <block wx:if="{{items.rule.length>0}}">
+        <view style="font-weight: 500;"> 活动规则:</view>
+        <view wx:for="{{items.rule}}" wx:key="index">{{item}}</view>
+      </block>
+      <block wx:if="{{items.des.length>0}}">
+        <view style="font-weight: 500;">详情说明:</view>
+        <view wx:for="{{items.des}}" wx:key="index">{{item}}</view>
+      </block>
+    </view>
+    <!--图文详情-->
+    <view class="address" wx:if="{{items.detail.length>0}}">
+      <view></view>
+      图文详情:
+    </view>
+    <!--图文详情内容-->
+    <view class="image-text" wx:for="{{items.detail}}" wx:key="index">
+      <image src="{{item.image}}" mode="scaleToFill"></image>
+    </view>
+    <view class="blank"></view>
+    <!--是否领取过-->
+    <navigator url="/pages/itgexchange/itgexchange?id={{tradeId}}" wx:if="{{tradeId > 0}}" class="goitgexchange">
+      <view class="rp-flex align-center">
+        <view class="padd-r10">您已兑换该商品,</view>
+        <view class="rp-flex-item">点我查看领取详情></view>
+      </view>
+    </navigator>
+    <!--立即兑换-->
+    <view class="footer" style="background:{{status?color.linecolor :'#ccc'}}" bindtap="exchange">{{msg}}</view>
+</view>
+</view>
+
+<template is="{{istemp}}" wx:if="{{isCodebg}}"></template>

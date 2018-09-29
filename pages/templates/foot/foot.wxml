@@ -1,0 +1,7 @@
+<template name="foot">
+    <view class="{{isBottom?'rp-foot-wapper':''}}" >
+        <view class="rp-foot">
+            <view class="img"></view>
+        </view>
+    </view>
+</template>

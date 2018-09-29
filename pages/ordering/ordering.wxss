@@ -1,0 +1,32 @@
+page{
+   background: #f6f6f6
+}
+.ordering{
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 18%;
+}
+.ing-ok{
+  width: 108rpx;
+  height: 109rpx;
+  background: url(https://pic.repaiapp.com/pic/3e/c0/4e/3ec04ed53a8875a94d62a8f65ad6262e38bd5cd8.png);
+  background-size: 100% 100%;
+}
+.ing-p1{
+  font-size: 38rpx;
+  color: #232323;
+  margin-top: 65rpx;
+  font-weight: bold;
+}
+.ing-p2{
+  font-size: 28rpx;
+  color: #808080;
+  margin-top: 35rpx;
+}
+.ing-p3{
+  font-size: 28rpx;
+  color: #a5a5a5;
+  margin-top: 100rpx;
+}

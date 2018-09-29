@@ -1,0 +1,43 @@
+<import src="../templates/message/message.wxml" />
+<import src="../templates/loading/loading.wxml" />
+
+<template is="loading" wx:if="{{isLoading}}"></template>
+<template is="message" data="{{showMessage,messageContent}}"></template>
+<view class="content" wx:if="{{!isLoading}}">
+    <view class="menulist">
+        <view class="scroll-wapper" wx:if="{{couponList.length>0}}">      
+            <view class='nouse-coupon' bindtap='nocoupon'>
+                <text>不使用优惠券</text>
+                <view class="radio {{nocoupon ? 'action' : ''}}"></view>
+            </view>
+            <view class='coupon-list'>
+            <block wx:for="{{couponList}}" wx:key="index" >
+               <view class='coupon-item ' bindtap="changPayMode" data-mode="{{index}}" >
+                    <view class='coupon-left'>
+                        <view class="main-num">
+                            <text class='text1'>{{item.prefix_char}}</text>
+                            <text class='text2'>{{item.middle_char}}</text>
+                            <text class='text1'>{{item.suffix_char}}</text>
+                        </view>
+                        <view class="coupon-type">{{item.card_type_name}}</view>
+                    </view>
+                    <view class='coupon-right'>
+                        <text class='coupon-name'>{{item.card_type_name}}</text>
+                        <text class='coupon-hint'>·{{item.used_description}}</text>
+                        <text class='coupon-hint'>·{{item.time_description}}</text>
+                    </view>
+                    <view class="radio {{mode == index ? 'action' : ''}}"></view>
+                </view>
+                 
+                </block>
+            </view>
+        </view>
+        <view class="undata" wx:else>
+            <view class="nothing-icont"></view>
+            <view class="nothing-txt">暂无可用优惠券</view> 
+        </view>
+    </view>
+    <view class="ft-btn" bindtap="linkBack" wx:if="{{couponList.length>0}}">立即使用</view>
+</view>
+    <!--可用优惠券end-->
+  

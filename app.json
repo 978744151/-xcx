@@ -1,0 +1,87 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/shopPhotos/shopPhotos",
+    "pages/allPraise/allPraise",
+    "pages/shopDetail/shopDetail",
+    "pages/praise/praise",
+    "pages/mycenter/mycenter",
+    "pages/code/code",
+    "pages/carte/carte",
+    "pages/orderCarte/orderCarte",
+    "pages/oCarteDetail/oCarteDetail",
+    "pages/carteDetail/carteDetail",
+    "pages/citySelect/citySelect",
+    "pages/createOrder/createOrder",
+    "pages/ordering/ordering",
+    "pages/orderDetail/orderDetail",
+    "pages/payment/payment",
+    "pages/orderlist/orderlist",
+    "pages/nearbyshop/nearbyshop",
+    "pages/nearbyDetail/nearbyDetail",
+    "pages/vip/vip",
+    "pages/vippage/vippage",
+    "pages/vipcenter/vipcenter",
+    "pages/vipaction/vipaction",
+    "pages/viprule/viprule",
+    "pages/vipdetail/vipdetail",
+    "pages/vipqrcode/vipqrcode",
+    "pages/editel/editel",
+    "pages/edituser/edituser",
+    "pages/points/points",
+    "pages/coupon/coupon",
+    "pages/chooseCoupon/chooseCoupon",
+    "pages/tempSuccess/tempSuccess",
+    "pages/integral/integral",
+    "pages/integralDetail/integralDetail",
+    "pages/itgexchangelist/itgexchangelist",
+    "pages/itgexchange/itgexchange",
+    "pages/address/address",
+    "pages/gradecenter/gradecenter",
+    "pages/integrallist/integrallist",
+    "pages/pictxtDetail/pictxtDetail",
+    "pages/bill/bill",
+    "pages/balance/balance",
+    "pages/paymentCode/paymentCode",
+    "pages/despostRule/despostRule",
+    "pages/setting/setting",
+    "pages/payIndex/payIndex",
+    "pages/pay/pay",
+    "pages/outFood/outFood",
+    "pages/createOrder_out/createOrder_out",
+    "pages/address_out/address_out",
+    "pages/getKingCoup/getKingCoup"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "",
+    "enablePullDownRefresh": true,
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "borderStyle": "black",
+    "selectedColor": "#dd2f3b",
+    "backgroundColor": "#f9f9f9",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/switch-icon/shouye_btn@2x.png",
+        "selectedIconPath": "images/switch-icon/shouye_btn_selected@2x.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/orderlist/orderlist",
+        "iconPath": "images/switch-icon/square_btn@2x.png",
+        "selectedIconPath": "images/switch-icon/square_btn_selected@2x.png",
+        "text": "订单"
+      },
+      {
+        "pagePath": "pages/mycenter/mycenter",
+        "iconPath": "images/switch-icon/mine_btn@2x.png",
+        "selectedIconPath": "images/switch-icon/mine_btn_selected@2x.png",
+        "text": "我的"
+      }
+    ]
+  }
+}

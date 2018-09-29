@@ -1,0 +1,31 @@
+<import src="../templates/loading/loading.wxml" />
+<template is="loading" wx:if="{{isIndexLoad}}"></template>
+<view class="content" wx:if="{{!isIndexLoad}}">
+    <view class="rule-info" wx:for="{{ruleInfo}}" wx:key="index" wx:for-item="ruleInfo">
+        <view class="title">{{ruleInfo.header}}</view>
+        <block wx:if="{{index == 0}}">
+            <view class="s-list">
+                <view class="{{idx == 0?'mar-b46':''}}" wx:for="{{ruleInfo.info}}" wx:for-item="info" wx:key="index" wx:for-index="idx">{{info.title}}</view>
+            </view>
+        </block>
+        <block wx:else>
+            <view class="m-list" wx:for="{{ruleInfo.info}}" wx:for-item="info" wx:key="index" wx:for-index="idx">
+                <view class="m-title">{{info.title}}</view>
+                <view class="litte" wx:for="{{info.tip}}" wx:for-item="tip" wx:for-index="i" wx:key="index">{{tip}}</view>
+            </view>
+        </block>
+    </view>
+    <!--  <view class="rule-info">
+        <view class="title">如何评定等级？</view>
+        <view class="m-list">
+            <view class="m-title">·V0会员</view>
+            <view class="litte mar-b16">·消费赚积分：每消费1元+2个积分</view>
+            <view class="litte">·开卡得积分：首次获得该卡片+40个积分</view>
+        </view>
+        <view class="m-list border-none">
+            <view class="m-title">·V1会员</view>
+            <view class="litte mar-b16">·消费赚积分：每消费1元+2个积分</view>
+            <view class="litte">·开卡得积分：首次获得该卡片+40个积分</view>
+        </view>
+    </view> -->
+</view>

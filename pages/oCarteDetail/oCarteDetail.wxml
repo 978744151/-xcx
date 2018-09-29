@@ -1,0 +1,157 @@
+<block>
+  <!-- 
+状态
+0=>待支付，1=>待核销，2=>待商家接单，3=>已完成
+
+外卖状态
+
+ispay 0 status 0 => 带支付，ispay 1 status 0 => 已支付， 1 => 待配送 , -1 => 订单取消 ，-2 => 正在配送中，3=>已完成
+ -->
+  <view class='stuBox'>
+    <view class='stuTitle' wx:if="{{status!='2'}}">
+      <view wx:if="{{tablesid!='-2'}}">
+        {{status=='0'?'等待支付':(status=='1'?'等待商家接单':(status=='-1'?'订单已取消':(status=='3'?'订单已完成':'')))}}
+      </view>
+      <view wx:if="{{tablesid == -2 }}" class='stuTitle'>
+        <view wx:if="{{ is_pay == 0 && status==0 }}">
+          等待支付
+        </view>
+        <view wx:if="{{ is_pay == 1 && status == 0 }}">
+          等待商家接单
+        </view>
+        <view wx:if="{{ is_pay == 1 && status == 1 }}">
+          待配送
+        </view>
+        <view wx:if="{{status == -1 }}">
+          订单已取消
+        </view>
+      </view>
+    </view>
+
+    <view class='hx' wx:else>
+      <text wx:if="{{ tablesid!='-2'}}">取餐号{{orderList.flowid}}</text>
+      <text wx:else class='fz14'>正在配送</text>
+    </view>
+    <view class='stuHint' wx:if="{{tablesid == -1}}">
+      {{status==0 ?'下单15分钟内有效':(status==2?'预计取餐时间'+orderList.meal_time:(status==1?'等待商家接单':(status==-1?'订单已取消':(status=='3'?'感谢您对本店支持,欢迎再次光临':''))))}}
+    </view>
+    <view wx:if="{{tablesid == -2}}" class='stuHint'>
+      {{status==0 ?'':(status==2?'配送中':(status==1?'商家已接单,请等待配送':(status==-1?'订单已关闭':(status=='3'?'感谢您对本店支持,欢迎再次光临':''))))}}
+    </view>
+    <view class='carteBtn'>
+      <block wx:if="{{status==0 && is_pay == '0'}}">
+        <view class='noBg' bindtap='sureQC' data-id='-1'>取消订单</view>
+        <!-- <view class='hasBg reduceTime' bindtap='gopay'>去支付(还剩15分09秒)</view> -->
+        <button class='hasBg reduceTime' bindtap='gopay' disabled='{{disabled ? "" : "disabled"}}'>去支付{{clock}} {{micro_second}}</button>
+      </block>
+      <block wx:elif="{{status== 0 && is_pay == '1'}}">
+        <view class='noBg' bindtap='sureQC' data-id='-1'>取消订单</view>
+      </block>
+      <block wx:if="{{status==2}}">
+        <view class='noBg' bindtap='tel' data-phone = "{{phone}}">联系商家</view>
+        <view class='hasBg' bindtap='sureQC' data-id='3' wx:if="{{tablesid == -1}}">确认取餐</view>
+        <!-- <view class='hasBg' bindtap='sureQC' data-id='3' wx:if="{{tablesid == -2}}">确认取餐</view> -->
+      </block>
+      <block wx:if="{{status==1}}">
+        <view class='noBg' bindtap='sureQC' data-id='-1'>取消订单</view>
+      </block>
+
+      <block wx:if="{{status==-1 || status==3}}">
+        <view class='noBg' bindtap='onemore'>再来一单</view>
+      </block>
+    </view>
+  </view>
+  <view class="payment">
+    <!--菜品总计-->
+    <view class="paymenu">
+      <view class="paymenu-tit">
+        <text class="font-w500">菜品详情</text>
+      </view>
+      <view class="paymenu-list">
+        <view class="paymenu-div" wx:for="{{orderList.list}}" wx:key="{{item.id}}">
+          <view class="paymenu-name">
+            <view class="payname-tit">
+              <text>{{item.title}}</text>
+            </view>
+            <view class="paymenu-spec">
+              <text class="tag" wx:if="{{item.specs_name}}">{{item.specs_name}}</text>
+              <text class='tag' wx:if="{{item.attr}}">{{item.attr}}</text>
+            </view>
+          </view>
+          <text class="paymenu-num">x{{item.total}}</text>
+          <view class="paymenu-price">
+            <view class="paymenu-oldp">￥{{item.price}}</view>
+          </view>
+        </view>
+      </view>
+      <!--配送费/餐盒  -->
+
+      <view class="paymenu-div">
+        <view class="paymenu-name">
+          <view class="payname-tit">
+            <text>配送费</text>
+          </view>
+        </view>
+        <text class="paymenu-num"></text>
+        <view class="paymenu-price">
+          <view class="paymenu-oldp">￥{{orderList.packvalue > 0 ? orderList.packvalue : 0}}</view>
+        </view>
+      </view>
+      <view class="paymenu-div">
+        <view class="paymenu-name">
+          <view class="payname-tit">
+            <text>餐盒费</text>
+          </view>
+        </view>
+        <text class="paymenu-num"></text>
+        <view class="paymenu-price">
+          <!-- <view class="paymenu-oldp" wx:if="{{tablesid == '-1'}}">￥{{orderList.cutlery_money}}</view> -->
+          <view class="paymenu-oldp">￥{{orderList.cutlery_money > 0 ? orderList.cutlery_money : 0}}</view>
+        </view>
+      </view>
+    </view>
+    <!--菜品总计end-->
+    <view class="paydetail-panle">
+      <view class="tit border-tn">
+        <view class="left-part">订单总额</view>
+        <view class="right-part">￥{{totalprice}}</view>
+      </view>
+      <view class="pay-section">
+        <view class="item">
+          <view class="rp-flex-item flexWrap" bindtap="showDialog">
+            <view>虚拟支付</view>
+            <text class="iconfont icon-k-care" data-name="vip"></text>
+          </view>
+          <text class="c6f">-￥{{orderList.xuniprice}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='allPrice'>实付 ¥{{orderList.memprice}}</view>
+  </view>
+  <view class='mask' wx:if="{{isDetail}}">
+    <view class='payBox'>
+      <view class='payTitle'>虚拟支付明细</view>
+      <view class='pay-detbox'>
+        <view class='pay-typetit'>
+          <text>会员折扣</text>
+          <text>-￥{{orderList.disprice ? orderList.disprice:0}}</text>
+        </view>
+        <view class='pay-typetit'>
+          <text>优惠券</text>
+          <text>-￥{{orderList.couponmoney ?orderList.couponmoney:0}}</text>
+        </view>
+        <view class='pay-typetit'>
+          <text>余额支付</text>
+          <text>-￥{{orderList.creadit2 ?orderList.creadit2:0}}</text>
+        </view>
+        <view class='pay-typetit'>
+          <text>积分抵扣</text>
+          <text>-￥{{orderList.creadit1 ? orderList.creadit1:0}}</text>
+        </view>
+      </view>
+      <view class='payknow' bindtap='paySure'>知 道 了 </view>
+    </view>
+  </view>
+
+
+</block>

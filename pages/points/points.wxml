@@ -1,0 +1,32 @@
+<import src="../templates/loading/loading.wxml" />
+<template is="loading" wx:if="{{isIndexLoad}}"></template>
+<block wx:if="{{!isIndexLoad}}">
+    <!--     <view class="content">
+
+    </view> -->
+    <view class="undata-wapper" wx:if="{{pointsInfo.count <=0}}">
+        <view class="undata"></view>
+        <text class="undata-txt">暂无积分</text>
+    </view>
+    <view class="points-wapper rp-flex-column" wx:else>
+        <view class="points-list main">
+            <view class="rp-flex-item">
+                <view class="title">当前积分</view>
+                <view class="time">积分规则：{{pointsInfo.credit1Rule}}</view>
+            </view>
+            <view class="num">
+                <text>{{pointsInfo.credit1}}</text>
+                <text class="f-s28">分</text>
+            </view>
+        </view>
+        <view class="points-list" wx:for="{{pointsList}}" wx:key="index">
+            <view class="rp-flex-item">
+                <view class="title">{{item.info}}</view>
+                <view class="time">{{item.date}}</view>
+            </view>
+            <view class="num">{{item.num}}</view>
+        </view>
+        <template is="loading" wx:if="{{isMore}}"></template>
+        <view class="unmore" wx:if="{{!isIndexLoad && pointsInfo.allPage>1 && page>=allPage}}">没有更多了...</view>
+    </view>
+</block>

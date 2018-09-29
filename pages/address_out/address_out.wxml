@@ -1,0 +1,36 @@
+<!--pages/address_out/index.wxml-->
+<view >
+    <block wx:if='{{hasAddr}}'>
+        <radio-group class="address-list" bindchange="redioTap">
+            <label class="address rp-flex align-center" wx:for="{{addressList}}" wx:for-item="address">
+                <view class="radio-wapper">
+                    <radio class="address-radio" value="{{address.id}}" checked="{{address.default == 1 ? true : false}}" color="#f14949" />
+                </view>
+                <view class="address-info rp-flex-item" catchtap="redioTap" data-aid="{{address.id}}">
+                    <view class="info-top">
+                        <text class="name">{{address.contactname}}</text>
+                        <text class="phone">{{address.phone}}</text>
+                    </view>
+                    <view class="info-bottom rp-flex align-center">
+                        <view class="tag">{{address.tagName}}</view>
+                        <view class="addr rp-flex-item">{{address.address}}</view>
+                    </view>
+            </view>
+                <view class='address-del' data-aid="{{address.id}}" bindtap="delAddr"></view>
+                <view class="address-edit" catchtap="editAddress" data-aid="{{address.id}}" data-bigadr="{{address.bigadr}}" data-lat="{{address.lat}}" data-lng="{{address.lng}}" data-phone="{{address.phone}}" data-tagName="{{address.tagName}}" data-phone="{{address.phone}}" data-contactname="{{address.contactname}}" data-detailadr="{{address.detailadr}}" data-tag="{{address.tag}}"></view>
+            </label>
+        </radio-group>
+    </block>
+    <block wx:if='{{hasAddr ? false : true}}' >
+        <view class="noAddress" data-has="{{hasAddr}}">
+            <text>您还没有地址，可以点击底部按钮新建地址</text>
+        </view>
+    </block>
+    <view class="newAddress">
+        <view class="createAddress" bindtap="tapNewAddr">
+            <text>新增地址</text>
+        </view>
+    </view>
+</view>
+
+

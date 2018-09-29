@@ -1,0 +1,280 @@
+page {
+   background: #fff;
+   height: 100%;
+}
+
+.clear {
+   clear: both;
+}
+
+.content {
+   position: relative;
+}
+
+.swiper {
+   width: 100%;
+   height: 246rpx;
+}
+
+.banner-img {
+   width: 100%;
+   height: 240rpx;
+   border-top: 1px solid #ededed;
+   border-bottom: 1px solid #ededed;
+}
+
+.banner-img image {
+   width: 100%;
+   height: 240rpx;
+}
+
+.slide-image {
+   width: 100%;
+   height: 246rpx;
+}
+
+.Integral {
+   width: 100%;
+   display: flex;
+   flex-flow: row nowrap;
+   justify-content: center;
+   align-items: center;
+   background: #fff;
+   line-height: 88rpx;
+   height: 88rpx;
+   position: relative;
+   left: 0px;
+   top: 0px;
+   border-bottom: 1rpx #f0f0f0 solid;
+}
+
+.Integral .item {
+   text-align: center;
+   height: 62rpx;
+   line-height: 60rpx;
+   flex: 1;
+   box-sizing: border-box;
+   font-size: 30rpx;
+   color: #010101;
+   position: relative;
+}
+
+.Integral .item text {
+   vertical-align: middle;
+}
+
+.Integral .item:first-child {
+   border-right: 1px #f0f0f0 solid;
+}
+
+.Integral text.clr-y {
+   color: #ff7b11;
+   font-size: 32rpx;
+}
+
+.exchange {
+   width: 174rpx;
+   height: 55rpx;
+   background: url(https://pic.repaiapp.com/pic/d4/1c/2d/d41c2d4ab84c51fad5a0d800796be2e926f9b9a3.png);
+   background-size: 100% 100%;
+   margin: 25rpx auto 15rpx;
+}
+.allshops{
+   width: 141rpx;
+   height: 55rpx;
+   background: url(https://pic.repaiapp.com/pic/1d/56/9f/1d569f69df81be1f460d0932a25ee610b60cf315.png);
+   background-size: 100% 100%;
+   margin: 25rpx auto 15rpx;
+}
+
+.exchangeContent {
+   display: flex;
+   flex-flow: row wrap;
+   justify-content: space-between;
+   align-items: center;
+   padding: 0 10rpx;
+}
+
+.exchangeList {
+   width: 360rpx;
+   display: flex;
+   flex-flow: column;
+   justify-content: center;
+   align-items: center;
+   border: 1px solid #f0f0f0;
+   box-sizing: border-box;
+   margin-top: 10rpx;
+}
+
+.exchangeList image {
+   width: 100%;
+   height: 360rpx;
+   vertical-align: top;
+   box-sizing: border-box;
+   border-bottom:1rpx solid #f0f0f0;
+}
+
+.list-tit {
+   padding: 20rpx 10rpx;
+   display: flex;
+   display: -webkit-flex;
+   flex-direction: row;
+   align-items: center;
+   width: 100%;
+   box-sizing: border-box;
+}
+
+.list-tit text {
+   display: inline-block;
+   width: 56rpx;
+   height: 32rpx;
+   color: #fff;
+   margin-right: 15rpx;
+}
+
+.tag-xl{
+  background: url('https://pic.repaiapp.com/pic/90/97/be/9097bea1e82e4470049d47c5f8b550e4e92b8886.png') no-repeat center;
+  background-size:cover;
+}
+
+.tag-sw{
+  background: url('https://pic.repaiapp.com/static/png/20171218/17/1513589696493249799.png') no-repeat center;
+  background-size:cover;
+}
+
+
+.Listname {
+   font-size: 28rpx;
+   font-weight: normal;
+   line-height: 38rpx;
+   background: #fff;
+   flex: 1;
+   box-sizing: border-box;
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: 1;
+   overflow: hidden;
+}
+
+.jf {
+   display: flex;
+   display: -webkit-flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+   width: 100%;
+   box-sizing: border-box;
+   padding: 0 10rpx;
+   margin-bottom: 20rpx;
+   line-height: 38rpx;
+}
+
+.jf .right-span {
+   color: #f14949;
+   font-size: 28rpx;
+}
+
+.jf-money {
+   color: #f14949;
+   font-size: 24rpx;
+}
+.jf-price{
+   font-size: 24rpx;
+   color: #939393;
+   text-decoration:line-through;
+}
+
+.unmore {
+   padding: 20rpx 0;
+   font-size: 26rpx;
+   color: #ccc;
+   text-align: center;
+}
+
+.undata-wapper {
+   background: #fff;
+   margin-top: 22rpx;
+   flex: 1;
+}
+
+.undata-wapper .icont-undata {
+   margin-top: 120rpx;
+   height: 164rpx;
+   background: url('https://pic.repaiapp.com/static/png/20180926/16/1537950951469675656.png') center no-repeat;
+   background-size: 300rpx 300rpx;
+}
+
+.undata-wapper .undata-text {
+   font-size: 26rpx;
+   color: #a2a2a2;
+   margin-top: 22rpx;
+   text-align: center;
+}
+
+.icont-integral {
+   display: inline-block;
+   width: 34rpx;
+   height: 34rpx;
+   margin-right: 20rpx;
+   background: url('https://pic.repaiapp.com/pic/5a/3b/75/5a3b75dcdf015d37e3420843816afd9d9501831b.png') center no-repeat;
+   background-size: cover;
+}
+
+.icont-exchange {
+   display: inline-block;
+   width: 34rpx;
+   height: 34rpx;
+   margin-right: 20rpx;
+   background: url('https://pic.repaiapp.com/pic/68/e1/03/68e1038294f29bdf3971d069842714a5082551ba.png') center no-repeat;
+   background-size: cover;
+}
+
+.navtitle {
+   display: flex;
+   display: -webkit-flex;
+   flex-direction: row;
+   border-bottom: 1px solid #f0f0f0;
+}
+
+.navitem {
+   display: flex;
+   display: -webkit-flex;
+   flex-direction: column;
+   align-items: center;
+   width: 25%;
+   margin: 25rpx 0 25rpx;
+}
+
+.navitem .nav-text {
+   font-size: 24rpx;
+   color: #261c1d;
+   margin-top: 20rpx;
+}
+
+.nav-score {
+   width: 92rpx;
+   height: 92rpx;
+   background: url(https://pic.repaiapp.com/static/png/20171205/21/1512480905779219752.png);
+   background-size: 100% 100%;
+}
+
+.nav-static {
+   width: 92rpx;
+   height: 92rpx;
+   background: url(https://pic.repaiapp.com/static/png/20171205/21/1512480916929725751.png);
+   background-size: 100% 100%;
+}
+
+.nav-goods {
+   width: 92rpx;
+   height: 92rpx;
+   background: url(https://pic.repaiapp.com/static/png/20171205/21/1512480931932475254.png);
+   background-size: 100% 100%;
+}
+
+.nav-mylist {
+   width: 92rpx;
+   height: 92rpx;
+   background: url(https://pic.repaiapp.com/static/png/20171205/21/1512480943877799856.png);
+   background-size: 100% 100%;
+}

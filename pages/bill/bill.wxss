@@ -1,0 +1,163 @@
+page {
+    background: #f6f6f6;
+    width: 100%;
+    height: 100%;
+}
+
+.bill-panle {
+    border-top: 1px solid #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.filter-wapper {
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    font-size: 26rpx;
+}
+
+.filter-wapper .right-span {
+    padding: 0 30rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+}
+
+.filter-wapper .right-span .f-s22 {
+    margin-left: 20rpx;
+}
+
+.filter-wapper .left-span {
+    flex: 1;
+    padding-left: 30rpx;
+}
+
+.bill-tab {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    align-items: center;
+    background: #fff;
+}
+
+.bill-tab .tab-item {
+    position: relative;
+    flex: 1;
+    font-size: 30rpx;
+    color: #000;
+    text-align: center;
+}
+
+.bill-tab .tab-item text {
+    position: relative;
+    display: inline-block;
+    height: 100rpx;
+    line-height: 100rpx;
+    padding: 0 26rpx;
+}
+
+.bill-tab .tab-item.active text {
+    color: #dd2f3b;
+}
+
+.bill-tab .tab-item.active text::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 6rpx;
+    width: 100%;
+    background: #dd2f3b;
+}
+
+.swiper-item {
+    padding-top: 10rpx;
+}
+
+
+.scroll-list .l-item .l-item-name{
+    line-height: 60rpx;padding: 0 30rpx;
+    
+    
+}
+.scroll-list .l-item .l-item-item{
+   padding: 24rpx 30rpx;
+   background: #fff;
+   display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #f0f0f0;
+}
+.scroll-list .l-item:last-of-type {
+    border: none;
+}
+
+.scroll-list .timer-wapper {
+    width: 95rpx;
+    color: #9d9d9d;
+    font-size: 26rpx;
+}
+
+
+.scroll-list .timer-wapper .week {
+    display: block;
+    margin: 5rpx 0 10rpx 0;
+    line-height: 34rpx;
+    text-align: center;
+    letter-spacing: 1rpx;
+}
+
+.scroll-list .timer-wapper .date {
+    display: block;
+    height: 26rpx;
+    line-height: 26rpx;
+    text-align: center;
+}
+
+.scroll-list .img-wapper {
+    width: 68rpx;
+    height: 68rpx;
+    padding: 0 42rpx;
+}
+
+.scroll-list .img-wapper image {
+    width: 100%;
+    height: 100%;
+}
+
+
+.scroll-list .info-wapper {
+    flex: 1;
+}
+
+.scroll-list .info-wapper .strong {
+    font-size: 36rpx;
+    font-weight: 500;
+    color: #000;
+    line-height: 34rpx;
+    margin-bottom: 16rpx;
+}
+
+.scroll-list .info-wapper .txt {
+    font-size: 28rpx;
+    color: #5f5f5f;
+    line-height: 30rpx;
+}
+
+
+.unmore{
+  text-align: center;
+  font-size: 26rpx;
+  color: #9d9d9d;
+  padding: 24rpx;
+}

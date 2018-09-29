@@ -1,0 +1,103 @@
+<import src="../templates/loading/loading.wxml" />
+<import src="../templates/foot/foot.wxml" />
+<import src="../templates/dialog/dialog.wxml" />
+
+<template is="popover-dialog" data="{{dialog}}"></template>
+<template is="loading" wx:if="{{isIndexLoad}}"></template>
+<block wx:if="{{!isIndexLoad}}">
+  <view class="top"></view>
+  <view class="user">
+    <view class="info">
+      <view class="infoTop">
+        <view class="userInfo">
+          <image src="{{myInfo.headimg}}"></image>
+          <view class="nameBox">
+            <view>{{myInfo.username}}</view>
+            <text class="tel" wx:if="{{myInfo.isVip==1}}">{{myTel}}</text>
+            <text wx:else>手机号未知</text>
+          </view>
+        </view>
+        <navigator url="/pages/vippage/vippage" hover-class="none" class="edit" wx:if="{{myInfo.isVip==1}}"></navigator>
+      </view>
+      <view class="infoBottom">
+        <!-- /myInfo.isVip==1 -->
+        <view data-url="/pages/orderlist/orderlist" data-flag="0" hover-class="none" class="dataShow" bindtap="itemLink">
+          <view>{{myInfo.totalcount}}</view>
+          <text>订单</text>
+        </view>
+        <view data-url="/pages/points/points" data-flag="1" hover-class="none" class="dataShow" bindtap="itemLink">
+          <view>{{myInfo.integral}}</view>
+          <text>积分</text>
+        </view>
+        <view data-url="/pages/bill/bill" data-flag="1" class="dataShow" bindtap="itemLink">
+          <view>{{myInfo.totalprice}}</view>
+          <text>消费</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="content">
+    <!--会员卡  -->
+    <view class="card vip">
+      <view class="title">会员卡</view>
+      <view class="vipBox">
+        <view data-url="/pages/vip/vip" bindtap="tapVip" class="left" hover-class='none'>
+          <view class="vipBg" style="background-image:url({{isVip == 1 ? myInfo.cardBg : 'https://pic.repaiapp.com/static/png/20180928/10/1538103373835529948.png'}})">
+            <image src="{{myInfo.shoplogo}}" wx:if="{{isVip == 1}}"></image>
+            <view class="vipBgInfo"></view>
+          </view>
+          <view class="vipInfo">
+            <view class="clamp1">{{myInfo.shopname}}</view>
+            <text wx:if="{{myInfo.isVip==1}}">{{myInfo.cardname}}</text>
+            <text wx:else>会员卡未激活</text>
+          </view>
+        </view>
+        <view class="right">
+          <view class="money" wx:if="{{myInfo.isVip==1}}">
+            <view class="moneyInfo">余额:</view>
+            <navigator url="/pages/balance/balance" hover-class="none" class="btn">
+              <view>￥{{myInfo.money}}</view>
+              <text>去充值</text>
+            </navigator>
+          </view>
+          <view data-url="/pages/vip/vip" bindtap="tapVip" hover-class="none" class="activeBtn" wx:else></view>
+        </view>
+      </view>
+    </view>
+    <!--我的服务  -->
+    <view class="card myService">
+      <view class="title">我的服务</view>
+      <view class="myBox">
+        <navigator url="/pages/orderlist/orderlist" hover-class="none" open-type="switchTab" class="menu">
+          <image src="https://pic.repaiapp.com/static/png/20171206/20/1512564324577995751.png"></image>
+          <view>订单</view>
+        </navigator>
+        <navigator url="/pages/coupon/coupon?isVip={{myInfo.isVip}}" hover-class="none" class="menu">
+          <image src="https://pic.repaiapp.com/static/png/20171206/20/1512564391672348100.png"></image>
+          <view>优惠券</view>
+        </navigator>
+        <navigator url="/pages/praise/praise" hover-class="none" class="menu">
+          <image src="https://pic.repaiapp.com/static/png/20171206/20/1512564401930849101.png"></image>
+          <view>评价</view>
+        </navigator>
+        <navigator url="/pages/vip/vip" hover-class="none" class="menu">
+          <image src="https://pic.repaiapp.com/static/png/20171206/20/1512564411520410052.png"></image>
+          <view>会员卡</view>
+        </navigator>
+        <navigator url="/pages/getKingCoup/getKingCoup"   open-type='navigate' hover-class="other-navigator-hover" class='menu {{ unicom == 1 || money == 0 ? "CouponNone" : "CouponBlock" }}'>
+          <image src="https://pic.repaiapp.com/static/png/20180910/18/1536574415592610050.png"></image>
+          <view>大王卡</view>
+        </navigator>
+      </view>
+      <!-- <view class="myBox myCard">
+        
+      </view> -->
+    </view>
+
+
+  </view>
+  <!--版本号  -->
+  <view style='height:100rpx;'></view>
+  <view class="versions">软件版本 {{version}}</view>
+</block>

@@ -1,0 +1,223 @@
+<import src="../templates/loading/loading.wxml" />
+<import src="../templates/dialog/dialog.wxml" />
+<import src="../templates/message/message.wxml" />
+<import src="../templates/dialog/dialog.wxml" />
+
+<template is="loading" wx:if="{{isLoading}}"></template>
+<template is="message" data="{{showMessage,messageContent}}"></template>
+<view class="payment" wx:if="{{!isLoading}}">
+<!-- 自提头部 -->
+<block>
+<view class='orderCarte' >
+    <!-- 时间未选状态 -->
+    <!-- <view class='noChooseTime' wx:if="{{true}}" bindtap='showPickerTime'></view> -->
+    <block>
+        <button class='noChooseTime' bindtap='tapAddress'>+ 添加收货地址</button>
+    </block>
+    
+</view>
+</block>
+
+<!-- 正常点餐头部 -->
+  
+  <!--菜品总计-->
+  <view class="paymenu">
+    <view class="paymenu-tit">
+      <view>
+        <text class="font-w500">菜品总额</text>
+        <text style="color:#595959;font-size:26rpx;margin-left:12rpx;">共8份</text>
+      </view>
+      <view class="paymenu-sale">
+        <text class="font-w500">￥45</text>
+      </view>
+    </view>
+    <view class="paymenu-list">
+      <view class="paymenu-div" >
+        <view class="paymenu-name">
+          <view class="payname-tit">
+            <text>小笼包</text>
+          </view>
+          <view class="paymenu-spec">
+            <text class="tag">大份</text>
+          </view>
+        </view>
+        <text class="paymenu-num">x1</text>
+        <view class="paymenu-price">
+          <view class="paymenu-oldp">￥5</view>
+        </view>
+      </view>
+      <view class="paymenu-div" >
+        <view class="paymenu-name">
+          <view class="payname-tit">
+            <text>小笼包</text>
+          </view>
+          <view class="paymenu-spec">
+            <text class="tag">大份</text>
+          </view>
+        </view>
+        <text class="paymenu-num">x1</text>
+        <view class="paymenu-price">
+          <view class="paymenu-oldp">￥5</view>
+        </view>
+      </view>
+    </view>
+    
+  </view>
+  <!--菜品总计end-->
+
+  <view class="paycheck">   
+    <view class="paycheck-item" >
+      <view class="item-sup">
+        <text class="name">会员折扣</text>
+        <text class="sup">0.65折</text>
+        <text class="iconfont icon-k-care" bindtap="showDialog" data-name="vip"></text>
+      </view>
+      <view class="item-switch">
+        <text class="sale">-￥4.2</text>
+        <!-- <switch class="sale-switch" checked="{{cardstatue == 0 ? false : true}}"  bindchange="useSale" disabled="{{cardstatue == 0 ? true : false}}"/>  -->
+      </view>
+    </view>
+    <navigator url="/pages/chooseCoupon/chooseCoupon?id={{orderInfo.id}}&allPrice={{orderInfo.allPrice}}&saleMoney={{saleMoney}}" hover-class="none" class="paycheck-item">
+      <view class="paycheck-tit">优惠券</view>
+      <view>
+        <text class="{{couponMoney>0?'sale':'nosale'}}">1</text>
+        <text class="iconfont icon-right-more"></text>
+      </view>
+    </navigator>
+
+    <view class="paycheck-item">
+      <view class="item-sup">
+        <text class="name">余额支付</text>
+        <text class="sup rp-flex-item clamp1">共￥20，最多可用￥10</text>
+        <text class="iconfont icon-k-care" bindtap="showDialog" data-name="money"></text>
+      </view>
+      <view class="item-switch">
+        <text class="sale">-￥10</text>
+        <switch class="sale-switch" name="switch" bindchange="balancePayment" checked="{{isBalancePayment}}" />
+      </view>
+    </view>
+    <view class="payshow-item">
+      <text>使用</text>
+      <!--bindinput="bindInput" -->
+      <input type="number" placeholder="" value="{{remainMoney}}" bindblur="bindInput" data-type="money" />
+      <view class="d-ib">
+        <text>元，抵扣</text>
+        <text class="strong">￥2</text>
+      </view>
+    </view>
+    <view class="paycheck-item">
+      <view class="item-sup">
+        <text class="name">积分</text>
+        <view class="sup rp-flex-item clamp1">
+          <text> 共10000，最多可抵用</text>
+          <text>￥10</text>
+        </view>
+        <text class="iconfont icon-k-care" bindtap="showDialog" data-name="point"></text>
+      </view>
+      <view class="item-switch">
+        <text class="sale">-￥10</text>
+        <switch class="sale-switch" name="switch" bindchange="usePoint" checked="{{isCheckPoint}}" />
+      </view>
+    </view>
+    <view class="payshow-item">
+      <text>使用</text>
+      <input type="digit" placeholder="" value="{{pointsNum}}" bindblur="bindInput" data-type="point" />
+      <view class="d-ib c6f">积分，抵扣
+        <text class="strong">￥10</text>
+      </view>
+    </view>
+    <!-- <view class="paycheck-item">
+            <view class="paycheck-tit">商品总额</view>
+            <text>￥{{orderInfo.totalprice}}</text>
+        </view>
+        <view class="paycheck-item" wx:if="{{switchChecked && orderInfo.is_vip == 1 && cardstatue != 0}}">
+            <view class="paycheck-tit">会员折扣
+                <text class="pay-ques" bindtap="salehint"></text>
+            </view>
+            <text>-￥{{saleMoney}}</text>
+        </view>-->
+  </view>
+
+  <view class="paydetail-panle">
+    <view class="tit border-tn">
+      <view class="left-part">小计</view>
+      <view class="right-part">￥25</view>
+    </view>
+    <view class="pay-section">
+      <view class="item">
+        <view class="rp-flex-item">商品总额</view>
+        <text class="c6f">￥45</text>
+      </view>
+      <view class="item">
+        <view class="rp-flex-item">优惠券</view>
+        <text class="c6f">-￥{{couponMoney}}</text>
+      </view>
+      <view class="item">
+        <view class="rp-flex-item">会员折扣</view>
+        <text class="c6f">-￥{{saleMoney}}</text>
+      </view>
+      
+      <view class="item">
+        <view class="rp-flex-item">余额支付</view>
+        <text class="c6f">-￥{{remainMoney}}</text>
+      </view>
+      <view class="item">
+        <view class="rp-flex-item">积分抵扣</view>
+        <text class="c6f">-￥{{pointMoney}}</text>
+      </view>
+    </view>
+     <!-- <view class="tit border-bn" wx:if="{{orderInfo.is_vip != 0 && sendPoints>0}}">
+        <text> 本单预计可得</text>
+        <view class="strong get-points">
+          {{sendPoints}}积分
+          <block wx:if="{{orderInfo.memberInfo.is_birthday == 1}}">x2</block>
+        </view>
+        <text  wx:if="{{orderInfo.memberInfo.is_birthday == 1}}">(生日当天双倍积分)</text>
+      </view> -->
+  </view>
+
+  <view style="height:200rpx;"></view>
+  <view class="payment-bottom">
+    <block>
+      <view  style="height:210rpx;"></view>
+          <view  class="set-count">
+          <text >已选1人就餐。</text>
+          <text  class="link" bindtap="tcpeople">点我修改</text>
+      </view>
+    </block>
+    <view class="pay-sub">
+      <view class="paysub-money">需付金额：
+        <view class="font-w500" style="color:{{pagecolor.bgcolor}};display: inline-block;">
+          <text>￥</text>
+          <text>15</text>
+        </view>
+      </view>
+      <view class="paysubmit" bindtap="sendPayNow">
+        <block >
+          <text class="wxicon"></text>微信买单
+        </block>
+        <block wx:if="{{payMoney>0}}">
+          免费买单
+        </block>
+      </view>
+    </view>
+  </view>
+  <!-- </form>-->
+  <!--弹出选择人数-->
+  <view class="mask" hidden="{{isHidden}}"></view>
+  <view class="peoplediv" hidden="{{isHidden}}">
+    <view class="people-hint">{{!!orderid ?'请重新核对用餐人数':'请选择用餐人数'}}</view>
+    <view class="choose-hint">
+        <text class="people-number" style="color:{{pagecolor.bgcolor}};" wx:if="{{!!changeNum}}">已选择就餐人数为：{{changeNum}}人</text>
+    </view>
+    <scroll-view scroll-y="true" class="numlist clearfix">
+        <view class="number" style="background:{{changeNum == item ? pagecolor.bgcolor : 'none'}};color:{{changeNum == item ? pagecolor.textcolor : '#424242'}};border-color:{{changeNum == item ? pagecolor.bgcolor : ''}}" wx:for="{{peoplenumber}}" wx:key="id"
+          data-id="{{item}}" bindtap="clickpeople">{{item}}</view>
+        <view class="numbermore" wx:if="{{showMore}}" bindtap="shownumber">更多</view>
+    </scroll-view>
+    <view class="peoplebutton">
+        <view class="peoplefalse" bindtap="tcfalse">取消</view>
+        <view class="peopletrue" bindtap="tapYes" style="background:{{!!changeNum ? pagecolor.linecolor :'#cccccc'}};color:{{pagecolor.textcolor}};border-color:{{!!changeNum ? pagecolor.bgcolor:'#cccccc'}}">确定</view>
+    </view>
+  </view>
+</view>

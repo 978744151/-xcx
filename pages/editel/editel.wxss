@@ -1,0 +1,52 @@
+page {
+    background: #fff;
+    height: 100%;
+}
+
+.content {
+    padding: 20rpx 0;
+    border-top: 1rpx solid #ebebeb;
+}
+
+.form-tel {
+    padding: 0 28rpx;
+}
+
+.form-tel .form-item {
+    padding: 20rpx 0 10rpx  10rpx;
+    font-size: 32rpx;
+    border-bottom: 1rpx solid #ebebeb;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.form-tel .form-item input {
+    height: 80rpx;
+    line-height: 80rpx;
+    flex: 1;
+}
+.tel-hint{
+  margin-top: 120rpx;
+  font-size: 28rpx;
+  color: #9e9e9e;
+  text-align: center;
+}
+.form-btn{
+    margin-top: 35rpx;
+    padding: 0 28rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 34rpx;
+    color:#fff;
+}
+
+.form-btn .btn{
+    border-radius: 6rpx;
+    text-align: center;
+}
+.tel-code{
+  font-size: 28rpx;
+  color: #a5a5a5;
+}

@@ -1,0 +1,54 @@
+<import src="../templates/loading/loading.wxml" />
+<import src="../templates/dialog/dialog.wxml" />
+<template is="loading" wx:if="{{isIndexLoad}}"></template>
+<view class="content rp-flex-column" wx:if="{{!isIndexLoad}}">
+    <view class="gradecard">
+        <view class="gradecard-tit" style="height:64rpx;line-height:64rpx;">
+        · 升级会员 · 福利多多 · 
+        </view>
+        <!-- cardData.card_background -->
+        <view class="gradebox" style="background: url({{cardData.card_background}}) no-repeat;background-size: 100% auto;">
+            <view class="grade-name">{{cardData.userInfo.realname}}</view>
+            <view class="grade-gd">{{cardData.userInfo.groupname}}</view>
+            <view class="gradebox-list">
+                <view class="border-wapper">
+                    <view class="gradebox-left">
+                        <view class="p1">可兑换积分 {{cardData.last_point}}</view>
+                        <view class="p2" wx:if="{{cardData.uptype == 1}}">累计消费单数 {{cardData.userInfo.credit1}}</view>
+                        <view class="p2" wx:if="{{cardData.uptype == 2}}">累计消费金额 {{cardData.userInfo.credit1}}</view>
+                        <view class="p2" wx:if="{{cardData.uptype == 3}}">历史累计积分 {{cardData.userInfo.credit1}}</view>
+                    </view>
+                    <view class="gradebox-right">
+                       <block wx:if="{{!!cardData.userInfo.nextLevel}}">
+                            <view class="p1" >升级到{{cardData.userInfo.nextLevel.name}}</view>
+                            <view class="p2" wx:if="{{cardData.uptype == 1}}">累计消费单数 {{cardData.userInfo.nextLevel.num}}笔</view>
+                            <view class="p2" wx:if="{{cardData.uptype == 2}}">累计消费金额 {{cardData.userInfo.nextLevel.num}}</view>
+                            <view class="p2" wx:if="{{cardData.uptype == 3}}">所需累计积分 {{cardData.userInfo.nextLevel.num}}积分</view>
+                       </block>
+                        <block wx:else>
+                             <view class="p1" ></view> 
+                             <view class="p2">{{cardData.userInfo.nextTip}}</view> 
+                        </block>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="gradecenter-hint">{{cardData.tip}}</view>
+    <view class="grade-list">
+        <view class="grade-item {{item.is_lock?'disable':''}}" wx:for="{{cardData.powers}}" wx:key="index" bindtap="showDialog" data-tip="{{item.poptip}}" data-lock="{{item.is_lock}}">
+            <view class="grade-icon " style="background: url({{item.cover_img}}) no-repeat;background-size: 100% 100%;"></view>
+            <view class="gradeitem-tit">{{item.title}}</view>
+            <view class="gradeitem-txt">{{item.tip}}</view> 
+            <block wx:if="{{item.is_lock}}">
+                <view class="item-san"></view>
+                <view class="item-key"></view>
+            </block>
+        </view>
+    </view>
+    <navigator class="rote-btn" url="/pages/viprule/viprule" hover-class="none">
+        <text class="icont-quest"></text>
+        <text>查看更多会员特权>></text>
+    </navigator>
+    <template is="ty-power-dialog" data="{{isPowerHidden,tyPowerTxt,powerColor}}"></template>
+</view>

@@ -1,0 +1,52 @@
+page {
+    background: #f5f5f5;
+    height: 100%;
+}
+
+.content {
+    padding: 26rpx 0 20rpx;
+}
+
+.rule-info {
+    background: #fff;
+    margin-bottom: 20rpx;
+    padding-left: 34rpx;
+    font-size: 28rpx;
+}
+
+.rule-info .title {
+    height: 88rpx;
+    line-height: 88rpx;
+    border-bottom: 1px solid #f0f0f0;
+    color: #000000;
+}
+
+.rule-info .s-list {
+    padding: 30rpx 0;
+}
+
+.rule-info .m-list {
+    padding: 26rpx 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.rule-info .m-list .m-title {
+    margin-bottom: 16rpx;
+}
+
+.rule-info .m-list .litte {
+    color: #939393;
+    font-size: 26rpx;
+}
+
+.mar-b16 {
+    margin-bottom: 16rpx;
+}
+
+.mar-b46 {
+    margin-bottom: 46rpx;
+}
+
+.border-none{
+	border:none!important;
+}

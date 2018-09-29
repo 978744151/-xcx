@@ -1,0 +1,99 @@
+<!--  账单页面  -->
+<import src="../templates/loading/loading.wxml" />
+<import src="../templates/nodata/nodata.wxml" />
+<!-- <template is="loading" wx:if="{{isLoading}}"></template> -->
+<view class="bill-panle">
+   <view class="filter-wapper">
+      <view class="left-span">{{dateStr}}</view>
+      <view class="right-span">
+         <picker mode="date" value="{{startDate}}" style="width: 100%;" start="2017-01-01" end="{{startDate}}" fields="month" bindchange="selectDate">
+            <!-- <view class="picker rp-flex" style="align-items: center;width: 100%;"> -->
+            <text>筛选</text>
+            <text class="f-s22">▼</text>
+            <!-- </view> -->
+         </picker>
+      </view>
+   </view>
+   <view class="bill-tab">
+      <view class="tab-item {{ tabIndex == 0 ? 'active':''}}" bindtap="switchTab" data-index="0">
+         <text>全部</text>
+      </view>
+      <view class="tab-item {{ tabIndex == 1 ? 'active':''}}" bindtap="switchTab" data-index="1">
+         <text>收入</text>
+      </view>
+      <view class="tab-item {{ tabIndex == 2 ? 'active':''}}" bindtap="switchTab" data-index="2">
+         <text>支出</text>
+      </view>
+   </view>
+   <swiper style="flex: 1;" bindchange="viewChange" duration="300" current="{{tabIndex}}" style="height:{{scrollHeight+10}}rpx;">
+      <swiper-item class="swiper-item">
+         <scroll-view class="scroll-list" scroll-y="true" style="height:{{scrollHeight}}rpx;" bindscrolltolower="loadCarteMore">
+            <view class="l-item" wx:for="{{list}}" wx:key="index">
+               <view class="l-item-name">{{item[0].time}}</view>
+               <view wx:for="{{item}}" wx:key="index" wx:for-item="i" class="l-item-item">
+                  <view class="timer-wapper">
+                     <text class="week">{{i.week}}</text>
+                     <text class="date">{{i.date}}</text>
+                  </view>
+                  <view class="img-wapper">
+                     <image src="{{i.iconUrl}}"></image>
+                  </view>
+                  <view class="info-wapper">
+                     <view class="strong">{{i.price}}</view>
+                     <view class="txt">{{i.tip}}</view>
+                  </view>
+               </view>
+            </view>
+            <template is="loading" wx:if="{{isMore}}"></template>
+            <template is="undata-default-ty" wx:if="{{list.length<=0}}"></template>
+            <view class="unmore" wx:if="{{!isMore && totalPage>1 && isEnd}}">没有更多了...</view>
+         </scroll-view>
+      </swiper-item>
+      <swiper-item class="swiper-item">
+         <scroll-view class="scroll-list" scroll-y="true" style="height:{{scrollHeight}}rpx;" bindscrolltolower="loadCarteMore">
+            <view class="l-item" wx:for="{{list}}" wx:key="index">
+               <view class="l-item-name">{{item[0].time}}</view>
+               <view wx:for="{{item}}" wx:key="index" wx:for-item="i" class="l-item-item">
+                  <view class="timer-wapper">
+                     <text class="week">{{i.week}}</text>
+                     <text class="date">{{i.date}}</text>
+                  </view>
+                  <view class="img-wapper">
+                     <image src="{{i.iconUrl}}"></image>
+                  </view>
+                  <view class="info-wapper">
+                     <view class="strong">{{i.price}}</view>
+                     <view class="txt">{{i.tip}}</view>
+                  </view>
+               </view>
+            </view>
+            <template is="loading" wx:if="{{isMore}}"></template>
+            <template is="undata-default-ty" wx:if="{{list.length<=0}}"></template>
+            <view class="unmore" wx:if="{{!isMore && totalPage>1 && isEnd}}">没有更多了...</view>
+         </scroll-view>
+      </swiper-item>
+      <swiper-item class="swiper-item">
+         <scroll-view class="scroll-list" scroll-y="true" style="height:{{scrollHeight}}rpx;" bindscrolltolower="loadCarteMore">
+            <view class="l-item" wx:for="{{list}}" wx:key="index">
+               <view class="l-item-name">{{item[0].time}}</view>
+               <view wx:for="{{item}}" wx:key="index" wx:for-item="i" class="l-item-item">
+                  <view class="timer-wapper">
+                     <text class="week">{{i.week}}</text>
+                     <text class="date">{{i.date}}</text>
+                  </view>
+                  <view class="img-wapper">
+                     <image src="{{i.iconUrl}}"></image>
+                  </view>
+                  <view class="info-wapper">
+                     <view class="strong">{{i.price}}</view>
+                     <view class="txt">{{i.tip}}</view>
+                  </view>
+               </view>
+            </view>
+            <template is="loading" wx:if="{{isMore}}"></template>
+            <template is="undata-default-ty" wx:if="{{list.length<=0}}"></template>
+            <view class="unmore" wx:if="{{!isMore && totalPage>1 && isEnd}}">没有更多了...</view>
+         </scroll-view>
+      </swiper-item>
+   </swiper>
+</view>

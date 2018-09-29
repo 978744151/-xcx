@@ -1,0 +1,41 @@
+<import src="../templates/loading/loading.wxml" />
+<template is="loading" wx:if="{{isIndexLoad}}"></template>
+<view class="content" wx:if="{{!isIndexLoad}}">
+    <view class="panle-detail">
+        <view class="box" wx:if="{{powers.length>0}}">
+            <view class="left-span">特权说明</view>
+            <view class="right-span">
+                <view class="listitem" wx:for="{{powers}}" wx:key="index" wx:for-item="power" wx:for-index="idx">
+                    <block wx:if="{{powers.length-1 != idx}}">
+                        {{power}}
+                    </block>
+                    <block wx:else>
+                        <view wx:for="{{power}}" wx:for-item="pp" wx:key="index">
+                            {{pp}}
+                        </view>
+                    </block>
+                </view>
+            </view>
+        </view>
+        <view class="box">
+            <view class="left-span">有效日期</view>
+            <view class="right-span">{{validity}}</view>
+        </view>
+       <!-- <view class="box">
+            <view class="left-span">电 话</view>
+            <view class="right-span" bindtap="calling"  style="color:{{pagecolor.bgcolor}}">{{tel}}</view>
+        </view>
+        <view class="box">
+            <view class="left-span">商户服务</view>
+            <view class="right-span">
+                <text class="tag" wx:for="{{server}}" wx:key="index">{{item}}</text>
+            </view>
+        </view> -->
+       <!-- <view class="box">
+            <view class="left-span">使用须知</view>
+            <view class="right-span">
+                <view class="listitem" wx:for="{{description}}" wx:key="index">{{item}}</view>
+            </view>
+        </view> -->
+    </view>
+</view>

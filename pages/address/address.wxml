@@ -1,0 +1,43 @@
+<view>
+    <view class="edit-addr">
+        <view class="cell">
+            <view class="cell-hd">
+                <text>联系人</text>
+            </view>
+            <view class="cell-bd">
+                <input data-name="name" type="text" placeholder="收货人姓名" name="contactname" value="{{contName}}" bindblur="inputBlur" placeholder-style="color:#cfcfcf;" />
+            </view>
+        </view>
+        <view class="cell">
+            <view class="cell-hd">
+                <text>联系电话</text>
+            </view>
+            <view class="cell-bd">
+                <input data-name="phone" type="number" placeholder="收货人电话" name="phone" value="{{Phone}}" bindblur="inputBlur" placeholder-style="color:#cfcfcf;" maxlength="11" />
+            </view>
+        </view>
+        <view class="cell">
+            <view class="cell-hd">
+                <text>送餐地址</text>
+            </view>
+            <view class="cell-bd cell-list">
+                <text bindtap="bindTapChooseLocation" class="cell-input {{bigadrDefault=='小区/写字楼/学校等'?'color-cf':''}}">{{bigadrDefault}}{{editInfo.bigadr}}</text>
+                <textarea data-name="addr" class="addr-detailadr" placeholder="详细地址（如门牌号）" cursor-spacing="10" value="{{detailAdr}}" bindblur="inputBlur" name="detailadr" placeholder-style="color:#cfcfcf;" />
+            </view>
+        </view>
+        <view class="cell">
+            <picker class="cell-picker" bindchange="bindPickerChange" value="{{editInfo.tag}}" range="{{tagList}}" name="tag">
+                <text>标签</text>
+                <text class="fr cell-more" wx:if="{{!tagname}}">{{pickerDefault}}{{tagList[editInfo.tag]}}</text>
+                <text class="fr cell-more" wx:else>{{tagList[editInfo.tag]}}</text>
+            </picker>
+        </view>
+    </view>
+    <view class="addr-action">        
+        <view class="addr-edit" style="width:100%" data-aid="{{editInfo.id}}" bindtap="editAddr">
+            <text>确定</text>
+        </view>
+    </view>
+    <view class="addr-back" bindtap="addrBack"></view>
+    <view class="message {{showMessage ? 'fade-in' : ''}}" hidden="{{!showMessage}}">{{messageContent}}</view>
+</view>

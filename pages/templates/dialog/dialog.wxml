@@ -1,0 +1,143 @@
+<template name="dialog">
+    <view class="rp-dialog" hidden="{{isShow}}">
+        <view class="rp-mask"></view>
+        <view class="rp-dialog-div">
+            <view class="tc-text">
+                <view class="rp-title" wx:if="{{!!title}}">{{title}}</view>
+                <view class="rp-txt" wx:if="{{!!content}}">{{content}}</view>
+            </view>
+            <view class="tc-btn">
+                <view wx:if="{{!!cancelText}}" class="btn-false" bindtap="dialogCancel" style="color: {{color}};">{{cancelText}}</view>
+                <view class="btn-true" data-action="del" bindtap="dialogSuccess" style="color: {{color}};">{{confirmText}}</view>
+            </view>
+        </view>
+    </view>
+</template>
+<!-- 门店是否开启 -->
+<template name="is_open">
+    <view class="rp-mask" hidden="{{dialog.hidden}}"></view>
+    <view class="msg-dialog {{!dialog.hidden?'opacity-in':''}}" hidden="{{dialog.hidden}}" >
+        <view class="dialog-content" style='display:flex;'>
+            <view class="title" wx:if="{{isTitle}}">{{!!dialog.title ? dialog.title : '提示'}}</view>
+            <view class="text  {{ !!textAlign ? textAlign : '' }}">{{dialog.text}}</view>
+        </view>
+        <view class="footer" style="color:{{dialog.color}};" bindtap="iKown">知道了 </view>
+    </view>
+</template>
+<!-- 是否有功能 -->
+<template name="power-dialog">
+    <view class="roud-container {{!isPowerHidden?'opacity-in':''}}" hidden="{{isPowerHidden}}">
+        <view class="mask"></view>
+        <view class="roud-dialog">
+            <view class="txt">{{powerDialogTip}}</view>
+            <view class="btn-back" style="background:{{powerBtnColor}}" bindtap="backPage">知道了</view>
+        </view>
+    </view>
+</template>
+
+<!--会员折扣信息-->
+<template name="sale-dialog">
+    <view class="membersale">
+        <view class="rp-mask"></view>
+        <view class="membersale-div">
+            <view class="ms-item" wx:for="{{items}}" wx:key="index">
+                <text class="ms-icon" style="background: url({{item.img}});background-size: 100% 100%;"></text>
+                {{item.info}}
+            </view>
+            <view class="ms-hint">注：若商品折扣重复，则按低折扣计算(如某商品同时享受新品5折，会员9.7折，则按新品5折优惠计算)</view>
+            <view class="ms-know" style="color:{{color}};" bindtap="salehint">知道了</view>
+        </view>
+    </view>
+</template>
+
+<template name="msg-dialog">
+    <view class="rp-mask" hidden="{{dialog.hidden}}"></view>
+    <view class="msg-dialog {{!dialog.hidden?'opacity-in':''}}" hidden="{{dialog.hidden}}">
+        <view class="dialog-content">
+            <view class="title" wx:if="{{isTitle}}">{{!!dialog.title ? dialog.title : '提示'}}</view>
+            <view class="text  {{ !!textAlign ? textAlign : '' }}">{{dialog.text}}</view>
+        </view>
+        <view class="footer" style="color:{{dialog.color}};" bindtap="iKown">知道了 </view>
+    </view>
+</template>
+
+
+
+<template name="popover-dialog">
+    <view class="rp-mask" hidden="{{dialog.hidden}}"></view>
+    <view class="msg-dialog" hidden="{{dialog.hidden}}">
+        <view class="dialog-body">{{dialog.body}}</view>
+        <view class="footer" style="color:{{dialog.color}};" bindtap="closePopover">知道了 </view>
+    </view>
+</template>
+
+<template name="debugDialog">
+    <view class="debug-dialog" hidden="{{!isDebug}}">
+       <view class="icont-debug"></view>
+       <view class="debug-txt">{{debugtxt}}系统即将上线，敬请期待</view>
+     </view>
+</template>
+
+
+<!--无需排队-->
+<template name="nonequeue">
+    <view class="rp-mask"></view>
+    <view class="que-dialog">
+        <view class="quedia-box">
+            <view class="quedia-tit">本店现在无需排队</view>
+            <view class="quedia-txt">快带上小伙伴来吧</view>
+        </view>
+        <view class="quedia-true" bindtap="closeDialog">知道了</view>
+    </view>
+</template>
+
+
+<template name="ty-power-dialog">
+    <view class="rp-mask" hidden="{{isPowerHidden}}"></view>
+    <view class="ty-power-dialog" hidden="{{isPowerHidden}}">
+        <view class="title">
+            <text class="icont-king"></text>
+            <text>特权说明</text>
+        </view>
+        <view class="tip">{{tyPowerTxt}}</view>
+        <view class="footer" bindtap="closeDialog">知道了</view>
+    </view>
+</template>
+
+
+<template name="recharge-dialog">
+    <view class="rp-mask" hidden="{{dialog.isHidden}}"></view>
+    <view class="recharge-dialog" hidden="{{dialog.isHidden}}">
+        <view class="title">{{dialog.title}}</view>
+        <view class="content">
+            <view class="input-wapper" wx:if="{{dialog.isInput}}">
+                <input type="digit" value="{{inputVal}}" confirm-type="done" placeholder="手动输入充值金额" bindinput="bindInput" />
+            </view>
+            <block wx:else>
+                <!-- <view class="txt">恭喜您成功充值 10 元</view> -->
+                <view class="txt" wx:for="{{dialog.txt}}" wx:key="index">{{item}}</view>
+            </block>
+        </view>
+        <view class="footer">
+            <view wx:if="{{!!dialog.cancelText}}" class="btn-cancel" bindtap="dialogCancel">{{dialog.cancelText}}</view>
+            <view class="btn-confirm" bindtap="dialogSuccess">{{dialog.confirmText}}</view>
+        </view>
+    </view>
+</template>
+
+<template name="vipdialog">
+    <view class="rp-mask" hidden="{{isVipHidden}}"></view>
+    <view class="vipdialog" hidden="{{isVipHidden}}">
+        <view class="vip-top">
+            <view class="viphead">
+                <image src="{{userInfo.avatarUrl}}" background-size="cover" mode="aspectFill"></image>
+            </view>
+            <view class="vip-tit">您还不是会员</view>
+            <view class="vip-hint">会员支付请先领取会员卡</view>
+        </view>
+        <view class="vip-btns">
+            <!-- <view class="vipbtn-false">取消</view> -->
+            <view class="vipbtn-true" bindtap="goGetVip">去领取</view>
+        </view>
+    </view>
+</template>

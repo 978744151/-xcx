@@ -1,0 +1,21 @@
+<view hidden="{{isDate}}" class="selector">
+    <view class="inner_box">
+        <view class="header_box">
+            <view class="item l" data-act="cancel" data-mold="dateTime" bindtap="ideChoice" style="color:#252525;">取消</view>
+            <view class="item c" style="color:#000;">请选择生日</view>
+            <view class="item r" data-act="confirm" data-mold="dateTime" bindtap="ideChoice" style="color:#252525;">确定</view>
+        </view>
+        <picker-view class="picker_box" indicator-class="selected" value="{{dateValue}}" bindchange="dateChange">
+            <picker-view-column>
+                <view wx:for="{{years}}" wx:key="index">{{item}}年</view>
+            </picker-view-column>
+            <picker-view-column>
+                <view wx:for="{{months}}" wx:key="index">{{item}}月</view>
+            </picker-view-column>
+            <picker-view-column>
+                <view wx:for="{{days}}" wx:key="index">{{item}}日</view>
+            </picker-view-column>
+        </picker-view>
+    </view>
+    <view class="layer"></view>
+</view>

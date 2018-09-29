@@ -1,0 +1,7 @@
+{
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "小程序授权",
+    "enablePullDownRefresh": false,
+    "disableScroll": true
+}

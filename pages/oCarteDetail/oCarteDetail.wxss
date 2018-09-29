@@ -1,0 +1,293 @@
+page {
+   min-height: 100%;
+   background: #f6f6f6;
+}
+
+page::after{
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-top:none;
+}
+/* 状态值 */
+.stuBox{
+  height: 265rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: content;
+  align-items: center;
+  background: #fff;
+  margin-bottom: 20rpx; 
+}
+.stuTitle,.hx text{
+  font-size: 42rpx;
+  line-height: 66rpx;
+  color: #333333;
+  padding-top: 10rpx;
+}
+.hx{
+  padding-top: 10rpx;
+color: #9a999a;
+font-size: 28rpx;
+line-height: 66rpx;
+}
+.hx .fz42{
+  font-size: 42px;
+}
+.stuHint{
+  font-size: 28rpx;
+  line-height: 56rpx;
+  color: #9a999a;
+}
+.carteBtn{
+  height: 105rpx;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 20rpx;
+}
+.carteBtn .noBg,.hasBg{
+  width: 160rpx;
+  height: 75rpx;
+  box-sizing: border-box;
+  line-height: 75rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #f14949;
+  border: 2rpx solid #febfbf;
+  border-radius: 4rpx;
+}
+.carteBtn .hasBg{
+  border: 2rpx solid #f14949;
+  color: #fff;
+  background: #f14949;
+  margin-left: 28rpx;
+}
+.carteBtn .hasBg.reduceTime{
+  width: auto;
+  padding: 0 10rpx;
+}
+
+
+
+
+.paymenu {
+   background: #fff;
+   border-top: 1px solid #f0f0f0;
+}
+
+.paymenu-tit {
+   display: flex;
+   display: -webkit-flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+   height: 105rpx;
+   /* line-height: 105rpx; */
+   margin-left: 22rpx;
+   font-size: 30rpx;
+   border-bottom: 1rpx solid #eaeaea;
+}
+
+.paymenu-sale {
+    display: flex;
+   display: -webkit-flex;
+   align-items: center; 
+   margin-right: 20rpx;
+}
+
+.paymenu-sale .allsale {
+   font-size: 30rpx;
+   color: #f14949;
+   margin-right: 15rpx;
+   white-space: nowrap;
+}
+
+.paymenu-list {
+   padding: 15rpx 0;
+}
+
+.paymenu-div {
+   display: flex;
+   display: -webkit-flex;
+   flex-direction: row;
+   align-items: center;
+   padding: 23rpx 22rpx 23rpx;
+}
+
+.paymenu-name {
+   width: 535rpx;
+}
+
+.paymenu-name .payname-hint {
+   font-size: 26rpx;
+   color: #595959;
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: 1;
+   overflow: hidden;
+}
+
+.paymenu-name .paymenu-spec{
+  font-size: 0;
+}
+
+.paymenu-name .paymenu-spec text.tag {
+  height: 32rpx;
+  line-height: 32rpx;
+  padding: 0 10rpx;
+  font-size: 22rpx;
+  color: #939393;
+  margin-right: 20rpx;
+  background: #f0eded;
+}
+
+.payname-tit {
+   display: flex;
+   display: -webkit-flex;
+   flex-direction: row;
+   align-items: center;
+}
+
+.payname-tit text {
+   font-size: 30rpx;
+   color: #000;
+}
+.paymenu-num {
+   width: 60rpx;
+   font-size: 28rpx;
+   color: #6f6f6f;
+}
+
+.paymenu-price {
+   width: 150rpx;
+   text-align: right;
+   font-size: 28rpx;
+   color: #6f6f6f;
+}
+
+.paymenu-price .paymenu-oldp {
+   font-size: 30rpx;
+   color: #6f6f6f;
+}
+
+.paymenu-onesale {
+   font-size: 26rpx;
+}
+button:after {
+   display: none;
+}
+.paydetail-panle .strong{
+    font-weight: 500;
+    color:#f14949;
+    line-height: normal!important;
+}
+
+.paydetail-panle{
+    background: #fff;
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.paydetail-panle .tit{
+    display: flex;
+    height: 100rpx;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 22rpx 0 24rpx;
+    font-size: 28rpx;
+}
+
+.paydetail-panle .tit .strong.get-points{
+  display: inline-block;
+  margin-left: 32rpx;
+}
+
+
+.paydetail-panle .tit .left-part,
+.paydetail-panle .tit .right-part{
+    font-size: 30rpx;
+    color: #6f6f6f;
+}
+.paydetail-panle .tit .left-part{
+  color: #000;
+}
+.paydetail-panle .tit .right-part{
+    flex: 1;
+    text-align: right;
+}
+
+.paydetail-panle .pay-section{
+    padding: 0 22rpx;
+}
+
+.pay-section .item{
+    display: flex;
+    font-size: 30rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+}
+
+.c6f{
+    color: #6f6f6f;
+}
+.allPrice{
+  line-height: 102rpx;
+  text-align: right;
+  font-size: 30rpx;
+  color: #000;
+  background: #fff;
+  padding-right: 22rpx; 
+}
+.icon-k-care {
+color:#ababab;
+font-size:32rpx;
+margin-left:12rpx;
+}
+.flexWrap{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.payBox{
+  width:630rpx;
+  height:470rpx;
+  background:#fff;
+  position: absolute;
+  left:50%;
+  top:50%;
+  transform: translate(-50%,-50%);
+  border-radius: 16rpx;
+  text-align: center;
+ 
+}
+.payTitle{
+  font-size:36rpx;
+  color:#000;
+  margin-top:45rpx;
+}
+.pay-detbox{
+  width:100%;
+  height: auto;
+  overflow: hidden;
+  border-bottom:1px solid #d0d0d0;
+  margin-top:6rpx;
+  padding-bottom:30rpx;
+  font-size:32rpx;
+  color:#000
+}
+.pay-typetit{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  width:540rpx;
+  margin:0 auto;
+  margin-top:20rpx;
+}
+.payknow{
+  color:#f14949;
+  font-size:36rpx;
+  line-height:94rpx;
+}

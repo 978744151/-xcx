@@ -1,0 +1,54 @@
+<import src="../templates/loading/loading.wxml" />
+<template is="loading" wx:if="{{isIndexLoad}}"></template>
+<block wx:if="{{!isIndexLoad}}">
+   <view class="top">
+      <view class="logo">
+         <image src="{{shopInfo.storelogo}}"></image>
+      </view>
+      <view class="name">{{shopInfo.storename}}</view>
+      <view class="evaluate">
+         <view class="star">
+            <text wx:for="{{shopInfo.storelevel}}" wx:key="star"></text>
+         </view>
+         <text>人均消费{{shopInfo.storeaveragecost}}元</text>
+      </view>
+      <view class="list">
+         <scroll-view scroll-x="{{true}}" style="height: auto;">
+            <view class="box">
+               <view wx:for="{{shopInfo.storethumbs}}" wx:key="pic" data-pics='{{shopInfo.storethumbs}}' data-pic="{{item.image}}" bindtap="imgView">
+                  <image src="{{item.image}}" mode="aspectFill" style="margin-right:{{shopInfo.storethumbs.length==index+1?'0':'20'}}rpx;"></image>
+               </view>
+            </view>
+         </scroll-view>
+         <text class="hintIcon" wx:if="{{shopInfo.storethumbs.length>4}}"></text>
+      </view>
+      <view class="tips">
+         <text wx:if="{{shopInfo.storewify==1}}">WiFi</text>
+         <text wx:if="{{shopInfo.storecard==1}}">刷卡</text>
+         <text wx:if="{{shopInfo.storepark==1}}">停车</text>
+         <text wx:if="{{shopInfo.storeroom==1}}">包厢</text>
+      </view>
+   </view>
+   <view class="bottom">
+      <view class="item" bindtap="calling">
+         <view class="name"><text>商家电话</text> <text>:</text> </view>
+         <text class="desc">{{shopInfo.storetel}}</text>
+      </view>
+       <!-- <view class="item" bindtap="goMap"> -->
+       <view class="item">
+         <view class="name">
+            <text>地址</text>
+            <text>:</text>
+         </view>
+         <text class="desc">{{shopInfo.storeaddress}}</text>
+      </view>
+      <view class="item">
+         <view class="name"><text>营业时间</text>  <text>:</text></view>
+         <text class="desc">{{shopInfo.storehours}}</text>
+      </view>
+     <!-- <view class="item" bindtap="storelicence">
+         <view>营业执照</view>
+         <text data-url="{{shopInfo.storelicence}}" class="look">点击查看</text>
+      </view> -->
+   </view>
+</block>
